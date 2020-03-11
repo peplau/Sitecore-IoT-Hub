@@ -1,0 +1,105 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature", "Feature", "{17DD5718-6E13-4F2C-9738-B410396D4552}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{4FDA1DCD-D33E-447E-91C1-F4AE818E2CF0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{15D97D61-D597-42EC-B7E9-E9EC8130E630}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{ADCA10F7-A1D2-407B-8074-60418168C02E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		nuget.config = nuget.config
+		README.md = README.md
+		TdsGlobal.config = TdsGlobal.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{DAFED8F5-6CBD-4384-AAD6-DC3BCCF24911}"
+	ProjectSection(SolutionItems) = preProject
+		documentation\README.md = documentation\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure", "Azure", "{651BD5D3-B583-448D-BD3D-AF557F1E4F14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTHub.Foundation.Azure", "src\Foundation\Azure\code\IoTHub.Foundation.Azure.csproj", "{4CBB4B75-9DE7-4B0E-8363-BB01554A6807}"
+EndProject
+Project("{CAA73BB0-EF22-4D79-A57E-DF67B3BA9C80}") = "IoTHub.Foundation.Azure.Master", "src\Foundation\Azure\tds\IoTHub.Foundation.Azure.Master\IoTHub.Foundation.Azure.Master.scproj", "{E43932E9-7643-44AA-A784-2EC3560663B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SitecoreRules", "SitecoreRules", "{53857AC2-A75A-4D26-AD64-89D36B6302EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTHub.Feature.SitecoreRules", "src\Feature\SitecoreRules\code\IoTHub.Feature.SitecoreRules.csproj", "{B89B78FB-4B59-4DF3-8637-9E48FB3C6455}"
+EndProject
+Project("{CAA73BB0-EF22-4D79-A57E-DF67B3BA9C80}") = "IoTHub.Feature.SitecoreRules.Master", "src\Feature\SitecoreRules\tds\IoTHub.Feature.SitecoreRules.Master\IoTHub.Feature.SitecoreRules.Master.scproj", "{71DF3CCC-4B55-4A83-8849-5CD9405E34FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{19591FD5-B5BC-437C-BD58-73A0536C34B8}"
+	ProjectSection(SolutionItems) = preProject
+		documentation\images\Conditional Rendering Tags field.jpg = documentation\images\Conditional Rendering Tags field.jpg
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IoTHub", "IoTHub", "{1CCFBBD2-5455-439C-B650-7F7F6D72ED0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTHub.Project.IoTHub", "src\Project\IoTHub\code\IoTHub.Project.IoTHub.csproj", "{A4EC7C4B-3162-4905-A2DA-1D8E44E17620}"
+EndProject
+Project("{CAA73BB0-EF22-4D79-A57E-DF67B3BA9C80}") = "IoTHub.Project.IoTHub.Master", "src\Project\IoTHub\tds\IoTHub.Project.IoTHub.Master\IoTHub.Project.IoTHub.Master.scproj", "{B94DB61E-17E6-49A1-AD6B-3A07C70CCFB3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4CBB4B75-9DE7-4B0E-8363-BB01554A6807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CBB4B75-9DE7-4B0E-8363-BB01554A6807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CBB4B75-9DE7-4B0E-8363-BB01554A6807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CBB4B75-9DE7-4B0E-8363-BB01554A6807}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E43932E9-7643-44AA-A784-2EC3560663B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E43932E9-7643-44AA-A784-2EC3560663B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E43932E9-7643-44AA-A784-2EC3560663B3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E43932E9-7643-44AA-A784-2EC3560663B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E43932E9-7643-44AA-A784-2EC3560663B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E43932E9-7643-44AA-A784-2EC3560663B3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B89B78FB-4B59-4DF3-8637-9E48FB3C6455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B89B78FB-4B59-4DF3-8637-9E48FB3C6455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B89B78FB-4B59-4DF3-8637-9E48FB3C6455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B89B78FB-4B59-4DF3-8637-9E48FB3C6455}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71DF3CCC-4B55-4A83-8849-5CD9405E34FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71DF3CCC-4B55-4A83-8849-5CD9405E34FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71DF3CCC-4B55-4A83-8849-5CD9405E34FB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{71DF3CCC-4B55-4A83-8849-5CD9405E34FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71DF3CCC-4B55-4A83-8849-5CD9405E34FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71DF3CCC-4B55-4A83-8849-5CD9405E34FB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A4EC7C4B-3162-4905-A2DA-1D8E44E17620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4EC7C4B-3162-4905-A2DA-1D8E44E17620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4EC7C4B-3162-4905-A2DA-1D8E44E17620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4EC7C4B-3162-4905-A2DA-1D8E44E17620}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B94DB61E-17E6-49A1-AD6B-3A07C70CCFB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B94DB61E-17E6-49A1-AD6B-3A07C70CCFB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B94DB61E-17E6-49A1-AD6B-3A07C70CCFB3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B94DB61E-17E6-49A1-AD6B-3A07C70CCFB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B94DB61E-17E6-49A1-AD6B-3A07C70CCFB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B94DB61E-17E6-49A1-AD6B-3A07C70CCFB3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{651BD5D3-B583-448D-BD3D-AF557F1E4F14} = {4FDA1DCD-D33E-447E-91C1-F4AE818E2CF0}
+		{4CBB4B75-9DE7-4B0E-8363-BB01554A6807} = {651BD5D3-B583-448D-BD3D-AF557F1E4F14}
+		{E43932E9-7643-44AA-A784-2EC3560663B3} = {651BD5D3-B583-448D-BD3D-AF557F1E4F14}
+		{53857AC2-A75A-4D26-AD64-89D36B6302EC} = {17DD5718-6E13-4F2C-9738-B410396D4552}
+		{B89B78FB-4B59-4DF3-8637-9E48FB3C6455} = {53857AC2-A75A-4D26-AD64-89D36B6302EC}
+		{71DF3CCC-4B55-4A83-8849-5CD9405E34FB} = {53857AC2-A75A-4D26-AD64-89D36B6302EC}
+		{19591FD5-B5BC-437C-BD58-73A0536C34B8} = {DAFED8F5-6CBD-4384-AAD6-DC3BCCF24911}
+		{1CCFBBD2-5455-439C-B650-7F7F6D72ED0D} = {15D97D61-D597-42EC-B7E9-E9EC8130E630}
+		{A4EC7C4B-3162-4905-A2DA-1D8E44E17620} = {1CCFBBD2-5455-439C-B650-7F7F6D72ED0D}
+		{B94DB61E-17E6-49A1-AD6B-3A07C70CCFB3} = {1CCFBBD2-5455-439C-B650-7F7F6D72ED0D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {311DA37D-528B-43B2-A99B-E7253F841D46}
+	EndGlobalSection
+EndGlobal
