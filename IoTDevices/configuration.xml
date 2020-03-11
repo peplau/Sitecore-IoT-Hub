@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hubs>
+	<hub name="Sitecore-IoT-Hub2">	
+		<device name="MyDotnetDevice2" connectionString="HostName=Sitecore-IoT-Hub2.azure-devices.net;DeviceId=MyDotnetDevice2;SharedAccessKey=BKGqFrWINBQq8n1fdplH6qJBYBK+g6liwpJuEj6dq+4=" />	
+	</hub>
+</hubs>
