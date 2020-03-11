@@ -110,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\Project\IoTHub.Project.IoTHub.config" />
+    <Content Include="Test.aspx" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="web.config" />
     <None Include="web.Debug.config">
@@ -121,9 +122,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Foundation\Azure\code\IoTHub.Foundation.Azure.csproj">
+      <Project>{4cbb4b75-9de7-4b0e-8363-bb01554a6807}</Project>
+      <Name>IoTHub.Foundation.Azure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

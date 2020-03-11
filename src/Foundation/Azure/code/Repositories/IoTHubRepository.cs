@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 
@@ -43,6 +44,17 @@ namespace IoTHub.Foundation.Azure.Repositories
             var hubItem = hubsRepositoryItem.Children.Where(p => p.TemplateID == Models.Templates.IoTHub.TemplateID)
                 .Select(CastToHub).FirstOrDefault(p => p.HubName == hubName);
             return hubItem;
+        }
+
+        public List<Models.Templates.IoTHub> GetHubs(Database database = null)
+        {
+            if (database == null)
+                database = Sitecore.Context.Database;
+            var hubsRoot = database.GetItem(Models.Templates.IoTHub.HubsRepositoryId);
+
+            var hubs = hubsRoot.Children.Where(p => p.TemplateID == Models.Templates.IoTHub.TemplateID)
+                .Select(CastToHub).ToList();
+            return hubs;
         }
     }
 }

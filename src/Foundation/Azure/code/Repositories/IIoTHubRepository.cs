@@ -1,4 +1,5 @@
-﻿using Sitecore.Data;
+﻿using System.Collections.Generic;
+using Sitecore.Data;
 using Sitecore.Data.Items;
 
 namespace IoTHub.Foundation.Azure.Repositories
@@ -35,5 +36,12 @@ namespace IoTHub.Foundation.Azure.Repositories
         /// <param name="database"></param>
         /// <returns></returns>
         Models.Templates.IoTHub GetHubByName(string hubName, Database database = null);
+
+        /// <summary>
+        /// Get a list of all available Hubs
+        /// </summary>
+        /// <param name="database"></param>
+        /// <returns></returns>
+        List<Models.Templates.IoTHub> GetHubs(Database database = null);
     }
 }
