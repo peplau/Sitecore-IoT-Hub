@@ -39,7 +39,7 @@
 * Create a new IoT Hub on Sitecore to map to your Azure IoT Hub under 
     > /sitecore/system/Modules/IoT Hub/Hubs
    
-   Make sure the "Hub Name" field has the exact same name of your Azure IoT Hub
+   Make sure the "Hub Name" field has the exact same name as your Azure IoT Hub
 
 * Configure the IoT Hub on Sitecore by filling the 4 fields as seen below:
 
@@ -69,8 +69,28 @@
 
 ### Create IoT Devices on Azure
 
-* Create your device
+* Run the following command in Azure Cloud Shell to create the device identity. 
+
+  Make sure to replace {YourIoTHubName} and {MyDevice} with your correct information.
+
+    ```sh
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {MyDevice}
+    ```
 
 ### Map IoT Devices in Sitecore
 
-* Create your device
+* Create a new IoT Device on Sitecore to map to your Azure IoT Device under the IoT Hub that you previously created.
+
+  Make sure the "Device Name" field has the exact same name as your Azure IoT Device
+
+* Configure the IoT Device on Sitecore by filling the Connection String:
+
+    ![IoT Device Configured](images/IoT-Device-Config.jpg?raw=true "IoT Device Configured") 
+
+    Run the following commands on Azure Cloud Shell to obtain each value:
+
+    ```sh
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id {MyDevice} --output table
+    ```
+
+    Make sure to replace {YourIoTHubName} and {MyDevice} with your correct information.
