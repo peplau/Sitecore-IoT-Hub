@@ -1,26 +1,33 @@
 ----item----
 version: 1
-id: {90C4B6F7-7935-461C-92B1-B09C1653D244}
+id: {1517AF17-DACB-479A-B7A3-841923CD3303}
 database: master
-path: /sitecore/system/Modules/IoT Hub/Message Types/Hydrometer GetState
-parent: {865F6430-CA12-4148-8D2F-A815FA71422E}
-name: Hydrometer GetState
+path: /sitecore/system/Modules/IoT Hub/Hubs/SitecoreIoTHub/LightSensor
+parent: {ACE9F169-7BC9-475F-8C6A-F645A7333BCC}
+name: LightSensor
 master: {00000000-0000-0000-0000-000000000000}
-template: {B8521A51-A0CF-40AC-BD76-4C4D1E900B1C}
-templatekey: IoT Message Type
+template: {534E5B10-8659-4576-9C69-AA47FEAA533C}
+templatekey: IoT Device
 
+----field----
+field: {D18236D4-C125-4ADB-AC45-21DF6E2D3B6E}
+name: Device Name
+key: device name
+content-length: 11
+
+LightSensor
+----field----
+field: {D38E750A-C6DF-4F60-B755-F5880D07B1E0}
+name: Connection String
+key: connection string
+content-length: 123
+
+HostName=SitecoreIoTHub.azure-devices.net;DeviceId=LightSensor;SharedAccessKey=gp+cZcbeQA+AY3avcBSvMzBK6SlZowpr0nvikFj+tpo=
 ----version----
 language: en
 version: 1
-revision: a2eec792-98ca-4f87-ac70-b1005fd9353c
+revision: fc64d56b-a054-4514-9e7d-f43090097d47
 
-----field----
-field: {2B8207A4-E141-4586-99D5-6311E98350C2}
-name: Deserializer
-key: deserializer
-content-length: 38
-
-{3428F3CB-3216-4D29-8098-6552C8E65C9C}
 ----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
 name: __Owner
@@ -34,7 +41,7 @@ name: __Created
 key: __created
 content-length: 16
 
-20200312T182705Z
+20200312T213516Z
 ----field----
 field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
 name: __Created by
@@ -48,14 +55,14 @@ name: __Revision
 key: __revision
 content-length: 36
 
-a2eec792-98ca-4f87-ac70-b1005fd9353c
+fc64d56b-a054-4514-9e7d-f43090097d47
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200312T182716Z
+20200312T213529Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by

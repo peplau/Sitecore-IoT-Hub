@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration.Internal;
 using System.Text;
 using System.Threading.Tasks;
 using IoTDevices.Configuration;

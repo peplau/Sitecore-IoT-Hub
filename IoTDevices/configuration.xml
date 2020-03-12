@@ -2,6 +2,10 @@
 <hubs>
 	<hub name="SitecoreIoTHub">	
 		<device name="Thermometer" connectionString="HostName=SitecoreIoTHub.azure-devices.net;DeviceId=Thermometer;SharedAccessKey=NNz/uMj5QjHcbJQidfh+xL6KVGpDGeJ2AtN2XUWPLkA=" />	
-		<device name="Hydrometer" connectionString="HostName=SitecoreIoTHub.azure-devices.net;DeviceId=Hydrometer;SharedAccessKey=y8m0sSeKk+58sMWzaA+rBhG8QkXCSCxuLFXQiEXL7/0=" />	
+		<device name="Hygrometer" connectionString="HostName=SitecoreIoTHub.azure-devices.net;DeviceId=Hygrometer;SharedAccessKey=rUtos/XOdsqlYAq63YiqyMZWe17ETrtRHcNGWtkndhQ=" />	
+		<device name="LightSensor" connectionString="HostName=SitecoreIoTHub.azure-devices.net;DeviceId=LightSensor;SharedAccessKey=gp+cZcbeQA+AY3avcBSvMzBK6SlZowpr0nvikFj+tpo=" />	
+		<device name="AirConditioned" connectionString="HostName=SitecoreIoTHub.azure-devices.net;DeviceId=AirConditioned;SharedAccessKey=CRu6v2SQAh4uRHO8HyzVTyep9OZwM5xMfP0Nbt6kvR0=" />	
+		<device name="GrassWatering" connectionString="HostName=SitecoreIoTHub.azure-devices.net;DeviceId=GrassWatering;SharedAccessKey=gLueCGTSsXT0KTBj5WCVsOhEBxNcOgf9BNIPDiojCEk=" />	
+		<device name="SmartDisplay" connectionString="HostName=SitecoreIoTHub.azure-devices.net;DeviceId=SmartDisplay;SharedAccessKey=dJbH7rva/W1/du8E261uzJrEyAag5VPsFcl/j6vcdXU=" />	
 	</hub>
 </hubs>

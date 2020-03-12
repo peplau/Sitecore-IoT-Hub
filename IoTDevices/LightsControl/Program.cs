@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IoTDevices.Configuration;
 using Microsoft.Azure.Devices.Client;
+using Newtonsoft.Json;
 
 namespace IoTDevices.LightsControl
 {
@@ -52,6 +53,26 @@ namespace IoTDevices.LightsControl
         private static Task<MethodResponse> SetRoomState(MethodRequest methodRequest, object userContext)
         {
             var data = Encoding.UTF8.GetString(methodRequest.Data);
+            var deserialized = JsonConvert.DeserializeObject<dynamic>(data);
+
+            var room = deserialized.room;
+            if (Rooms.Contains(room))
+            {
+                var state = (bool)deserialized.state;
+                if (state)
+                {
+                    // Turn lights on
+                    if (!CurrentOnList.Contains(room))
+                        CurrentOnList.Add(room);
+                }
+                else
+                {
+                    // Turn lights off
+                    if (CurrentOnList.Contains(room))
+                        CurrentOnList.Remove(room);
+                }
+            }
+
             GetStateMessage(out var messageString);
             Console.WriteLine(" ");
             Console.WriteLine($"[Cloud-to-Device] method SetRoomState called - Payload: {data} - Result: {messageString}");

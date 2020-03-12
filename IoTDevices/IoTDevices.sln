@@ -5,19 +5,19 @@ VisualStudioVersion = 15.0.28307.539
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thermometer", "Thermometer\Thermometer.csproj", "{93861B57-0093-4DDD-8841-2EC577A95D86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Configuration", "Configuration\Configuration.csproj", "{83A419E2-C44E-4CD6-9E92-034C5F90A70F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Configuration", "Configuration\Configuration.csproj", "{83A419E2-C44E-4CD6-9E92-034C5F90A70F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hydrometer", "Hydrometer\Hydrometer.csproj", "{A079E7CD-44CD-4588-9FBF-F9033B0459C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LightSensor", "LightSensor\LightSensor.csproj", "{D19ABEE2-CA21-4797-BA08-104032F4CE7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightSensor", "LightSensor\LightSensor.csproj", "{D19ABEE2-CA21-4797-BA08-104032F4CE7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartDisplay", "SmartDisplay\SmartDisplay.csproj", "{69C96589-31F3-4A6A-95B8-6A26C0E6CB8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartDisplay", "SmartDisplay\SmartDisplay.csproj", "{69C96589-31F3-4A6A-95B8-6A26C0E6CB8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrassWatering", "GrassWatering\GrassWatering.csproj", "{F9C80382-28E3-41B3-8743-570B97740A1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrassWatering", "GrassWatering\GrassWatering.csproj", "{F9C80382-28E3-41B3-8743-570B97740A1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirConditioned", "AirConditioned\AirConditioned.csproj", "{BFA90800-216B-45BE-B266-F784ED08775F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirConditioned", "AirConditioned\AirConditioned.csproj", "{BFA90800-216B-45BE-B266-F784ED08775F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LightsControl", "LightsControl\LightsControl.csproj", "{2BD9C752-91C2-40B8-8029-502C779A31C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightsControl", "LightsControl\LightsControl.csproj", "{2BD9C752-91C2-40B8-8029-502C779A31C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hygrometer", "Hygrometer\Hygrometer.csproj", "{FC03B1AA-00EF-4578-9246-0957AB54022B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,6 @@ Global
 		{83A419E2-C44E-4CD6-9E92-034C5F90A70F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83A419E2-C44E-4CD6-9E92-034C5F90A70F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83A419E2-C44E-4CD6-9E92-034C5F90A70F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A079E7CD-44CD-4588-9FBF-F9033B0459C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A079E7CD-44CD-4588-9FBF-F9033B0459C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A079E7CD-44CD-4588-9FBF-F9033B0459C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A079E7CD-44CD-4588-9FBF-F9033B0459C0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D19ABEE2-CA21-4797-BA08-104032F4CE7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D19ABEE2-CA21-4797-BA08-104032F4CE7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D19ABEE2-CA21-4797-BA08-104032F4CE7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +53,10 @@ Global
 		{2BD9C752-91C2-40B8-8029-502C779A31C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BD9C752-91C2-40B8-8029-502C779A31C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BD9C752-91C2-40B8-8029-502C779A31C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC03B1AA-00EF-4578-9246-0957AB54022B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC03B1AA-00EF-4578-9246-0957AB54022B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC03B1AA-00EF-4578-9246-0957AB54022B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC03B1AA-00EF-4578-9246-0957AB54022B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

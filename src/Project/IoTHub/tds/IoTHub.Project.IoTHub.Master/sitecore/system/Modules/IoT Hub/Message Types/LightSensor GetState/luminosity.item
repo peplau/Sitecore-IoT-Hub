@@ -1,10 +1,10 @@
 ----item----
 version: 1
-id: {8D54FDDA-6EDC-4E43-9E11-53D6AE101D8D}
+id: {B64AFBBB-7F19-421C-B970-5985E3004A49}
 database: master
-path: /sitecore/system/Modules/IoT Hub/Message Types/Hydrometer GetState/humidity
-parent: {90C4B6F7-7935-461C-92B1-B09C1653D244}
-name: humidity
+path: /sitecore/system/Modules/IoT Hub/Message Types/LightSensor GetState/luminosity
+parent: {F08FBF7E-12A8-45AC-A932-E59E2CEF115B}
+name: luminosity
 master: {00000000-0000-0000-0000-000000000000}
 template: {C8D77D21-B51E-4644-BD68-6B217193D779}
 templatekey: IoT Message Property
@@ -13,13 +13,13 @@ templatekey: IoT Message Property
 field: {76052C27-6A04-40DF-B50E-64E2D5F865C0}
 name: Property Name
 key: property name
-content-length: 8
+content-length: 10
 
-humidity
+luminosity
 ----version----
 language: en
 version: 1
-revision: 8daf4b53-19ac-4d77-bb9d-228450ea8834
+revision: 6cabb020-530b-4e56-8ff5-2bae42bbe56d
 
 ----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
@@ -48,14 +48,14 @@ name: __Revision
 key: __revision
 content-length: 36
 
-8daf4b53-19ac-4d77-bb9d-228450ea8834
+6cabb020-530b-4e56-8ff5-2bae42bbe56d
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200312T200101Z
+20200312T213610Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by

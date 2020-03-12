@@ -6,13 +6,13 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.1": {
-      "IoTDevices.Hydrometer/1.0.0": {
+      "IoTDevices.Hygrometer/1.0.0": {
         "dependencies": {
           "IoTDevices.Configuration": "1.0.0",
           "Microsoft.Azure.Devices.Client": "1.23.0"
         },
         "runtime": {
-          "IoTDevices.Hydrometer.dll": {}
+          "IoTDevices.Hygrometer.dll": {}
         }
       },
       "DotNetty.Buffers/0.6.0": {
@@ -1043,7 +1043,7 @@
     }
   },
   "libraries": {
-    "IoTDevices.Hydrometer/1.0.0": {
+    "IoTDevices.Hygrometer/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

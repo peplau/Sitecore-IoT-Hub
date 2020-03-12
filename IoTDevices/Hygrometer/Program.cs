@@ -5,7 +5,7 @@ using IoTDevices.Configuration;
 using Microsoft.Azure.Devices.Client;
 using Newtonsoft.Json;
 
-namespace IoTDevices.Hydrometer
+namespace IoTDevices.Hygrometer
 {
     class Program
     {
@@ -18,7 +18,7 @@ namespace IoTDevices.Hydrometer
         {
             Console.Clear();
             Console.WriteLine("---------------------------------");
-            Console.WriteLine("Welcome to the Virtual Hydrometer");
+            Console.WriteLine("Welcome to the Virtual Hygrometer");
             Console.WriteLine("---------------------------------");
 
             // Selected Device
