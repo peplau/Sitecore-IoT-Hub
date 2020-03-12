@@ -12,5 +12,4 @@
     ![Conditional Rendering Tags](images/Conditional%20Rendering%20Tags%20field.jpg?raw=true "Conditional Rendering Tags") 
 
 ## Documentation
-
-* [Configuration and usage](Configuration.md)
+* [List of available documents](/documentation)

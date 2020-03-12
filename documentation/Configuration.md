@@ -127,4 +127,4 @@ The following image shows how the Device Method "GetState()" is mapped in Siteco
 ![Sitecore-Method Mapping](images/Sitecore-Method-Mapping.jpg?raw=true "Sitecore-Method Mapping")
 
 ## Documentation
-* [Installation instructions](/documentation/Installation.md)
+* [List of available documents](/documentation)
