@@ -19,14 +19,14 @@
 
 To use this module you will need a valid Azure Account, with the IoT Hub service installed and some adjustments in the Azure Cloud Shell
 
-* If you don't have yet, create an Azure account and access https://portal.azure.com/
+1. If you don't have yet, create an Azure account and access https://portal.azure.com/
 
-* Create a new Azure IoT Hub by following [this step-by-step](https://www.techrepublic.com/article/how-to-create-an-iot-hub-in-microsoft-azure/)
+2. Create a new Azure IoT Hub by following [this step-by-step](https://www.techrepublic.com/article/how-to-create-an-iot-hub-in-microsoft-azure/)
 
-* Open the Azure Cloud Shell - Select the Cloud Shell button on the menu bar at the upper right in the Azure portal.
+3. Open the Azure Cloud Shell - Select the Cloud Shell button on the menu bar at the upper right in the Azure portal.
     ![Open Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/includes/media/cloud-shell-try-it/hdi-cloud-shell-menu.png "Open Azure Cloud Shell")
 
-* Run the following command to add the Microsoft Azure IoT Extension for Azure CLI to your Cloud Shell instance. 
+4. Run the following command to add the Microsoft Azure IoT Extension for Azure CLI to your Cloud Shell instance. 
     ```sh
     az extension add --name azure-iot
     ```
@@ -36,12 +36,12 @@ To use this module you will need a valid Azure Account, with the IoT Hub service
 
 You have created your IoT Hub in Azure, now you need to map this Hub in Sitecore.
 
-* Create a new IoT Hub on Sitecore to map to your Azure IoT Hub under 
+1. Create a new IoT Hub on Sitecore to map to your Azure IoT Hub under 
     > /sitecore/system/Modules/IoT Hub/Hubs
    
    Make sure the "Hub Name" field has the exact same name as your Azure IoT Hub
 
-* Configure the IoT Hub on Sitecore by filling the 4 fields as seen below:
+2. Configure the IoT Hub on Sitecore by filling the 4 fields as seen below:
 
     ![IoT Hub Configured](images/IoT-Hub-Configuration.jpg?raw=true "IoT Hub Configured") 
 
@@ -85,11 +85,11 @@ Your IoT Hub can handle multiple Devices. Here you will register a new device in
 
 You device is now registered in Azure, and now you will map this device in Sitecore.
 
-* Create a new IoT Device on Sitecore to map to your Azure IoT Device under the IoT Hub that you previously created.
+1. Create a new IoT Device on Sitecore to map to your Azure IoT Device under the IoT Hub that you previously created.
 
   Make sure the "Device Name" field has the exact same name as your Azure IoT Device
 
-* Configure the IoT Device on Sitecore by filling the Connection String:
+2. Configure the IoT Device on Sitecore by filling the Connection String:
 
     ![IoT Device Configured](images/IoT-Device-Config.jpg?raw=true "IoT Device Configured") 
 
@@ -104,7 +104,8 @@ You device is now registered in Azure, and now you will map this device in Sitec
 
 ### 5 - Map a Method in your IoT Device 
 
-Your devices can have methods exposed to be called by Sitecore (Cloud to Device direction). 
+Your devices can have methods exposed to be called by Sitecore (C2D - Cloud to Device direction). 
+
 Here you will map in Sitecore the methods to be called in your device.
 
 Take for instance our [virtual Thermometer device](/IoTDevices/Thermometer), it has the following Method:
@@ -115,19 +116,19 @@ Take for instance our [virtual Thermometer device](/IoTDevices/Thermometer), it 
 
 Below steps shows how to map this method in Sitecore.
 
-* Create a new Message Type to handle the return type under the path
+1. Create a new Message Type to handle the return type under the path
 
     > /sitecore/system/Modules/IoT Hub/Message Types
 
     Because the result format JSON, don't forget to select "Json Deserializer" as your Deserializer
     ![Thermometer GetState](images/Message-Type-GetState.jpg?raw=true "Thermometer GetState") 
 
-* Under the Message Type you just created, add propertie(s) to map to your method return type
+2. Under the Message Type you just created, add propertie(s) to map to your method return type
 
     Eg: Thermometer only has the property "temperature"
     ![Property temperature](images/Message-Property.jpg?raw=true "Property temperature") 
 
-* Create a new IoT Device in Sitecore to map to your Azure IoT Device under the IoT Hub that you previously created.
+3. Create a new IoT Device in Sitecore to map to your Azure IoT Device under the IoT Hub that you previously created.
 
     ![Method GetState in Sitecore](images/Create-Method.jpg?raw=true "Method GetState in Sitecore")
 
