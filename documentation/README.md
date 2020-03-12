@@ -128,12 +128,14 @@ Below steps shows how to map this method in Sitecore.
     Eg: Thermometer only has the property "temperature"
     ![Property temperature](images/Message-Property.jpg?raw=true "Property temperature") 
 
-3. Create a new IoT Device in Sitecore to map to your Azure IoT Device under the IoT Hub that you previously created.
+    * Make sure the "Property Name" field has exactly the same name as your returning property
+
+3. Create a new Method under the IoT Device that you previously created.
 
     ![Method GetState in Sitecore](images/Create-Method.jpg?raw=true "Method GetState in Sitecore")
 
-    ** Make sure the "Method Name" field has exactly the same name as your Device Method
-    ** Make sure your Return Type points to the Message Type recently created
+    * Make sure the "Method Name" field has exactly the same name as your Device Method
+    * Make sure your Return Type points to the Message Type recently created
 
 
 The following image shows how the Device Method "GetState()" is mapped in Sitecore:
