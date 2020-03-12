@@ -15,15 +15,11 @@
 
 ## Configuration
 
-### Azure account
+### Prepare Azure IoT Hub
 
 * If you don't have yet, create an Azure account and access https://portal.azure.com/
 
-### Create Azure IoT Hub
-
 * Create a new Azure IoT Hub by following [this step-by-step](https://www.techrepublic.com/article/how-to-create-an-iot-hub-in-microsoft-azure/)
-
-### Prepare Azure Cloud Shell
 
 * Open the Azure Cloud Shell - Select the Cloud Shell button on the menu bar at the upper right in the Azure portal.
     ![Open Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/includes/media/cloud-shell-try-it/hdi-cloud-shell-menu.png "Open Azure Cloud Shell")
