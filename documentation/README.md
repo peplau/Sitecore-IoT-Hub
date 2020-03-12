@@ -110,11 +110,9 @@ Here you will map in Sitecore the methods to be called in your device.
 
 Take for instance our [virtual Thermometer device](/IoTDevices/Thermometer), it has the following Method:
 
-    ```sh
     GetState()
     Parameters: none
     Return: {temperature: 31.15}
-    ```
 
 Below steps shows how to map this method in Sitecore.
 
