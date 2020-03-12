@@ -38,6 +38,7 @@
 
 * Create a new IoT Hub on Sitecore to map to your Azure IoT Hub under 
     > /sitecore/system/Modules/IoT Hub/Hubs
+   
    Make sure the "Hub Name" field has the exact same name of your Azure IoT Hub
 
 * Configure the IoT Hub on Sitecore by filling the 4 fields as seen below:
