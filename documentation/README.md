@@ -17,6 +17,8 @@
 
 ### 1 - Prepare Azure IoT Hub
 
+To use this module you will need a valid Azure Account, with the IoT Hub service installed and some adjustments in the Azure Cloud Shell
+
 * If you don't have yet, create an Azure account and access https://portal.azure.com/
 
 * Create a new Azure IoT Hub by following [this step-by-step](https://www.techrepublic.com/article/how-to-create-an-iot-hub-in-microsoft-azure/)
@@ -29,7 +31,10 @@
     az extension add --name azure-iot
     ```
 
+
 ### 2 - Map IoT Hub in Sitecore
+
+You have created your IoT Hub in Azure, now you need to map this Hub in Sitecore.
 
 * Create a new IoT Hub on Sitecore to map to your Azure IoT Hub under 
     > /sitecore/system/Modules/IoT Hub/Hubs
@@ -62,7 +67,10 @@
     az iot hub policy show --name service --query primaryKey --hub-name {YourIoTHubName}
     ```
 
-### 3 - Create IoT Devices on Azure
+
+### 3 - Register IoT Devices on Azure
+
+Your IoT Hub can handle multiple Devices. Here you will register a new device in your IoT Hub.
 
 * Run the following command in Azure Cloud Shell to create the device identity. 
 
@@ -72,7 +80,10 @@
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {MyDevice}
     ```
 
+
 ### 4 - Map IoT Devices in Sitecore
+
+You device is now registered in Azure, and now you will map this device in Sitecore.
 
 * Create a new IoT Device on Sitecore to map to your Azure IoT Device under the IoT Hub that you previously created.
 
@@ -89,3 +100,13 @@
     ```
 
     Make sure to replace {YourIoTHubName} and {MyDevice} with your correct information.
+
+
+### 5 - Map a Method in your IoT Device 
+
+Your devices can have methods exposed to be called by Sitecore (Cloud to Device direction). 
+Here you will map in Sitecore the methods to be called in your device.
+
+Take for instance our virtual Thermometer
+
+* Create a new IoT Device on Sitecore to map to your Azure IoT Device under the IoT Hub that you previously created.

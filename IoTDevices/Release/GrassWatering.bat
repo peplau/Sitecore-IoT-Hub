@@ -1,0 +1,1 @@
+dotnet ./bin/IoTDevices.GrassWatering.dll

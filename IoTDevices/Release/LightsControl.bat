@@ -1,0 +1,1 @@
+dotnet ./bin/IoTDevices.LightsControl.dll
