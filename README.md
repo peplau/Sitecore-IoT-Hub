@@ -5,3 +5,6 @@ and marketers can interact with physical or virtual IoT Devices.
 
 ## Author
 Rodrigo Guidi Peplau - [Twitter](https://twitter.com/SitecoreSinger) | [LinkedIn](https://www.linkedin.com/in/rodrigopeplau/)
+
+## Documentation
+* [Installation, configuration and usage](/documentation)
