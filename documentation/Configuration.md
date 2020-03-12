@@ -1,21 +1,6 @@
-# Documentation
+# Configuration
 
-## Installation
-
-1. Download the latest [Installation .zip file](https://github.com/peplau/Sitecore-IoT-Hub/blob/master/sc.package)
-
-2. Install using the Installation Wizard
-
-3. In order to use our custom conditions for personalization, make sure to browse the item
-
-    > /sitecore/system/Settings/Rules/Conditional Renderings/Tags/Default 
-
-    then add the IoT Hub Tag to the Tags field, by moving it to the right part of the field:
-    ![Conditional Rendering Tags](images/Conditional%20Rendering%20Tags%20field.jpg?raw=true "Conditional Rendering Tags") 
-
-## Configuration
-
-### 1 - Prepare Azure IoT Hub
+## 1 - Prepare Azure IoT Hub
 
 To use this module you will need a valid Azure Account, with the IoT Hub service installed and some adjustments in the Azure Cloud Shell
 
@@ -32,7 +17,7 @@ To use this module you will need a valid Azure Account, with the IoT Hub service
     ```
 
 
-### 2 - Map IoT Hub in Sitecore
+## 2 - Map IoT Hub in Sitecore
 
 You have created your IoT Hub in Azure, now you need to map this Hub in Sitecore.
 
@@ -68,7 +53,7 @@ You have created your IoT Hub in Azure, now you need to map this Hub in Sitecore
     ```
 
 
-### 3 - Register IoT Devices on Azure
+## 3 - Register IoT Devices on Azure
 
 Your IoT Hub can handle multiple Devices. Here you will register a new device in your IoT Hub.
 
@@ -81,7 +66,7 @@ Your IoT Hub can handle multiple Devices. Here you will register a new device in
     ```
 
 
-### 4 - Map IoT Devices in Sitecore
+## 4 - Map IoT Devices in Sitecore
 
 You device is now registered in Azure, and now you will map this device in Sitecore.
 
@@ -102,7 +87,7 @@ You device is now registered in Azure, and now you will map this device in Sitec
     Make sure to replace {YourIoTHubName} and {MyDevice} with your correct information.
 
 
-### 5 - Map a Method in your IoT Device 
+## 5 - Map a Method in your IoT Device 
 
 Your devices can have methods exposed to be called by Sitecore (C2D - Cloud to Device direction). 
 
@@ -140,3 +125,6 @@ Below steps shows how to map this method in Sitecore.
 
 The following image shows how the Device Method "GetState()" is mapped in Sitecore:
 ![Sitecore-Method Mapping](images/Sitecore-Method-Mapping.jpg?raw=true "Sitecore-Method Mapping")
+
+## Documentation
+* [Installation instructions](/documentation/Installation.md)
