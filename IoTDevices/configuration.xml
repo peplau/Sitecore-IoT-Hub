@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hubs>
-	<hub name="Sitecore-IoT-Hub2">	
-		<device name="MyDotnetDevice2" connectionString="HostName=Sitecore-IoT-Hub2.azure-devices.net;DeviceId=MyDotnetDevice2;SharedAccessKey=BKGqFrWINBQq8n1fdplH6qJBYBK+g6liwpJuEj6dq+4=" />	
+	<hub name="SitecoreIoTHub">	
+		<device name="Thermometer" connectionString="HostName=SitecoreIoTHub.azure-devices.net;DeviceId=Thermometer;SharedAccessKey=NNz/uMj5QjHcbJQidfh+xL6KVGpDGeJ2AtN2XUWPLkA=" />	
+		<device name="Hydrometer" connectionString="HostName=SitecoreIoTHub.azure-devices.net;DeviceId=Hydrometer;SharedAccessKey=y8m0sSeKk+58sMWzaA+rBhG8QkXCSCxuLFXQiEXL7/0=" />	
 	</hub>
 </hubs>

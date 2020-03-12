@@ -157,11 +157,13 @@
     <Compile Include="Repositories\IIoTDeviceRepository.cs" />
     <Compile Include="Repositories\IIoTHubRepository.cs" />
     <Compile Include="Repositories\IIoTMessageDeserializerRepository.cs" />
+    <Compile Include="Repositories\IIoTMessagePropertyRepository.cs" />
     <Compile Include="Repositories\IIoTMessageTypeRepository.cs" />
     <Compile Include="Repositories\IIoTMethodRepository.cs" />
     <Compile Include="Repositories\IoTDeviceRepository.cs" />
     <Compile Include="Repositories\IoTHubRepository.cs" />
     <Compile Include="Repositories\IoTMessageDeserializerRepository.cs" />
+    <Compile Include="Repositories\IoTMessagePropertyRepository.cs" />
     <Compile Include="Repositories\IoTMessageTypeRepository.cs" />
     <Compile Include="Repositories\IoTMethodRepository.cs" />
   </ItemGroup>
