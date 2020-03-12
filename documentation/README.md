@@ -107,6 +107,29 @@ You device is now registered in Azure, and now you will map this device in Sitec
 Your devices can have methods exposed to be called by Sitecore (Cloud to Device direction). 
 Here you will map in Sitecore the methods to be called in your device.
 
-Take for instance our virtual Thermometer
+Take for instance our [virtual Thermometer device](/IoTDevices/Thermometer), it has the following Method:
 
-* Create a new IoT Device on Sitecore to map to your Azure IoT Device under the IoT Hub that you previously created.
+    > GetState()
+    > Parameters: none
+    > Return: {temperature: 31.15}
+
+Below steps shows how to map this method in Sitecore.
+
+* Create a new Message Type to handle the return type under the path
+
+    > /sitecore/system/Modules/IoT Hub/Message Types
+
+    Because the result format JSON, don't forget to select "Json Deserializer" as your Deserializer
+    ![Thermometer GetState](images/Message-Type-GetState.jpg?raw=true "Thermometer GetState") 
+
+* Under the Message Type you just created, add propertie(s) to map to your method return type
+
+    Eg: Thermometer only has the property "temperature"
+    ![Property temperature](images/Message-Property.jpg?raw=true "Property temperature") 
+
+* Create a new IoT Device in Sitecore to map to your Azure IoT Device under the IoT Hub that you previously created.
+
+    ![Method GetState in Sitecore](images/Create-Method.jpg?raw=true "Method GetState in Sitecore")
+
+    ** Make sure the "Method Name" field has exactly the same name as your Device Method
+    ** Make sure your Return Type points to the Message Type recently created
