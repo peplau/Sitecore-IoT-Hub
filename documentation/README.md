@@ -12,7 +12,7 @@
 
 then add the IoT Hub Tag to the Tags field, by moving it to the right part of the field:
 
-    ![Conditional Rendering Tags](https://github.com/peplau/Sitecore-IoT-Hub/blob/master/documentation/images/Conditional%20Rendering%20Tags%20field.jpg?raw=true "Conditional Rendering Tags") 
+![Conditional Rendering Tags](https://github.com/peplau/Sitecore-IoT-Hub/blob/master/documentation/images/Conditional%20Rendering%20Tags%20field.jpg?raw=true "Conditional Rendering Tags") 
 
 
 ## Configuration
