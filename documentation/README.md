@@ -37,22 +37,22 @@
 
     Run the following commands on Azure Cloud Shell to obtain each value:
 
-    * Connection String: 
+    ##### Connection String: 
     ```sh
     az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    * Event Hubs-compatible endpoint: 
+    ##### Event Hubs-compatible endpoint: 
     ```sh
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
     ```
 
-    * Event Hubs-compatible path: 
+    ##### Event Hubs-compatible path: 
     ```sh
     az iot hub show --query properties.eventHubEndpoints.events.path --name {YourIoTHubName}
     ```
 
-    * Service Primary Key:
+    ##### Service Primary Key:
     ```sh
     az iot hub policy show --name service --query primaryKey --hub-name {YourIoTHubName}
     ```
