@@ -44,6 +44,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{19591F
 		documentation\images\IoT-Hub-Configuration.jpg = documentation\images\IoT-Hub-Configuration.jpg
 		documentation\images\Message-Property.jpg = documentation\images\Message-Property.jpg
 		documentation\images\Message-Type-GetState.jpg = documentation\images\Message-Type-GetState.jpg
+		documentation\images\Sitecore-Method-Mapping.jpg = documentation\images\Sitecore-Method-Mapping.jpg
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IoTHub", "IoTHub", "{1CCFBBD2-5455-439C-B650-7F7F6D72ED0D}"

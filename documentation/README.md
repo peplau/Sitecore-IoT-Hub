@@ -110,9 +110,11 @@ Here you will map in Sitecore the methods to be called in your device.
 
 Take for instance our [virtual Thermometer device](/IoTDevices/Thermometer), it has the following Method:
 
-    > GetState()
-    > Parameters: none
-    > Return: {temperature: 31.15}
+    ```sh
+    GetState()
+    Parameters: none
+    Return: {temperature: 31.15}
+    ```
 
 Below steps shows how to map this method in Sitecore.
 
@@ -120,7 +122,7 @@ Below steps shows how to map this method in Sitecore.
 
     > /sitecore/system/Modules/IoT Hub/Message Types
 
-    Because the result format JSON, don't forget to select "Json Deserializer" as your Deserializer
+    Because the result format is JSON, don't forget to select "Json Deserializer" as your Deserializer
     ![Thermometer GetState](images/Message-Type-GetState.jpg?raw=true "Thermometer GetState") 
 
 2. Under the Message Type you just created, add propertie(s) to map to your method return type
@@ -134,3 +136,8 @@ Below steps shows how to map this method in Sitecore.
 
     ** Make sure the "Method Name" field has exactly the same name as your Device Method
     ** Make sure your Return Type points to the Message Type recently created
+
+
+The following image shows how the Device Method "GetState()" is mapped in Sitecore:
+
+    ![Sitecore-Method Mapping](images/Sitecore-Method-Mapping.jpg?raw=true "Sitecore-Method Mapping")
