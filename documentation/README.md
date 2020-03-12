@@ -24,9 +24,9 @@
 
 4. Run the following command to add the Microsoft Azure IoT Extension for Azure CLI to your Cloud Shell instance. 
 
-```sh
-az extension add --name azure-iot
-```
+    ```sh
+    az extension add --name azure-iot
+    ```
 
 5. Create a new IoT Hub on Sitecore to map to your Azure IoT Hub under /sitecore/system/Modules/IoT Hub/Hubs
    Make sure the "Hub Name" field has the exact same name of your Azure IoT Hub
