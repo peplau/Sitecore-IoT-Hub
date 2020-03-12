@@ -1,40 +1,54 @@
 ----item----
 version: 1
-id: {B43D6AF3-3D0D-4D57-AA43-E045D7E468F2}
+id: {08477468-D438-43D4-9D6A-6D84A611971C}
 database: master
-path: /sitecore/templates/Foundation/IoTHub/Azure/IoT Message Type/__Standard Values
-parent: {B8521A51-A0CF-40AC-BD76-4C4D1E900B1C}
-name: __Standard Values
+path: /sitecore/system/Modules
+parent: {13D6D6C6-C50B-4BBD-B331-2B04F1A58F21}
+name: Modules
 master: {00000000-0000-0000-0000-000000000000}
-template: {B8521A51-A0CF-40AC-BD76-4C4D1E900B1C}
-templatekey: IoT Message Type
+template: {239F9CF4-E5A0-44E0-B342-0F32CD4C6D8B}
+templatekey: Node
 
+----field----
+field: {06D5295C-ED2F-4A54-9BF2-26228D113318}
+name: __Icon
+key: __icon
+content-length: 22
+
+Software/16x16/jar.png
+----field----
+field: {9C6106EA-7A5A-48E2-8CAD-F0F693B1E2D4}
+name: __Read Only
+key: __read only
+content-length: 1
+
+1
 ----field----
 field: {1172F251-DAD4-4EFB-A329-0C63500E4F1E}
 name: __Masters
 key: __masters
-content-length: 38
+content-length: 0
 
-{C8D77D21-B51E-4644-BD68-6B217193D779}
+
 ----version----
 language: en
 version: 1
-revision: 484c93b6-b5b9-483e-81dd-6d8d4c7790f4
+revision: c27e2dd0-3f5d-403f-ac48-5c20caaa7b64
 
 ----field----
-field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
-name: __Owner
-key: __owner
-content-length: 14
+field: {C8F93AFE-BFD4-4E8F-9C61-152559854661}
+name: __Valid from
+key: __valid from
+content-length: 15
 
-sitecore\Admin
+20050706T153553
 ----field----
 field: {25BED78C-4957-4165-998A-CA1B52F67497}
 name: __Created
 key: __created
-content-length: 16
+content-length: 15
 
-20200212T143424Z
+20050706T153553
 ----field----
 field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
 name: __Created by
@@ -48,18 +62,18 @@ name: __Revision
 key: __revision
 content-length: 36
 
-484c93b6-b5b9-483e-81dd-6d8d4c7790f4
+c27e2dd0-3f5d-403f-ac48-5c20caaa7b64
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
-content-length: 16
+content-length: 15
 
-20200312T182421Z
+20071029T121855
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
 content-length: 14
 
-sitecore\admin
+sitecore\Admin

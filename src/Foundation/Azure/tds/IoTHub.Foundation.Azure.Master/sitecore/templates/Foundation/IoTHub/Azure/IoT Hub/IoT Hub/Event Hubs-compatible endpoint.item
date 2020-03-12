@@ -34,13 +34,13 @@ content-length: 3
 field: {56776EDF-261C-4ABC-9FE7-70C618795239}
 name: __Help link
 key: __help link
-content-length: 116
+content-length: 0
 
-<link text="Azure Shell" linktype="external" url="https://shell.azure.com/?prompt=True" anchor="" target="_blank" />
+
 ----version----
 language: en
 version: 1
-revision: cb0188e3-4ffe-4de5-978a-abfec6507b73
+revision: 6bbc7d7c-0918-4743-b5c6-9ff5aa4e4970
 
 ----field----
 field: {577F1689-7DE4-4AD2-A15F-7FDC1759285F}
@@ -71,18 +71,18 @@ name: __Revision
 key: __revision
 content-length: 36
 
-cb0188e3-4ffe-4de5-978a-abfec6507b73
+6bbc7d7c-0918-4743-b5c6-9ff5aa4e4970
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200212T145316Z
+20200312T181607Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
 content-length: 14
 
-sitecore\Admin
+sitecore\admin
