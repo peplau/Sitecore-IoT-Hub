@@ -139,5 +139,4 @@ Below steps shows how to map this method in Sitecore.
 
 
 The following image shows how the Device Method "GetState()" is mapped in Sitecore:
-
-    ![Sitecore-Method Mapping](images/Sitecore-Method-Mapping.jpg?raw=true "Sitecore-Method Mapping")
+![Sitecore-Method Mapping](images/Sitecore-Method-Mapping.jpg?raw=true "Sitecore-Method Mapping")
