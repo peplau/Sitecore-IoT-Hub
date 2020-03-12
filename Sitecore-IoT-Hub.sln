@@ -23,6 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 	ProjectSection(SolutionItems) = preProject
 		documentation\Configuration.md = documentation\Configuration.md
 		documentation\Installation.md = documentation\Installation.md
+		documentation\README.md = documentation\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure", "Azure", "{651BD5D3-B583-448D-BD3D-AF557F1E4F14}"
