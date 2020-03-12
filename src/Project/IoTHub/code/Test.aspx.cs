@@ -1,22 +1,15 @@
 ﻿using System;
 using System.Linq;
+using System.Web.Mvc;
 using IoTHub.Foundation.Azure.Repositories;
 
 namespace IoTHub.Project.IoTHub
 {
     public partial class Test : System.Web.UI.Page
     {
-        private readonly IoTHubRepository _ioTHubRepository;
-        private readonly IoTDeviceRepository _ioTDeviceRepository;
-        private readonly IoTMethodRepository _ioTMethodRepository;
-
-        public Test(IoTHubRepository ioTHubRepository, IoTDeviceRepository ioTDeviceRepository,
-            IoTMethodRepository ioTMethodRepository)
-        {
-            _ioTHubRepository = ioTHubRepository;
-            _ioTDeviceRepository = ioTDeviceRepository;
-            _ioTMethodRepository = ioTMethodRepository;
-        }
+        private readonly IIoTHubRepository _ioTHubRepository = DependencyResolver.Current.GetService<IIoTHubRepository>();
+        private readonly IIoTDeviceRepository _ioTDeviceRepository = DependencyResolver.Current.GetService<IIoTDeviceRepository>();
+        private readonly IIoTMethodRepository _ioTMethodRepository = DependencyResolver.Current.GetService<IIoTMethodRepository>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
