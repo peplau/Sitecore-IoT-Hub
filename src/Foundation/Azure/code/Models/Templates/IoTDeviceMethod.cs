@@ -15,10 +15,6 @@ namespace IoTHub.Foundation.Azure.Models.Templates
     {
         private readonly IIoTHubRepository _ioTHubRepository =
             DependencyResolver.Current.GetService<IIoTHubRepository>();
-        private readonly IIoTDeviceRepository _ioTDeviceRepository =
-            DependencyResolver.Current.GetService<IIoTDeviceRepository>();
-        private readonly IoTMessageTypeRepository _ioTMessageTypeRepository =
-            DependencyResolver.Current.GetService<IoTMessageTypeRepository>();
 
         /// <summary>
         /// Get Hub for this method (Parent.Parent)
@@ -35,7 +31,7 @@ namespace IoTHub.Foundation.Azure.Models.Templates
         /// <returns></returns>
         public IoTDevice GetDevice()
         {
-            return _ioTDeviceRepository.CastToDevice(InnerItem.Parent);
+            return _ioTHubRepository.CastToDevice(InnerItem.Parent);
         }
 
         /// <summary>
@@ -45,7 +41,7 @@ namespace IoTHub.Foundation.Azure.Models.Templates
         public IoTMessageType GetMessageType()
         {
             var typeItem = ReturnType?.TargetItem;
-            return typeItem == null ? null : _ioTMessageTypeRepository.CastToMessageType(typeItem);
+            return typeItem == null ? null : _ioTHubRepository.CastToMessageType(typeItem);
         }
 
         /// <summary>
@@ -68,7 +64,8 @@ namespace IoTHub.Foundation.Azure.Models.Templates
         {
             var hub = method.GetHub();
             var connectionStringsServer = hub.ConnectionString;
-            var parsedDictionary = InvokeMethodInternal(method, connectionStringsServer, payload).GetAwaiter().GetResult();
+            var parsedDictionary =
+                InvokeMethodInternal(method, connectionStringsServer, payload).GetAwaiter().GetResult();
             return parsedDictionary;
         }
 

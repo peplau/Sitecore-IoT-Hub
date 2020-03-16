@@ -9,10 +9,8 @@ namespace IoTHub.Feature.SitecoreRules.Rules.Conditions
 {
     public class CallDeviceMethodConditionDouble<T> : OperatorCondition<T> where T : RuleContext
     {
-        private readonly IIoTMethodRepository _methodRepository =
-            DependencyResolver.Current.GetService<IIoTMethodRepository>();
-        private readonly IIoTMessagePropertyRepository _propertyRepository =
-            DependencyResolver.Current.GetService<IIoTMessagePropertyRepository>();
+        private readonly IIoTHubRepository _hubRepository =
+            DependencyResolver.Current.GetService<IIoTHubRepository>();
 
         protected override bool Execute(T ruleContext)
         {
@@ -23,8 +21,8 @@ namespace IoTHub.Feature.SitecoreRules.Rules.Conditions
             var propertyItem = Sitecore.Context.Database.GetItem(PropertyId);
             Assert.ArgumentNotNull(methodItem, $"methodItem.ID='{MethodId}'");
             Assert.ArgumentNotNull(propertyItem, $"propertyItem.ID='{PropertyId}'");
-            var method = _methodRepository.CastToMethod(methodItem);
-            var property = _propertyRepository.CastToMessageProperty(propertyItem);
+            var method = _hubRepository.CastToMethod(methodItem);
+            var property = _hubRepository.CastToMessageProperty(propertyItem);
             
             // Call method and receive results
             var parsedResults = method.Invoke(Payload);

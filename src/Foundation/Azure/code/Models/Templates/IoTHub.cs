@@ -11,8 +11,8 @@ namespace IoTHub.Foundation.Azure.Models.Templates
     /// </summary>
     public partial class IoTHub
     {
-        private readonly IIoTDeviceRepository _ioTDeviceRepository =
-            DependencyResolver.Current.GetService<IIoTDeviceRepository>();
+        private readonly IIoTHubRepository _ioTHubRepository =
+            DependencyResolver.Current.GetService<IIoTHubRepository>();
 
         /// <summary>
         /// ID of the Hubs Repository - By default: {62BA65C8-7E6C-4BD5-AA1F-E6EC9E85A26A}
@@ -28,7 +28,7 @@ namespace IoTHub.Foundation.Azure.Models.Templates
         public List<IoTDevice> GetDevices()
         {
             return InnerItem.Children.Where(p => p.TemplateID == IoTDevice.TemplateID)
-                .Select(p => _ioTDeviceRepository.CastToDevice(p)).ToList();
+                .Select(p => _ioTHubRepository.CastToDevice(p)).ToList();
         }
     }
 }

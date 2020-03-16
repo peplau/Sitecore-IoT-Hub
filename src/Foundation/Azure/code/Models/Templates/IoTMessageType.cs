@@ -8,8 +8,8 @@ namespace IoTHub.Foundation.Azure.Models.Templates
     /// </summary>
     public partial class IoTMessageType
     {
-        private readonly IIoTMessageDeserializerRepository _ioTMessageDeserializerRepository =
-            DependencyResolver.Current.GetService<IIoTMessageDeserializerRepository>();
+        private readonly IIoTHubRepository _ioTHubRepository =
+            DependencyResolver.Current.GetService<IIoTHubRepository>();
 
         /// <summary>
         /// Get Deserializer model for this message type
@@ -20,7 +20,7 @@ namespace IoTHub.Foundation.Azure.Models.Templates
             var deserializerItem = Deserializer?.TargetItem;
             return deserializerItem == null
                 ? null
-                : _ioTMessageDeserializerRepository.CastToMessageDeserializer(deserializerItem);
+                : _ioTHubRepository.CastToMessageDeserializer(deserializerItem);
         }
     }
 }

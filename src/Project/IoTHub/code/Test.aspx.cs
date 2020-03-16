@@ -8,8 +8,6 @@ namespace IoTHub.Project.IoTHub
     public partial class Test : System.Web.UI.Page
     {
         private readonly IIoTHubRepository _ioTHubRepository = DependencyResolver.Current.GetService<IIoTHubRepository>();
-        private readonly IIoTDeviceRepository _ioTDeviceRepository = DependencyResolver.Current.GetService<IIoTDeviceRepository>();
-        private readonly IIoTMethodRepository _ioTMethodRepository = DependencyResolver.Current.GetService<IIoTMethodRepository>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -47,7 +45,7 @@ namespace IoTHub.Project.IoTHub
         private void FillMethods()
         {
             var selectedDevice = ddlDevices.SelectedValue;
-            var deviceModel = _ioTDeviceRepository.GetDevice(selectedDevice);          
+            var deviceModel = _ioTHubRepository.GetDevice(selectedDevice);          
             var methods = deviceModel.GetMethods().ToDictionary(k => k.ID.ToString(), v => v.MethodName);
 
             ddlMethods.Items.Clear();
@@ -60,7 +58,7 @@ namespace IoTHub.Project.IoTHub
 
         protected void btnTrigger_Click(object sender, EventArgs e)
         {
-            var method = _ioTMethodRepository.GetMethodByName(
+            var method = _ioTHubRepository.GetMethodByName(
                 ddlHubs.SelectedItem.Text,
                 ddlDevices.SelectedItem.Text,
                 ddlMethods.SelectedItem.Text);

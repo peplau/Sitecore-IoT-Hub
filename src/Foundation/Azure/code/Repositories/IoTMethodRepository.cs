@@ -7,7 +7,12 @@ namespace IoTHub.Foundation.Azure.Repositories
 {
     public class IoTMethodRepository : IIoTMethodRepository
     {
-        private readonly IoTDeviceRepository _deviceRepository = new IoTDeviceRepository();
+        private readonly IoTDeviceRepository _deviceRepository;
+
+        public IoTMethodRepository(IoTDeviceRepository deviceRepository)
+        {
+            _deviceRepository = deviceRepository;
+        }
 
         public IoTDeviceMethod CastToMethod(Item methodItem)
         {

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using IoTHub.Foundation.Azure.Models.Templates;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 
@@ -7,9 +8,30 @@ namespace IoTHub.Foundation.Azure.Repositories
 {
     public class IoTHubRepository : IIoTHubRepository
     {
+        private readonly IIoTDeviceRepository _deviceRepository;
+        private readonly IIoTMessageDeserializerRepository _deserializerRepository;
+        private readonly IIoTMessagePropertyRepository _messagePropertyRepository;
+        private readonly IIoTMessageTypeRepository _messageTypeRepository;
+        private readonly IIoTMethodRepository _methodRepository;
+
+        public IoTHubRepository(IIoTDeviceRepository deviceRepository,
+            IIoTMessageDeserializerRepository deserializerRepository,
+            IIoTMessagePropertyRepository messagePropertyRepository,
+            IIoTMessageTypeRepository messageTypeRepository,
+            IIoTMethodRepository methodRepository)
+        {
+            _deviceRepository = deviceRepository;
+            _deserializerRepository = deserializerRepository;
+            _messagePropertyRepository = messagePropertyRepository;
+            _messageTypeRepository = messageTypeRepository;
+            _methodRepository = methodRepository;
+        }
+
+        #region IIoTHubRepository
+
         public Models.Templates.IoTHub CastToHub(Item hubItem)
         {
-            return hubItem==null || hubItem.TemplateID != Models.Templates.IoTHub.TemplateID
+            return hubItem == null || hubItem.TemplateID != Models.Templates.IoTHub.TemplateID
                 ? null
                 : new Models.Templates.IoTHub(hubItem);
         }
@@ -56,5 +78,93 @@ namespace IoTHub.Foundation.Azure.Repositories
                 .Select(CastToHub).ToList();
             return hubs;
         }
+
+        #endregion
+
+        #region IIoTDeviceRepository
+
+        public IoTDevice CastToDevice(Item deviceItem)
+        {
+            return _deviceRepository.CastToDevice(deviceItem);
+        }
+
+        public IoTDevice GetDevice(ID deviceId, Database database = null)
+        {
+            return _deviceRepository.GetDevice(deviceId, database);
+        }
+
+        public IoTDevice GetDevice(string devicePath, Database database = null)
+        {
+            return _deviceRepository.GetDevice(devicePath, database);
+        }
+
+        public IoTDevice GetDeviceByName(Models.Templates.IoTHub hub, string deviceName)
+        {
+            return _deviceRepository.GetDeviceByName(hub, deviceName);
+        }
+
+        public IoTDevice GetDeviceByName(string hubName, string deviceName, Database database = null)
+        {
+            return _deviceRepository.GetDeviceByName(hubName, deviceName, database);
+        }
+
+        #endregion
+
+        #region IIoTMessageTypeRepository
+
+        public IoTDeviceMethod CastToMethod(Item methodItem)
+        {
+            return _methodRepository.CastToMethod(methodItem);
+        }
+
+        public IoTDeviceMethod GetMethod(ID methodId, Database database = null)
+        {
+            return _methodRepository.GetMethod(methodId, database);
+        }
+
+        public IoTDeviceMethod GetMethod(string methodPath, Database database = null)
+        {
+            return _methodRepository.GetMethod(methodPath, database);
+        }
+
+        public IoTDeviceMethod GetMethodByName(IoTDevice device, string methodName)
+        {
+            return _methodRepository.GetMethodByName(device, methodName);
+        }
+
+        public IoTDeviceMethod GetMethodByName(string hubName, string deviceName, string methodName,
+            Database database = null)
+        {
+            return _methodRepository.GetMethodByName(hubName, deviceName, methodName, database);
+        }
+
+        #endregion
+
+        #region IIoTMessageDeserializerRepository
+
+        public IoTMessageDeserializer CastToMessageDeserializer(Item deserializerItem)
+        {
+            return _deserializerRepository.CastToMessageDeserializer(deserializerItem);
+        }
+
+        #endregion
+
+        #region IIoTMessagePropertyRepository
+
+        public IoTMessageProperty CastToMessageProperty(Item propertyItem)
+        {
+            return _messagePropertyRepository.CastToMessageProperty(propertyItem);
+        }
+
+        #endregion
+
+        #region IIoTMessageTypeRepository
+
+        public IoTMessageType CastToMessageType(Item messageTypeItem)
+        {
+            return _messageTypeRepository.CastToMessageType(messageTypeItem);
+        }
+
+        #endregion
     }
 }

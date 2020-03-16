@@ -12,8 +12,6 @@ namespace IoTHub.Foundation.Azure.Models.Templates
     {
         private readonly IIoTHubRepository _ioTHubRepository =
             DependencyResolver.Current.GetService<IIoTHubRepository>();
-        private readonly IIoTMethodRepository _ioTMethodRepository =
-            DependencyResolver.Current.GetService<IIoTMethodRepository>();
 
         /// <summary>
         /// Get the Hub (parent) for current Device
@@ -31,7 +29,7 @@ namespace IoTHub.Foundation.Azure.Models.Templates
         public List<IoTDeviceMethod> GetMethods()
         {
             return InnerItem.Children.Where(p => p.TemplateID == IoTDeviceMethod.TemplateID)
-                .Select(p => _ioTMethodRepository.CastToMethod(p)).ToList();
+                .Select(p => _ioTHubRepository.CastToMethod(p)).ToList();
         }
     }
 }
