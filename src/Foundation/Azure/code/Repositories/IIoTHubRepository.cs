@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using IoTHub.Foundation.Azure.Models.Templates;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 
@@ -44,5 +45,24 @@ namespace IoTHub.Foundation.Azure.Repositories
         /// <param name="database"></param>
         /// <returns></returns>
         List<Models.Templates.IoTHub> GetHubs(Database database = null);
+
+        /// <summary>
+        /// Get IoTDevice with a certain Name
+        /// </summary>
+        /// <param name="hubName"></param>
+        /// <param name="deviceName"></param>
+        /// <param name="database"></param>
+        /// <returns></returns>
+        IoTDevice GetDeviceByName(string hubName, string deviceName, Database database = null);
+
+        /// <summary>
+        /// Get IoTDeviceMethod with a certain Name
+        /// </summary>
+        /// <param name="hubName"></param>
+        /// <param name="deviceName"></param>
+        /// <param name="methodName"></param>
+        /// <param name="database"></param>
+        /// <returns></returns>
+        IoTDeviceMethod GetMethodByName(string hubName, string deviceName, string methodName, Database database = null);
     }
 }

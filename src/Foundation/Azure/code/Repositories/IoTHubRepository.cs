@@ -79,6 +79,23 @@ namespace IoTHub.Foundation.Azure.Repositories
             return hubs;
         }
 
+        public IoTDevice GetDeviceByName(string hubName, string deviceName, Database database = null)
+        {
+            if (database == null)
+                database = Sitecore.Context.Database;
+
+            var hub = GetHubByName(hubName, database);
+            return hub == null ? null : GetDeviceByName(hub, deviceName);
+        }
+
+        public IoTDeviceMethod GetMethodByName(string hubName, string deviceName, string methodName, Database database = null)
+        {
+            if (database == null)
+                database = Sitecore.Context.Database;
+
+            var device = GetDeviceByName(hubName, deviceName, database);
+            return device == null ? null : GetMethodByName(device, methodName);
+        }
         #endregion
 
         #region IIoTDeviceRepository
@@ -102,12 +119,6 @@ namespace IoTHub.Foundation.Azure.Repositories
         {
             return _deviceRepository.GetDeviceByName(hub, deviceName);
         }
-
-        public IoTDevice GetDeviceByName(string hubName, string deviceName, Database database = null)
-        {
-            return _deviceRepository.GetDeviceByName(hubName, deviceName, database);
-        }
-
         #endregion
 
         #region IIoTMessageTypeRepository
@@ -131,13 +142,6 @@ namespace IoTHub.Foundation.Azure.Repositories
         {
             return _methodRepository.GetMethodByName(device, methodName);
         }
-
-        public IoTDeviceMethod GetMethodByName(string hubName, string deviceName, string methodName,
-            Database database = null)
-        {
-            return _methodRepository.GetMethodByName(hubName, deviceName, methodName, database);
-        }
-
         #endregion
 
         #region IIoTMessageDeserializerRepository

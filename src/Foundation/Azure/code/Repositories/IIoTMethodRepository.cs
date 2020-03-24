@@ -36,15 +36,5 @@ namespace IoTHub.Foundation.Azure.Repositories
         /// <param name="methodName"></param>
         /// <returns></returns>
         IoTDeviceMethod GetMethodByName(IoTDevice device, string methodName);
-
-        /// <summary>
-        /// Get IoTDeviceMethod with a certain Name
-        /// </summary>
-        /// <param name="hubName"></param>
-        /// <param name="deviceName"></param>
-        /// <param name="methodName"></param>
-        /// <param name="database"></param>
-        /// <returns></returns>
-        IoTDeviceMethod GetMethodByName(string hubName, string deviceName, string methodName, Database database = null);
     }
 }

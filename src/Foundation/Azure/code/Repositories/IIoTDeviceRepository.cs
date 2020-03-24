@@ -36,14 +36,5 @@ namespace IoTHub.Foundation.Azure.Repositories
         /// <param name="deviceName"></param>
         /// <returns></returns>
         IoTDevice GetDeviceByName(Models.Templates.IoTHub hub, string deviceName);
-
-        /// <summary>
-        /// Get IoTDevice with a certain Name
-        /// </summary>
-        /// <param name="hubName"></param>
-        /// <param name="deviceName"></param>
-        /// <param name="database"></param>
-        /// <returns></returns>
-        IoTDevice GetDeviceByName(string hubName, string deviceName, Database database = null);
     }
 }

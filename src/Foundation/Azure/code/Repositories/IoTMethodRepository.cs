@@ -7,13 +7,6 @@ namespace IoTHub.Foundation.Azure.Repositories
 {
     public class IoTMethodRepository : IIoTMethodRepository
     {
-        private readonly IoTDeviceRepository _deviceRepository;
-
-        public IoTMethodRepository(IoTDeviceRepository deviceRepository)
-        {
-            _deviceRepository = deviceRepository;
-        }
-
         public IoTDeviceMethod CastToMethod(Item methodItem)
         {
             return methodItem==null || methodItem.TemplateID != IoTDeviceMethod.TemplateID
@@ -42,13 +35,5 @@ namespace IoTHub.Foundation.Azure.Repositories
             return method;
         }
 
-        public IoTDeviceMethod GetMethodByName(string hubName, string deviceName, string methodName, Database database = null)
-        {
-            if (database == null)
-                database = Sitecore.Context.Database;
-
-            var device = _deviceRepository.GetDeviceByName(hubName, deviceName, database);
-            return device == null ? null : GetMethodByName(device, methodName);
-        }
     }
 }
