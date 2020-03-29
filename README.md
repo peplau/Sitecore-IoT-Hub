@@ -9,3 +9,4 @@ Rodrigo Guidi Peplau - [Twitter](https://twitter.com/SitecoreSinger) | [LinkedIn
 ## Documentation
 * [Installation instructions](/documentation/Installation.md)
 * [Configuration](/documentation/Configuration.md)
+* [Usage](/documentation/Usage.md) (COMING SOON)
