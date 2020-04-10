@@ -1,0 +1,114 @@
+----item----
+version: 1
+id: {A714E7A5-D802-4A19-A3E6-C1E505072765}
+database: core
+path: /sitecore/client/Applications/FormsBuilder/Components/Layouts/Actions/ExecuteIoTMethod/PageSettings/Form/PayloadString
+parent: {AAB31E01-25F9-4147-9527-27E192D7E8F4}
+name: PayloadString
+master: {00000000-0000-0000-0000-000000000000}
+template: {DD74148E-E8FC-4774-8CBA-BAFDB76A4E47}
+templatekey: FormTextBox Parameters
+
+----field----
+field: {3809B205-DF9B-41BB-9F4C-29A35AA46F64}
+name: InputType
+key: inputtype
+content-length: 4
+
+Text
+----field----
+field: {A176E7B0-1C0B-4F2E-A494-2DF342A75C0E}
+name: IsLabelOnTop
+key: islabelontop
+content-length: 1
+
+1
+----field----
+field: {3E079FC3-6B2D-41C9-9204-374A786FC761}
+name: BindingConfiguration
+key: bindingconfiguration
+content-length: 19
+
+payloadString=Value
+----field----
+field: {E53DD72A-CC21-4771-A6B4-17762365E2B7}
+name: IsRequired
+key: isrequired
+content-length: 0
+
+
+----field----
+field: {C5217339-80D0-4725-9340-574EED8E9082}
+name: RenderingItemId
+key: renderingitemid
+content-length: 38
+
+{302B2B4F-C1C6-48C2-B27C-4F45B504CBA6}
+----field----
+field: {7108B784-FFD5-47D0-BDF4-3AE353F7A779}
+name: MaxLength
+key: maxlength
+content-length: 0
+
+
+----field----
+field: {BA3F86A2-4A1C-4D78-B63D-91C2779C1B5E}
+name: __Sortorder
+key: __sortorder
+content-length: 3
+
+450
+----version----
+language: en
+version: 1
+revision: 1f5800ee-b52c-4222-a231-d88a8e70a633
+
+----field----
+field: {E17D3534-A424-47E3-8F2C-3DBBA705565F}
+name: Tooltip
+key: tooltip
+content-length: 43
+
+Specify the string to be used as a payload.
+----field----
+field: {3885A716-2EED-47AE-9132-32225F0458FF}
+name: FormLabel
+key: formlabel
+content-length: 13
+
+From string: 
+----field----
+field: {2D4CECE7-1092-404A-8CE9-8936D3A4BA88}
+name: Value
+key: value
+content-length: 0
+
+
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20190126T183415Z
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+1f5800ee-b52c-4222-a231-d88a8e70a633
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20200409T214643Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin

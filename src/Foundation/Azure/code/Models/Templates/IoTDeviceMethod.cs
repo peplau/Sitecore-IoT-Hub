@@ -49,7 +49,7 @@ namespace IoTHub.Foundation.Azure.Models.Templates
         /// </summary>
         /// <param name="payload"></param>
         /// <returns></returns>
-        public dynamic Invoke(string payload = "")
+        public DynamicMessage Invoke(string payload = "")
         {
             return InvokeMethod(this, payload);
         }
@@ -60,7 +60,7 @@ namespace IoTHub.Foundation.Azure.Models.Templates
         /// <param name="method"></param>
         /// <param name="payload"></param>
         /// <returns></returns>
-        public static dynamic InvokeMethod(IoTDeviceMethod method, string payload="")
+        public static DynamicMessage InvokeMethod(IoTDeviceMethod method, string payload="")
         {
             var hub = method.GetHub();
             var connectionStringsServer = hub.ConnectionString;

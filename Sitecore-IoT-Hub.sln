@@ -61,6 +61,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTHub.Feature.Forms", "src
 EndProject
 Project("{CAA73BB0-EF22-4D79-A57E-DF67B3BA9C80}") = "IoTHub.Feature.Forms.Master", "src\Feature\Forms\tds\IoTHub.Feature.Forms.Master\IoTHub.Feature.Forms.Master.scproj", "{524917AE-F40C-44E3-AC26-5F6F6CC581E1}"
 EndProject
+Project("{CAA73BB0-EF22-4D79-A57E-DF67B3BA9C80}") = "IoTHub.Feature.Forms.Core", "src\Feature\Forms\tds\IoTHub.Feature.Forms.Core\IoTHub.Feature.Forms.Core.scproj", "{929A3928-2355-466B-A5C5-2B9A1E4924A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +109,12 @@ Global
 		{524917AE-F40C-44E3-AC26-5F6F6CC581E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{524917AE-F40C-44E3-AC26-5F6F6CC581E1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{524917AE-F40C-44E3-AC26-5F6F6CC581E1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{929A3928-2355-466B-A5C5-2B9A1E4924A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{929A3928-2355-466B-A5C5-2B9A1E4924A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{929A3928-2355-466B-A5C5-2B9A1E4924A4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{929A3928-2355-466B-A5C5-2B9A1E4924A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{929A3928-2355-466B-A5C5-2B9A1E4924A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{929A3928-2355-466B-A5C5-2B9A1E4924A4}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,6 +133,7 @@ Global
 		{3BE408DE-FE03-4927-8427-6AF0D4CAC1EE} = {17DD5718-6E13-4F2C-9738-B410396D4552}
 		{8399E951-12FF-44DE-80C1-267C2169F4CF} = {3BE408DE-FE03-4927-8427-6AF0D4CAC1EE}
 		{524917AE-F40C-44E3-AC26-5F6F6CC581E1} = {3BE408DE-FE03-4927-8427-6AF0D4CAC1EE}
+		{929A3928-2355-466B-A5C5-2B9A1E4924A4} = {3BE408DE-FE03-4927-8427-6AF0D4CAC1EE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {311DA37D-528B-43B2-A99B-E7253F841D46}

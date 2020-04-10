@@ -1,0 +1,107 @@
+----item----
+version: 1
+id: {40409593-DAB1-48E7-97E7-EFCEE4A11740}
+database: core
+path: /sitecore/client/Applications/FormsBuilder/Components/Layouts/Actions/ExecuteIoTMethod/PageSettings/ItemTreeView
+parent: {A1148507-8288-467F-86CF-14BCE3CDFB09}
+name: ItemTreeView
+master: {00000000-0000-0000-0000-000000000000}
+template: {AA697A95-4189-4015-8A0B-DA76D6A83589}
+templatekey: ItemTreeView Parameters
+
+----field----
+field: {0CC7F24B-2013-46C6-8AE3-5233D094FF7C}
+name: StaticData
+key: staticdata
+content-length: 37
+
+/sitecore/system/Modules/IoT Hub/Hubs
+----field----
+field: {4CEC56F0-9FE2-4980-8085-62B0A0AB51EC}
+name: Database
+key: database
+content-length: 24
+
+$context_contentdatabase
+----field----
+field: {1CBCEDAC-5370-4C78-83B9-3BF012423802}
+name: PreLoadItem
+key: preloaditem
+content-length: 0
+
+
+----field----
+field: {2137566A-E834-4CC5-BC91-E689D40624A4}
+name: IsPreLoadItemSelected
+key: ispreloaditemselected
+content-length: 1
+
+1
+----field----
+field: {1AF7E858-0F3A-4C35-89EF-F24A385EC3FE}
+name: IsPreLoadItemExpanded
+key: ispreloaditemexpanded
+content-length: 1
+
+1
+----field----
+field: {E0F5C2E5-EA32-4463-AEF5-925D4194B4A2}
+name: IsCheckModeEnabled
+key: ischeckmodeenabled
+content-length: 0
+
+
+----field----
+field: {F2A83648-50D1-44B3-BEA0-0F6124BF211C}
+name: ShowHiddenItems
+key: showhiddenitems
+content-length: 1
+
+1
+----version----
+language: en
+version: 1
+revision: c5fd8ea7-7705-4eac-b4d7-acae9daf3ba7
+
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20170407T123639Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+c5fd8ea7-7705-4eac-b4d7-acae9daf3ba7
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20200410T185529Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin
