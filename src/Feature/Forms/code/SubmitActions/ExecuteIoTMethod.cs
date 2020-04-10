@@ -19,7 +19,7 @@ namespace IoTHub.Feature.Forms.SubmitActions
         private readonly IIoTHubRepository _hubRepository = DependencyResolver.Current.GetService<IIoTHubRepository>();
 
         public ExecuteIoTMethod(ISubmitActionData submitActionData) : base(submitActionData) { }
-
+        
         protected override bool Execute(ExecuteIoTMethodData data, FormSubmitContext formSubmitContext)
         {
             Assert.ArgumentNotNull(data, nameof (data));
@@ -34,8 +34,8 @@ namespace IoTHub.Feature.Forms.SubmitActions
 
             // Payload
             var payload = string.Empty;
-            if (data.PayloadFieldId != Guid.Empty)
-                payload = GetPayloadFromFieldId(formSubmitContext, data.PayloadFieldId);
+            if (data.PayloadFieldId.HasValue && data.PayloadFieldId.Value != Guid.Empty)
+                payload = GetPayloadFromFieldId(formSubmitContext, data.PayloadFieldId.Value);
             else if (!string.IsNullOrEmpty(data.PayloadString))
                 payload = GetPayloadFromString(formSubmitContext, data.PayloadString);
 
