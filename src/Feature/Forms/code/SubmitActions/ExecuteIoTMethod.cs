@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Mvc;
 using IoTHub.Feature.Forms.Extensions;
 using IoTHub.Foundation.Azure.Repositories;

@@ -129,6 +129,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubmitActions\ExecuteIoTMethod.cs" />
     <Compile Include="SubmitActions\ExecuteIoTMethodData.cs" />
+    <Compile Include="ValueProviders\IoTHubValueProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
