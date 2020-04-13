@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using IoTHub.Foundation.Azure.Cache;
 using IoTHub.Foundation.Azure.Deserializers;
 using IoTHub.Foundation.Azure.Repositories;
 using Microsoft.Azure.Devices;
@@ -15,6 +16,8 @@ namespace IoTHub.Foundation.Azure.Models.Templates
     {
         private readonly IIoTHubRepository _ioTHubRepository =
             DependencyResolver.Current.GetService<IIoTHubRepository>();
+        private readonly IMethodCacheManager _methodCacheManager =
+            DependencyResolver.Current.GetService<IMethodCacheManager>();
 
         /// <summary>
         /// Get Hub for this method (Parent.Parent)
@@ -51,7 +54,23 @@ namespace IoTHub.Foundation.Azure.Models.Templates
         /// <returns></returns>
         public DynamicMessage Invoke(string payload = "")
         {
-            return InvokeMethod(this, payload);
+            // No two way - call the method directly
+            if (!TwoWay)
+                return InvokeMethod(this, payload);
+
+            // Two way - gets from cache 
+            var resultFromCache = _methodCacheManager.GetResponseFromCache(this, payload);
+            if (!string.IsNullOrEmpty(resultFromCache))
+                return DeserializeAndParse(this, resultFromCache);
+
+            // Or the method itself
+            var response = InvokeMethod(this, payload);
+
+            // If taken from Itself then needs to save back to cache if TwoWay
+            if (TwoWay)
+                _methodCacheManager.SaveResponseToCache(this, payload, response.RawMessage);
+
+            return response;
         }
 
         /// <summary>
@@ -66,6 +85,38 @@ namespace IoTHub.Foundation.Azure.Models.Templates
             var connectionStringsServer = hub.ConnectionString;
             var parsedDictionary =
                 InvokeMethodInternal(method, connectionStringsServer, payload).GetAwaiter().GetResult();
+            return parsedDictionary;
+        }
+
+        /// <summary>
+        /// Deserialize and Parse a string using Deserializer from the giving method
+        /// </summary>
+        /// <param name="method"></param>
+        /// <param name="response"></param>
+        /// <returns></returns>
+        public static DynamicMessage DeserializeAndParse(IoTDeviceMethod method, string response)
+        {
+            // Get returnType and deserializer
+            var returnType = method.GetMessageType();
+            if (returnType == null) {
+                Sitecore.Diagnostics.Log.Error($"Method {method.ID} has an invalid Return Type", typeof(IoTDeviceMethod));
+                return null;
+            }
+            var deserializer = returnType.GetDeserializer();
+            if (deserializer == null) {
+                Sitecore.Diagnostics.Log.Error($"Message Type {returnType.ID} has an invalid Deserializer",
+                    typeof(IoTDeviceMethod));
+                return null;
+            }
+
+            // Instantiate Deserializer object
+            var deserializerObject = deserializer.GetDeserializerObject();
+            if (deserializerObject == null)
+                return null;
+
+            // Parse results
+            var parsedDictionary = (DynamicMessage)deserializerObject.Deserialize(response);
+            parsedDictionary.RawMessage = response;
             return parsedDictionary;
         }
 
@@ -97,28 +148,9 @@ namespace IoTHub.Foundation.Azure.Models.Templates
             Sitecore.Diagnostics.Log.Info($"Response status: {response.Status}, payload:", typeof(IoTDeviceMethod));
             Sitecore.Diagnostics.Log.Info(receivedPayload, typeof(IoTDeviceMethod));
 
-            // Get returnType and deserializer
-            var returnType = method.GetMessageType();
-            if (returnType == null) {
-                Sitecore.Diagnostics.Log.Error($"Method {method.ID} has an invalid Return Type", typeof(IoTDeviceMethod));
-                return null;
-            }
-            var deserializer = returnType.GetDeserializer();
-            if (deserializer == null) {
-                Sitecore.Diagnostics.Log.Error($"Message Type {returnType.ID} has an invalid Deserializer",
-                    typeof(IoTDeviceMethod));
-                return null;
-            }
-
-            // Instantiate Deserializer object
-            var deserializerObject = deserializer.GetDeserializerObject();
-            if (deserializerObject == null)
-                return null;
-
-            // Parse results
-            var parsedDictionary = (DynamicMessage)deserializerObject.Deserialize(receivedPayload);
-            parsedDictionary.RawMessage = receivedPayload;
-            return parsedDictionary;
+            // Deserialize
+            var result = DeserializeAndParse(method, receivedPayload);
+            return result;
         }
     }
 }

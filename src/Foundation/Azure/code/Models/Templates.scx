@@ -1,5 +1,34 @@
 ﻿<CodeGeneration Generator="Template Class">
-  <shape designerX="11" designerY="16">
+  <shape designerX="580" designerY="269">
+    <template templatename="IoT Message Deserializer" templateid="{FD0BC7FA-A8EA-40F8-BF51-B76EE1F501E1}" templateuri="/http://sc93sc.dev.local//master/{FD0BC7FA-A8EA-40F8-BF51-B76EE1F501E1}" classname="IoTMessageDeserializer">
+      <section id="{A1D1B0D5-396D-47D8-9D7B-0310582F66A0}" name="IoT Message Deserializer">
+        <field id="{11546A34-6105-49C9-B08B-C1561063AE52}" name="Deserializer Type" shared="0" source="" type="Single-Line Text" unversioned="0" propertyname="DeserializerType" />
+      </section>
+    </template>
+  </shape>
+  <shape designerX="581" designerY="194">
+    <template templatename="IoT Message Property" templateid="{C8D77D21-B51E-4644-BD68-6B217193D779}" templateuri="/http://sc93sc.dev.local//master/{C8D77D21-B51E-4644-BD68-6B217193D779}" classname="IoTMessageProperty">
+      <section id="{FE876AD8-F6BC-45ED-B405-4CBDABC0C403}" name="IoT Message Property">
+        <field id="{76052C27-6A04-40DF-B50E-64E2D5F865C0}" name="Property Name" shared="1" source="" type="Single-Line Text" unversioned="0" propertyname="PropertyName" />
+      </section>
+    </template>
+  </shape>
+  <shape designerX="581" designerY="124">
+    <template templatename="IoT Message Type" templateid="{B8521A51-A0CF-40AC-BD76-4C4D1E900B1C}" templateuri="/http://sc93sc.dev.local//master/{B8521A51-A0CF-40AC-BD76-4C4D1E900B1C}" classname="IoTMessageType">
+      <section id="{E22B8210-3907-4E38-9003-3836CDAAF74A}" name="IoT Message">
+        <field id="{2B8207A4-E141-4586-99D5-6311E98350C2}" name="Deserializer" shared="0" source="/sitecore/system/Modules/IoT Hub/Settings/Deserializers" type="Droplink" unversioned="0" propertyname="Deserializer" />
+      </section>
+    </template>
+  </shape>
+  <shape designerX="338" designerY="19">
+    <template templatename="IoT Device" templateid="{534E5B10-8659-4576-9C69-AA47FEAA533C}" templateuri="/http://sc93sc.dev.local//master/{534E5B10-8659-4576-9C69-AA47FEAA533C}" classname="IoTDevice">
+      <section id="{A656C22E-776A-4D18-9B67-BEEF27236F27}" name="IoT Device">
+        <field id="{D18236D4-C125-4ADB-AC45-21DF6E2D3B6E}" name="Device Name" shared="1" source="" type="Single-Line Text" unversioned="0" propertyname="DeviceName" />
+        <field id="{D38E750A-C6DF-4F60-B755-F5880D07B1E0}" name="Connection String" shared="1" source="" type="Single-Line Text" unversioned="0" propertyname="ConnectionString" />
+      </section>
+    </template>
+  </shape>
+  <shape designerX="16" designerY="16">
     <template templatename="IoT Hub" templateid="{3D047E06-051D-4824-AC69-4FE9B3F63E92}" templateuri="/http://sc93sc.dev.local//master/{3D047E06-051D-4824-AC69-4FE9B3F63E92}" classname="IoTHub">
       <section id="{2FE4AA96-7FE1-4B3B-A384-0D933060240E}" name="IoT Hub">
         <field id="{759A5CD3-7973-40EB-A384-B24A02B4CFE3}" name="Hub Name" shared="1" source="" type="Single-Line Text" unversioned="0" propertyname="HubName" />
@@ -10,40 +39,12 @@
       </section>
     </template>
   </shape>
-  <shape designerX="328" designerY="17">
-    <template templatename="IoT Device" templateid="{534E5B10-8659-4576-9C69-AA47FEAA533C}" templateuri="/http://sc93sc.dev.local//master/{534E5B10-8659-4576-9C69-AA47FEAA533C}" classname="IoTDevice">
-      <section id="{A656C22E-776A-4D18-9B67-BEEF27236F27}" name="IoT Device">
-        <field id="{D18236D4-C125-4ADB-AC45-21DF6E2D3B6E}" name="Device Name" shared="1" source="" type="Single-Line Text" unversioned="0" propertyname="DeviceName" />
-        <field id="{D38E750A-C6DF-4F60-B755-F5880D07B1E0}" name="Connection String" shared="1" source="" type="Single-Line Text" unversioned="0" propertyname="ConnectionString" />
-      </section>
-    </template>
-  </shape>
-  <shape designerX="586" designerY="17">
+  <shape designerX="579" designerY="18">
     <template templatename="IoT Device Method" templateid="{B96DDC3F-541D-428A-A68B-B0A0B34B1192}" templateuri="/http://sc93sc.dev.local//master/{B96DDC3F-541D-428A-A68B-B0A0B34B1192}" classname="IoTDeviceMethod">
       <section id="{E51E2AAC-3963-4C36-9F7F-598651AC36DA}" name="IoT Device Method">
         <field id="{7723587B-94E9-4BE1-A1E0-EAE1BB3D0C91}" name="Method Name" shared="1" source="" type="Single-Line Text" unversioned="0" propertyname="MethodName" />
         <field id="{FB24A772-F749-4FA0-B133-107F9FBD354A}" name="Return Type" shared="1" source="/sitecore/system/Modules/IoT Hub/Message Types" type="Droplink" unversioned="0" propertyname="ReturnType" />
-      </section>
-    </template>
-  </shape>
-  <shape designerX="585" designerY="109">
-    <template templatename="IoT Message Type" templateid="{B8521A51-A0CF-40AC-BD76-4C4D1E900B1C}" templateuri="/http://sc93sc.dev.local//master/{B8521A51-A0CF-40AC-BD76-4C4D1E900B1C}" classname="IoTMessageType">
-      <section id="{E22B8210-3907-4E38-9003-3836CDAAF74A}" name="IoT Message">
-        <field id="{2B8207A4-E141-4586-99D5-6311E98350C2}" name="Deserializer" shared="0" source="/sitecore/system/Modules/IoT Hub/Settings/Deserializers" type="Droplink" unversioned="0" propertyname="Deserializer" />
-      </section>
-    </template>
-  </shape>
-  <shape designerX="585" designerY="186">
-    <template templatename="IoT Message Property" templateid="{C8D77D21-B51E-4644-BD68-6B217193D779}" templateuri="/http://sc93sc.dev.local//master/{C8D77D21-B51E-4644-BD68-6B217193D779}" classname="IoTMessageProperty">
-      <section id="{FE876AD8-F6BC-45ED-B405-4CBDABC0C403}" name="IoT Message Property">
-        <field id="{76052C27-6A04-40DF-B50E-64E2D5F865C0}" name="Property Name" shared="1" source="" type="Single-Line Text" unversioned="0" propertyname="PropertyName" />
-      </section>
-    </template>
-  </shape>
-  <shape designerX="584" designerY="262">
-    <template templatename="IoT Message Deserializer" templateid="{FD0BC7FA-A8EA-40F8-BF51-B76EE1F501E1}" templateuri="/http://sc93sc.dev.local//master/{FD0BC7FA-A8EA-40F8-BF51-B76EE1F501E1}" classname="IoTMessageDeserializer">
-      <section id="{A1D1B0D5-396D-47D8-9D7B-0310582F66A0}" name="IoT Message Deserializer">
-        <field id="{11546A34-6105-49C9-B08B-C1561063AE52}" name="Deserializer Type" shared="0" source="" type="Single-Line Text" unversioned="0" propertyname="DeserializerType" />
+        <field id="{E04BFB8F-1ED9-4156-964D-2D2F990C1E55}" name="Two Way" shared="0" source="" type="Checkbox" unversioned="0" propertyname="TwoWay" />
       </section>
     </template>
   </shape>

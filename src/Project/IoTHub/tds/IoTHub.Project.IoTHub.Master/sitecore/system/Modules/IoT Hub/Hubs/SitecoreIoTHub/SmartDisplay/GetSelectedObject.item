@@ -26,8 +26,15 @@ content-length: 38
 ----version----
 language: en
 version: 1
-revision: 145f8a59-d63d-4b5c-8a49-69466278c7f0
+revision: edcfef0c-9a05-4297-8c89-1a883398e0ab
 
+----field----
+field: {E04BFB8F-1ED9-4156-964D-2D2F990C1E55}
+name: Two Way
+key: two way
+content-length: 1
+
+1
 ----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
 name: __Owner
@@ -55,14 +62,14 @@ name: __Revision
 key: __revision
 content-length: 36
 
-145f8a59-d63d-4b5c-8a49-69466278c7f0
+edcfef0c-9a05-4297-8c89-1a883398e0ab
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200312T223033Z
+20200413T190512Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by

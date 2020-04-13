@@ -135,6 +135,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache\MethodCacheManager.cs" />
+    <Compile Include="Cache\IMethodCacheManager.cs" />
     <Compile Include="Deserializers\DynamicMessage.cs" />
     <Compile Include="Deserializers\IDeserializer.cs" />
     <Compile Include="Deserializers\JsonDeserializer.cs" />
