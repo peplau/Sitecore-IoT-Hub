@@ -54,6 +54,9 @@
     <Reference Include="Microsoft.Azure.Devices.Shared, Version=1.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\Microsoft.Azure.Devices.Shared.1.16.0\lib\net451\Microsoft.Azure.Devices.Shared.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.EventHubs, Version=4.2.0.0, Culture=neutral, PublicKeyToken=7e34167dcc6d6d8c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Microsoft.Azure.EventHubs.4.2.0\lib\netstandard2.0\Microsoft.Azure.EventHubs.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -165,6 +168,7 @@
     <Compile Include="Repositories\IoTMessagePropertyRepository.cs" />
     <Compile Include="Repositories\IoTMessageTypeRepository.cs" />
     <Compile Include="Repositories\IoTMethodRepository.cs" />
+    <Compile Include="Tasks\DeviceToCloudReaderAgent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

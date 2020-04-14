@@ -63,9 +63,26 @@ namespace IoTDevices.Thermometer
                         if (!double.TryParse(Console.ReadLine(), out var doubleTemp))
                             doubleTemp = 0;
                         _currentTemperature = doubleTemp;
+
+                        // Device-To-Cloud call us executed when the state changes
+                        SendDeviceToMethod();
+
                         break;
                 }
             }
+        }
+
+        private static async void SendDeviceToMethod()
+        {
+            GetStateMessage(out var messageString);
+            var message = new Message(Encoding.ASCII.GetBytes(messageString));
+
+            // Add references to what method this is
+            message.Properties.Add("Method", $"{_currentDevice.Hub.Name}.{_currentDevice.Name}.GetState");
+
+            // Send the telemetry message
+            await _sDeviceClient.SendEventAsync(message);
+            Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
         }
 
         public static double ReadTemperature()
@@ -77,6 +94,10 @@ namespace IoTDevices.Thermometer
             // Create a random entry if not
             var rand = new Random();
             _currentTemperature = _minTemperature + rand.NextDouble() * 15;
+
+            // When it first loads it will also send Device-to-Cloud message
+            SendDeviceToMethod();
+
             return _currentTemperature.Value;
         }
 

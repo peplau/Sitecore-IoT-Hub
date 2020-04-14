@@ -45,12 +45,13 @@ namespace IoTDevices.Configuration
 
         public List<Device> GetDevices(string hubName)
         {
+            var hub = new Hub(hubName);
             var hubXmlNode = GetHubXmlNode(hubName);
             if (hubXmlNode == null)
                 return new List<Device>();
 
             var devices = hubXmlNode.Elements("device");
-            var ret = devices.Select(p => new Device(p.Attribute("name")?.Value, p.Attribute("connectionString")?.Value))
+            var ret = devices.Select(p => new Device(p.Attribute("name")?.Value, p.Attribute("connectionString")?.Value, hub))
                 .ToList();
             return ret;
         }
