@@ -8,6 +8,7 @@ using Microsoft.Azure.EventHubs;
 using Sitecore.Data;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using IoTHub.Foundation.Azure.Cache;
 
 namespace IoTHub.Foundation.Azure.Tasks
 {
@@ -17,8 +18,23 @@ namespace IoTHub.Foundation.Azure.Tasks
     public class DeviceToCloudReaderAgent
     {
         private const string IotHubSasKeyName = "service";
-        private IIoTHubRepository _hubRepository;
-        private IIoTHubRepository HubRepository
+        private const string MethodProperyName = "method";
+        private const string PayloadProperyName = "payload";
+
+        private static IMethodCacheManager _methodCacheManager;
+        private static IMethodCacheManager MethodCacheManager
+        {
+            get
+            {
+                if (_methodCacheManager != null)
+                    return _methodCacheManager;
+                _methodCacheManager = DependencyResolver.Current.GetService<IMethodCacheManager>();
+                return _methodCacheManager;
+            }
+        }
+
+        private static IIoTHubRepository _hubRepository;
+        private static IIoTHubRepository HubRepository
         {
             get
             {
@@ -29,92 +45,106 @@ namespace IoTHub.Foundation.Azure.Tasks
             }
         }
 
-        private static readonly Dictionary<ID, EventHubClient> HubClients = new Dictionary<ID, EventHubClient>();
+        private static readonly Dictionary<ID, List<CancellationTokenSource>> HubTokens = new Dictionary<ID, List<CancellationTokenSource>>();
+        private static Database _masterDb;
 
-        public void Run()
+        public static async void Run()
         {
-            var masterDb = Database.GetDatabase("master");
+            _masterDb = Database.GetDatabase("master");
+            var hubs = HubRepository.GetHubs(_masterDb);
+            var hubIds = hubs.Select(p => p.ID);
+            var hubsToAdd = hubs.Where(p => !HubTokens.ContainsKey(p.ID)).ToList();
+            var hubIdsToRemove = HubTokens.Select(p => p.Key).Where(p => !hubIds.Contains(p)).ToList();
 
-            var hubs = HubRepository.GetHubs(masterDb);
-            var unhandledHubs = hubs.Where(p => !HubClients.ContainsKey(p.ID)).ToList();
+            // Remove loops that are not necessary anymore
+            foreach (var id in hubIdsToRemove)
+            {
+                if (!HubTokens.ContainsKey(id))
+                    continue;
+                foreach (var token in HubTokens[id])
+                    token.Cancel();
+            }
 
-            foreach (var hub in unhandledHubs)
+            // Create hub loops
+            foreach (var hub in hubsToAdd)
             {
                 // Create an EventHubClient instance to connect to the IoT Hub Event Hubs-compatible endpoint.
                 var connectionString = new EventHubsConnectionStringBuilder(new Uri(hub.EventHubscompatibleEndpoint),
                     hub.EventHubscompatiblePath, IotHubSasKeyName, hub.ServicePrimaryKey);
                 var eventHubClient = EventHubClient.CreateFromConnectionString(connectionString.ToString());
-                HubClients.Add(hub.ID, eventHubClient);
 
-                var ignored = CreatePartitionReceiver(eventHubClient);
+                var tokens = new List<CancellationTokenSource>();
+                HubTokens.Add(hub.ID, tokens);
+
+                var runtimeInfo = await eventHubClient.GetRuntimeInformationAsync();
+                var d2CPartitions = runtimeInfo.PartitionIds;
+
+                var tasks = new List<Task>();
+                foreach (var partition in d2CPartitions)
+                {
+                    var cts = new CancellationTokenSource();
+                    tokens.Add(cts);
+                    tasks.Add(ReceiveMessagesFromDeviceAsync(eventHubClient, partition, cts.Token));
+                }
+
+                // Wait for all the PartitionReceivers to finish.
+                Task.WaitAll(tasks.ToArray());
             }
-        }
-
-        /// <summary>
-        /// Create a PartitionReceiver for each partition on the hub.
-        /// </summary>
-        /// <param name="eventHub"></param>
-        /// <returns></returns>
-        private static async Task CreatePartitionReceiver(EventHubClient eventHub)
-        {
-            var runtimeInfo = await eventHub.GetRuntimeInformationAsync();
-            var d2cPartitions = runtimeInfo.PartitionIds;
-
-            var tasks = new List<Task>();
-            foreach (var partition in d2cPartitions)
-            {
-                var cts = new CancellationTokenSource();
-                tasks.Add(ReceiveMessagesFromDeviceAsync(eventHub, partition, cts.Token));
-            }
-
-            // Wait for all the PartitionReceivers to finish.
-            Task.WaitAll(tasks.ToArray());
         }
 
         // Asynchronously create a PartitionReceiver for a partition and then start 
         // reading any messages sent from the simulated client.
         private static async Task ReceiveMessagesFromDeviceAsync(EventHubClient eventHub, string partition, CancellationToken ct)
         {
-            // Create the receiver using the default consumer group.
-            // For the purposes of this sample, read only messages sent since 
-            // the time the receiver is created. Typically, you don't want to skip any messages.
-            var eventHubReceiver =
-                eventHub.CreateReceiver("$Default", partition, EventPosition.FromEnqueuedTime(DateTime.Now));
-            Console.WriteLine("Create receiver on partition: " + partition);
-            while (true)
+            try
             {
-                if (ct.IsCancellationRequested)
-                    break;
-
-                Sitecore.Diagnostics.Log.Info("Listening for messages on: " + partition, eventHub);
-
-                // Check for EventData - this methods times out if there is nothing to retrieve.
-                var events = await eventHubReceiver.ReceiveAsync(100);
-
-                // If there is data in the batch, process it.
-                if (events == null) 
-                    continue;
-
-                foreach (var eventData in events)
+                // Create the receiver using the default consumer group.
+                // For the purposes of this sample, read only messages sent since 
+                // the time the receiver is created. Typically, you don't want to skip any messages.
+                var eventHubReceiver =
+                    eventHub.CreateReceiver("$Default", partition, EventPosition.FromEnqueuedTime(DateTime.Now));
+                Sitecore.Diagnostics.Log.Info("Create receiver on partition: " + partition, eventHub);
+                while (true)
                 {
-                    if (eventData?.Body.Array == null)
+                    if (ct.IsCancellationRequested)
+                        break;
+
+                    Sitecore.Diagnostics.Log.Info("Listening for messages on: " + partition, eventHub);
+                    // Check for EventData - this methods times out if there is nothing to retrieve.
+                    var events = await eventHubReceiver.ReceiveAsync(100);
+                    if (events == null)
                         continue;
 
-                    var data = Encoding.UTF8.GetString(eventData.Body.Array);
-                    Sitecore.Diagnostics.Log.Info($"Message received on partition {partition}: {data}", eventHub);
+                    // If there is data in the batch, process it.
+                    foreach (var eventData in events)
+                    {
+                        if (eventData?.Body.Array == null)
+                            continue;
 
-                    var sb = new StringBuilder();
-                    sb.AppendLine("Application properties (set by device):");
-                    foreach (var prop in eventData.Properties)
-                        sb.AppendLine($"  {prop.Key}: {prop.Value}");
-                    Sitecore.Diagnostics.Log.Info(sb.ToString(), eventHub);
+                        var data = Encoding.UTF8.GetString(eventData.Body.Array);
+                        Sitecore.Diagnostics.Log.Info($"Message received on partition {partition}: {data}", eventHub);
 
-                    sb = new StringBuilder();
-                    sb.AppendLine("System properties (set by IoT Hub):");
-                    foreach (var prop in eventData.SystemProperties)
-                        sb.AppendLine($"  {prop.Key}: {prop.Value}");
-                    Sitecore.Diagnostics.Log.Info(sb.ToString(), eventHub);
+                        // Find the key that brings the method reference - won't handle the message if this is not found
+                        var methodKey = eventData.Properties.Keys.FirstOrDefault(p => p.ToLower() == MethodProperyName.ToLower());
+                        if (string.IsNullOrEmpty(methodKey))
+                            continue;
+                        var methodNameOrPath = eventData.Properties[methodKey].ToString();
+                        var method = HubRepository.GetMethodByName(methodNameOrPath, _masterDb);
+                        if (method == null)
+                            continue;
+
+                        // Get payload from device (if any)
+                        var payloadKey = eventData.Properties.Keys.FirstOrDefault(p => p.ToLower() == PayloadProperyName.ToLower());
+                        var payload = string.IsNullOrEmpty(payloadKey) ? string.Empty : eventData.Properties[payloadKey].ToString();
+
+                        // Store results on cache
+                        MethodCacheManager.SaveResponseToCache(method, payload, data);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                Sitecore.Diagnostics.Log.Error($"Error processing Device to Cloud events", e, e);
             }
         }
     }

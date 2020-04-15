@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using IoTHub.Foundation.Azure.Models.Templates;
+﻿using System.Web.Mvc;
 using IoTHub.Foundation.Azure.Repositories;
 using Sitecore.ExperienceForms.ValueProviders;
 
@@ -37,15 +35,7 @@ namespace IoTHub.Feature.Forms.ValueProviders
                 return string.Empty;
 
             // Get method
-            IoTDeviceMethod method;
-            if (methodPart.Contains(".")) {
-                var names = methodPart.Split('.').Select(p=>p.Trim()).ToArray();
-                if (names.Length!=3)
-                    return string.Empty;
-                method = _hubRepository.GetMethodByName(names[0], names[1], names[2]);
-            }
-            else
-                method = _hubRepository.GetMethod(methodPart);
+            var method = _hubRepository.GetMethodByName(methodPart);            
             if (method==null)
                 return string.Empty;
 
