@@ -8,6 +8,11 @@ using Newtonsoft.Json;
 
 namespace IoTDevices.LightsControl
 {
+    /// <summary>
+    /// IoT Device - Virtual LightsControl
+    /// - Method: GetState() - Result: {bedroom_1:true, bedroom_2:true, bedroom_3:true, garage:true, living_room:true, toilet_1:true, toilet_2:true, toilet_3:true, dinner_room:true}
+    /// - Method: SetRoomState() - Result: {bedroom_1:false}
+    /// </summary>
     class Program
     {
         private static Device _currentDevice;
@@ -28,7 +33,7 @@ namespace IoTDevices.LightsControl
             Console.WriteLine("-------------------------------------");
 
             // Selected Device
-            _currentDevice = GetDeviceLoop.Run();
+            _currentDevice = GetDeviceLoop.Run("LightsControl");
 
             // Start up Hub client
             _sDeviceClient =
@@ -41,6 +46,12 @@ namespace IoTDevices.LightsControl
             CommandLoop();
         }
 
+        /// <summary>
+        /// IoT Method - GetState()
+        /// </summary>
+        /// <param name="methodRequest"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
         private static Task<MethodResponse> GetState(MethodRequest methodRequest, object userContext)
         {
             var data = Encoding.UTF8.GetString(methodRequest.Data);
@@ -50,6 +61,12 @@ namespace IoTDevices.LightsControl
             return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(messageString), 200));
         }
 
+        /// <summary>
+        /// IoT Method - SetRoomState("{bedroom_1:false}")
+        /// </summary>
+        /// <param name="methodRequest"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
         private static Task<MethodResponse> SetRoomState(MethodRequest methodRequest, object userContext)
         {
             var data = Encoding.UTF8.GetString(methodRequest.Data);
@@ -111,14 +128,34 @@ namespace IoTDevices.LightsControl
 
                         if (setState)
                             if (!CurrentOnList.Contains(selectedRoom))
+                            {
                                 CurrentOnList.Add(selectedRoom);
-                            else
-                            if (CurrentOnList.Contains(selectedRoom))
+                                SendDeviceToCloud();
+                            }
+                            else if (CurrentOnList.Contains(selectedRoom))
+                            {
                                 CurrentOnList.Remove(selectedRoom);
-
+                                SendDeviceToCloud();
+                            }
                         break;
                 }
             }
+        }
+
+        /// <summary>
+        /// Device-To-Cloud call us executed when the state changes
+        /// </summary>
+        private static async void SendDeviceToCloud()
+        {
+            GetStateMessage(out var messageString);
+            var message = new Message(Encoding.ASCII.GetBytes(messageString));
+
+            // Add references to what method this is
+            message.Properties.Add("Method", $"{_currentDevice.Hub.Name}.{_currentDevice.Name}.GetState");
+
+            // Send the telemetry message
+            await _sDeviceClient.SendEventAsync(message);
+            Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
         }
 
         private static Message GetStateMessage(out string messageString)
