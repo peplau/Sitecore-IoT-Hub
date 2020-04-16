@@ -7,6 +7,11 @@ using Newtonsoft.Json;
 
 namespace IoTDevices.GrassWatering
 {
+    /// <summary>
+    /// IoT Device - Virtual GrassWatering
+    /// - Method: GetState() - Result: {enabled: true}
+    /// - Method: SetEnabled() - Result: {enabled: true}
+    /// </summary>
     class Program
     {
         private static Device _currentDevice;
@@ -21,7 +26,7 @@ namespace IoTDevices.GrassWatering
             Console.WriteLine("-------------------------------------");
 
             // Selected Device
-            _currentDevice = GetDeviceLoop.Run();
+            _currentDevice = GetDeviceLoop.Run("GrassWatering");
 
             // Start up Hub client
             _sDeviceClient =
@@ -34,6 +39,12 @@ namespace IoTDevices.GrassWatering
             CommandLoop();
         }
 
+        /// <summary>
+        /// IoT Method - GetState()
+        /// </summary>
+        /// <param name="methodRequest"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
         private static Task<MethodResponse> GetState(MethodRequest methodRequest, object userContext)
         {
             var data = Encoding.UTF8.GetString(methodRequest.Data);
@@ -43,6 +54,12 @@ namespace IoTDevices.GrassWatering
             return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(messageString), 200));
         }
 
+        /// <summary>
+        /// IoT Method - SetEnabled(bool)
+        /// </summary>
+        /// <param name="methodRequest"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
         private static Task<MethodResponse> SetEnabled(MethodRequest methodRequest, object userContext)
         {
             var data = Encoding.UTF8.GetString(methodRequest.Data);            
@@ -76,9 +93,24 @@ namespace IoTDevices.GrassWatering
                         if (!bool.TryParse(Console.ReadLine(), out var stateToSet))
                             stateToSet = false;
                         _currentEnabledState = stateToSet;
+                        // Device-To-Cloud call us executed when the state changes
+                        SendDeviceToCloud();
                         break;
                 }
             }
+        }
+
+        private static async void SendDeviceToCloud()
+        {
+            GetStateMessage(out var messageString);
+            var message = new Message(Encoding.ASCII.GetBytes(messageString));
+
+            // Add references to what method this is
+            message.Properties.Add("Method", $"{_currentDevice.Hub.Name}.{_currentDevice.Name}.GetState");
+
+            // Send the telemetry message
+            await _sDeviceClient.SendEventAsync(message);
+            Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
         }
 
         private static Message GetStateMessage(out string messageString)

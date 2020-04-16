@@ -131,7 +131,7 @@ namespace IoTDevices.AirConditioned
                             boolVal = false;
                         _currentOnState = boolVal;
                         // Device-To-Cloud call us executed when the state changes
-                        SendDeviceToMethod();
+                        SendDeviceToCloud();
                         break;
                     case 2:
                         Console.Write($"Type a new Temperature: ");
@@ -139,13 +139,13 @@ namespace IoTDevices.AirConditioned
                             intVal = 0;
                         _currentTemperature = intVal;
                         // Device-To-Cloud call us executed when the state changes
-                        SendDeviceToMethod();
+                        SendDeviceToCloud();
                         break;
                 }
             }
         }
 
-        private static async void SendDeviceToMethod()
+        private static async void SendDeviceToCloud()
         {
             GetStateMessage(out var messageString);
             var message = new Message(Encoding.ASCII.GetBytes(messageString));

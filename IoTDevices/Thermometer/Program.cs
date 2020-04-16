@@ -74,13 +74,13 @@ namespace IoTDevices.Thermometer
                             doubleTemp = 0;
                         _currentTemperature = doubleTemp;
                         // Device-To-Cloud call us executed when the state changes
-                        SendDeviceToMethod();
+                        SendDeviceToCloud();
                         break;
                 }
             }
         }
 
-        private static async void SendDeviceToMethod()
+        private static async void SendDeviceToCloud()
         {
             GetStateMessage(out var messageString);
             var message = new Message(Encoding.ASCII.GetBytes(messageString));
@@ -104,7 +104,7 @@ namespace IoTDevices.Thermometer
             _currentTemperature = _minTemperature + rand.NextDouble() * 15;
 
             // When it first loads it will also send Device-to-Cloud message
-            SendDeviceToMethod();
+            SendDeviceToCloud();
 
             return _currentTemperature.Value;
         }

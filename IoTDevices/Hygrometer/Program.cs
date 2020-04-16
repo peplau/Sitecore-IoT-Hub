@@ -75,14 +75,14 @@ namespace IoTDevices.Hygrometer
                         _currentHumidity = doubleVal;
 
                         // Device-To-Cloud call us executed when the state changes
-                        SendDeviceToMethod();
+                        SendDeviceToCloud();
 
                         break;
                 }
             }
         }
 
-        private static async void SendDeviceToMethod()
+        private static async void SendDeviceToCloud()
         {
             GetStateMessage(out var messageString);
             var message = new Message(Encoding.ASCII.GetBytes(messageString));
