@@ -8,6 +8,10 @@ using Newtonsoft.Json;
 
 namespace IoTDevices.SmartDisplay
 {
+    /// <summary>
+    /// IoT Device - Virtual SmartDisplay
+    /// - Method: GetState() - Result: {currentObject: "Object 1"}
+    /// </summary>
     class Program
     {
         private static Device _currentDevice;
@@ -28,7 +32,7 @@ namespace IoTDevices.SmartDisplay
             Console.WriteLine("------------------------------------");
 
             // Selected Device
-            _currentDevice = GetDeviceLoop.Run();
+            _currentDevice = GetDeviceLoop.Run("SmartDisplay");
 
             // Start up Hub client
             _sDeviceClient =
@@ -40,6 +44,12 @@ namespace IoTDevices.SmartDisplay
             CommandLoop();
         }
 
+        /// <summary>
+        /// IoT Method - GetSelectedObject()
+        /// </summary>
+        /// <param name="methodRequest"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
         private static Task<MethodResponse> GetSelectedObject(MethodRequest methodRequest, object userContext)
         {
             var data = Encoding.UTF8.GetString(methodRequest.Data);
@@ -69,7 +79,21 @@ namespace IoTDevices.SmartDisplay
                     continue;
 
                 _currentObject = intSelected == 0 ? string.Empty : Objects[intSelected - 1];
+                SendDeviceToCloud();
             }
+        }
+
+        private static async void SendDeviceToCloud()
+        {
+            GetStateMessage(out var messageString);
+            var message = new Message(Encoding.ASCII.GetBytes(messageString));
+
+            // Add references to what method this is
+            message.Properties.Add("Method", $"{_currentDevice.Hub.Name}.{_currentDevice.Name}.GetState");
+
+            // Send the telemetry message
+            await _sDeviceClient.SendEventAsync(message);
+            Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
         }
 
         private static Message GetStateMessage(out string messageString)
