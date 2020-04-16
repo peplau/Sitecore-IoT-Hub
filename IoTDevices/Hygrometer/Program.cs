@@ -7,6 +7,10 @@ using Newtonsoft.Json;
 
 namespace IoTDevices.Hygrometer
 {
+    /// <summary>
+    /// IoT Device - Virtual Hygrometer
+    /// - Method: GetState() - Result: {humidity: 31.15}
+    /// </summary>
     class Program
     {
         private static Device _currentDevice;
@@ -22,7 +26,7 @@ namespace IoTDevices.Hygrometer
             Console.WriteLine("---------------------------------");
 
             // Selected Device
-            _currentDevice = GetDeviceLoop.Run();
+            _currentDevice = GetDeviceLoop.Run("Hygrometer");
 
             // Start up Hub client
             _sDeviceClient =
@@ -34,6 +38,12 @@ namespace IoTDevices.Hygrometer
             CommandLoop();
         }
 
+        /// <summary>
+        /// IoT Method - GetState (no parameter)
+        /// </summary>
+        /// <param name="methodRequest"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
         private static Task<MethodResponse> GetState(MethodRequest methodRequest, object userContext)
         {
             var data = Encoding.UTF8.GetString(methodRequest.Data);
@@ -63,9 +73,26 @@ namespace IoTDevices.Hygrometer
                         if (!double.TryParse(Console.ReadLine(), out var doubleVal))
                             doubleVal = 0;
                         _currentHumidity = doubleVal;
+
+                        // Device-To-Cloud call us executed when the state changes
+                        SendDeviceToMethod();
+
                         break;
                 }
             }
+        }
+
+        private static async void SendDeviceToMethod()
+        {
+            GetStateMessage(out var messageString);
+            var message = new Message(Encoding.ASCII.GetBytes(messageString));
+
+            // Add references to what method this is
+            message.Properties.Add("Method", $"{_currentDevice.Hub.Name}.{_currentDevice.Name}.GetState");
+
+            // Send the telemetry message
+            await _sDeviceClient.SendEventAsync(message);
+            Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, messageString);
         }
 
         public static double ReadHumidity()

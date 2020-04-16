@@ -7,6 +7,10 @@ using Newtonsoft.Json;
 
 namespace IoTDevices.Thermometer
 {
+    /// <summary>
+    /// IoT Device - Virtual Thermometer
+    /// - Method: GetState() - Result: {temperature: 31.15}
+    /// </summary>
     class Program
     {
         private static Device _currentDevice;
@@ -34,6 +38,12 @@ namespace IoTDevices.Thermometer
             CommandLoop();
         }
 
+        /// <summary>
+        /// IoT Method - GetState (no parameter)
+        /// </summary>
+        /// <param name="methodRequest"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
         private static Task<MethodResponse> GetState(MethodRequest methodRequest, object userContext)
         {
             var data = Encoding.UTF8.GetString(methodRequest.Data);
