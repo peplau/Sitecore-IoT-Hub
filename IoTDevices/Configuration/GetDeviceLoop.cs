@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IoTDevices.Configuration
 {
     public static class GetDeviceLoop
     {
         public static Device Run()
+        {
+            return Run(string.Empty);
+        }
+
+        public static Device Run(string selectedName)
         {
             Device selectedDevice;
 
@@ -31,8 +37,22 @@ namespace IoTDevices.Configuration
                 Console.Write("Please chose the IoT Device Configuration: ");
 
                 // Get selected device
-                if (!int.TryParse(Console.ReadLine(), out var intSelected))
-                    continue;
+                int intSelected;
+                var selected = string.IsNullOrEmpty(selectedName)
+                    ? -1
+                    : allDevices.IndexOf(allDevices.FirstOrDefault(p => p.Name == selectedName));
+
+                if (selected ==-1)
+                {
+                    var typed = Console.ReadLine();
+                    if (!int.TryParse(typed, out intSelected))
+                        continue;
+                }
+                else
+                {
+                    intSelected = selected;
+                    Console.WriteLine(intSelected);
+                }
                 if (intSelected < 0 || intSelected > allDevices.Count - 1)
                     continue;
                 

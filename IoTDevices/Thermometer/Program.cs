@@ -22,7 +22,7 @@ namespace IoTDevices.Thermometer
             Console.WriteLine("----------------------------------");
 
             // Selected Device
-            _currentDevice = GetDeviceLoop.Run();
+            _currentDevice = GetDeviceLoop.Run("Thermometer");
 
             // Start up Hub client
             _sDeviceClient =
