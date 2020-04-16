@@ -73,10 +73,8 @@ namespace IoTDevices.Thermometer
                         if (!double.TryParse(Console.ReadLine(), out var doubleTemp))
                             doubleTemp = 0;
                         _currentTemperature = doubleTemp;
-
                         // Device-To-Cloud call us executed when the state changes
                         SendDeviceToMethod();
-
                         break;
                 }
             }
