@@ -1,11 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using IoTHub.Foundation.Azure.Cache;
+﻿using System.Web.Mvc;
 using IoTHub.Foundation.Azure.Deserializers;
+using IoTHub.Foundation.Azure.Pipelines;
 using IoTHub.Foundation.Azure.Repositories;
-using Microsoft.Azure.Devices;
-using Newtonsoft.Json;
+using Sitecore.Pipelines;
 
 namespace IoTHub.Foundation.Azure.Models.Templates
 {
@@ -16,8 +13,6 @@ namespace IoTHub.Foundation.Azure.Models.Templates
     {
         private readonly IIoTHubRepository _ioTHubRepository =
             DependencyResolver.Current.GetService<IIoTHubRepository>();
-        private readonly IMethodCacheManager _methodCacheManager =
-            DependencyResolver.Current.GetService<IMethodCacheManager>();
 
         /// <summary>
         /// Get Hub for this method (Parent.Parent)
@@ -54,103 +49,9 @@ namespace IoTHub.Foundation.Azure.Models.Templates
         /// <returns></returns>
         public DynamicMessage Invoke(string payload = "")
         {
-            // No two way - call the method directly
-            if (!TwoWay)
-                return InvokeMethod(this, payload);
-
-            // Two way - gets from cache 
-            var resultFromCache = _methodCacheManager.GetResponseFromCache(this, payload);
-            if (!string.IsNullOrEmpty(resultFromCache))
-                return DeserializeAndParse(this, resultFromCache);
-
-            // Or the method itself
-            var response = InvokeMethod(this, payload);
-
-            // If taken from Itself then needs to save back to cache if TwoWay
-            if (TwoWay)
-                _methodCacheManager.SaveResponseToCache(this, payload, response.RawMessage);
-
-            return response;
-        }
-
-        /// <summary>
-        /// Invoke a given Method passing optional payload
-        /// </summary>
-        /// <param name="method"></param>
-        /// <param name="payload"></param>
-        /// <returns></returns>
-        public static DynamicMessage InvokeMethod(IoTDeviceMethod method, string payload="")
-        {
-            var hub = method.GetHub();
-            var connectionStringsServer = hub.ConnectionString;
-            var parsedDictionary =
-                InvokeMethodInternal(method, connectionStringsServer, payload).GetAwaiter().GetResult();
-            return parsedDictionary;
-        }
-
-        /// <summary>
-        /// Deserialize and Parse a string using Deserializer from the giving method
-        /// </summary>
-        /// <param name="method"></param>
-        /// <param name="response"></param>
-        /// <returns></returns>
-        public static DynamicMessage DeserializeAndParse(IoTDeviceMethod method, string response)
-        {
-            // Get returnType and deserializer
-            var returnType = method.GetMessageType();
-            if (returnType == null) {
-                Sitecore.Diagnostics.Log.Error($"Method {method.ID} has an invalid Return Type", typeof(IoTDeviceMethod));
-                return null;
-            }
-            var deserializer = returnType.GetDeserializer();
-            if (deserializer == null) {
-                Sitecore.Diagnostics.Log.Error($"Message Type {returnType.ID} has an invalid Deserializer",
-                    typeof(IoTDeviceMethod));
-                return null;
-            }
-
-            // Instantiate Deserializer object
-            var deserializerObject = deserializer.GetDeserializerObject();
-            if (deserializerObject == null)
-                return null;
-
-            // Parse results
-            var parsedDictionary = (DynamicMessage)deserializerObject.Deserialize(response);
-            parsedDictionary.RawMessage = response;
-            return parsedDictionary;
-        }
-
-        /// <summary>
-        /// Internal Invoke method call
-        /// </summary>
-        /// <param name="method"></param>
-        /// <param name="connectionStringsServer"></param>
-        /// <param name="payload"></param>
-        /// <returns></returns>
-        private static async Task<DynamicMessage> InvokeMethodInternal(IoTDeviceMethod method,
-            string connectionStringsServer, string payload = "")
-        {
-            var methodInvocation = new CloudToDeviceMethod(method.MethodName) {ResponseTimeout = TimeSpan.FromSeconds(30)};
-
-            // Payload to send            
-            if (!string.IsNullOrEmpty(payload))
-                methodInvocation.SetPayloadJson(JsonConvert.SerializeObject(payload));
-
-            // Invoke the direct method asynchronously and get the response from the device.
-            var device = method.GetDevice();
-            var serviceClient = ServiceClient.CreateFromConnectionString(connectionStringsServer);
-            var response = serviceClient.InvokeDeviceMethodAsync(device.DeviceName, methodInvocation).GetAwaiter().GetResult();
-
-            // Resulting Payload
-            var receivedPayload = response.GetPayloadAsJson();
-
-            // Log results
-            Sitecore.Diagnostics.Log.Info($"Response status: {response.Status}, payload:", typeof(IoTDeviceMethod));
-            Sitecore.Diagnostics.Log.Info(receivedPayload, typeof(IoTDeviceMethod));
-
-            // Deserialize
-            var result = DeserializeAndParse(method, receivedPayload);
-            return result;
+            var args = new InvokeMethodArgs {Method = this, Payload = payload};
+            CorePipeline.Run("iotHub.InvokeMethod", args);
+            return args.Response;
         }
     }
 }

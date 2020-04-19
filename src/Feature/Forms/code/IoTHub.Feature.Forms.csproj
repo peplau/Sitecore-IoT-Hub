@@ -112,7 +112,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\Feature\IoTHub.Feature.Forms.config" />
-    <Content Include="sitecore modules\Web\ExperienceForms\scripts\IoTHub\iot-hub.js" />
     <Content Include="sitecore\shell\client\Applications\FormBuilder\Layouts\Actions\IoTHub\ExecuteIoTMethod.js" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="web.config">

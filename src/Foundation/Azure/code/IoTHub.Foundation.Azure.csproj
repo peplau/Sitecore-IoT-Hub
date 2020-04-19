@@ -51,8 +51,8 @@
     <Reference Include="Microsoft.Azure.Devices, Version=1.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\Microsoft.Azure.Devices.1.16.0\lib\net451\Microsoft.Azure.Devices.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Devices.Shared, Version=1.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\Microsoft.Azure.Devices.Shared.1.16.0\lib\net451\Microsoft.Azure.Devices.Shared.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Devices.Shared, Version=1.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Microsoft.Azure.Devices.Shared.1.15.0\lib\net451\Microsoft.Azure.Devices.Shared.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.EventHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7e34167dcc6d6d8c, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\Microsoft.Azure.EventHubs.2.0.0\lib\net461\Microsoft.Azure.EventHubs.dll</HintPath>
@@ -169,6 +169,8 @@
     <Compile Include="Models\Templates\IoTMessageProperty.cs" />
     <Compile Include="Models\Templates\IoTMessageType.cs" />
     <Compile Include="Models\Templates\IoTMessageDeserializer.cs" />
+    <Compile Include="Pipelines\InvokeMethodArgs.cs" />
+    <Compile Include="Pipelines\InvokeMethodProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IIoTDeviceRepository.cs" />
     <Compile Include="Repositories\IIoTHubRepository.cs" />
