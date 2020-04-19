@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using IoTHub.Foundation.Azure.Repositories;
 using Microsoft.Azure.EventHubs;
 using Sitecore.Data;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using IoTHub.Foundation.Azure.Cache;
+using IoTHub.Foundation.Azure.Pipelines;
+using Sitecore.Pipelines;
 
 namespace IoTHub.Foundation.Azure.Tasks
 {
@@ -18,21 +18,6 @@ namespace IoTHub.Foundation.Azure.Tasks
     public class DeviceToCloudReaderAgent
     {
         private const string IotHubSasKeyName = "service";
-        private const string MethodProperyName = "method";
-        private const string PayloadProperyName = "payload";
-
-        private static IMethodCacheManager _methodCacheManager;
-        private static IMethodCacheManager MethodCacheManager
-        {
-            get
-            {
-                if (_methodCacheManager != null)
-                    return _methodCacheManager;
-                _methodCacheManager = DependencyResolver.Current.GetService<IMethodCacheManager>();
-                return _methodCacheManager;
-            }
-        }
-
         private static IIoTHubRepository _hubRepository;
         private static IIoTHubRepository HubRepository
         {
@@ -110,6 +95,7 @@ namespace IoTHub.Foundation.Azure.Tasks
                         break;
 
                     Sitecore.Diagnostics.Log.Info("Listening for messages on: " + partition, eventHub);
+
                     // Check for EventData - this methods times out if there is nothing to retrieve.
                     var events = await eventHubReceiver.ReceiveAsync(100);
                     if (events == null)
@@ -118,27 +104,12 @@ namespace IoTHub.Foundation.Azure.Tasks
                     // If there is data in the batch, process it.
                     foreach (var eventData in events)
                     {
-                        if (eventData?.Body.Array == null)
-                            continue;
-
-                        var data = Encoding.UTF8.GetString(eventData.Body.Array);
-                        Sitecore.Diagnostics.Log.Info($"Message received on partition {partition}: {data}", eventHub);
-
-                        // Find the key that brings the method reference - won't handle the message if this is not found
-                        var methodKey = eventData.Properties.Keys.FirstOrDefault(p => p.ToLower() == MethodProperyName.ToLower());
-                        if (string.IsNullOrEmpty(methodKey))
-                            continue;
-                        var methodNameOrPath = eventData.Properties[methodKey].ToString();
-                        var method = HubRepository.GetMethodByName(methodNameOrPath, _masterDb);
-                        if (method == null)
-                            continue;
-
-                        // Get payload from device (if any)
-                        var payloadKey = eventData.Properties.Keys.FirstOrDefault(p => p.ToLower() == PayloadProperyName.ToLower());
-                        var payload = string.IsNullOrEmpty(payloadKey) ? string.Empty : eventData.Properties[payloadKey].ToString();
-
-                        // Store results on cache
-                        MethodCacheManager.SaveResponseToCache(method, payload, data);
+                        var args = new MessageReceivedArgs
+                        {
+                            EventData = eventData, EventHubClient = eventHub, 
+                            Partition = partition, Database = _masterDb
+                        };
+                        CorePipeline.Run("iotHub.MessageReceived", args);
                     }
                 }
             }

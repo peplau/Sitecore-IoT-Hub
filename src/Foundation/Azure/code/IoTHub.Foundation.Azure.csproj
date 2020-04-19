@@ -171,6 +171,8 @@
     <Compile Include="Models\Templates\IoTMessageDeserializer.cs" />
     <Compile Include="Pipelines\InvokeMethodArgs.cs" />
     <Compile Include="Pipelines\InvokeMethodProcessor.cs" />
+    <Compile Include="Pipelines\MessageReceivedArgs.cs" />
+    <Compile Include="Pipelines\MessageReceivedProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IIoTDeviceRepository.cs" />
     <Compile Include="Repositories\IIoTHubRepository.cs" />
