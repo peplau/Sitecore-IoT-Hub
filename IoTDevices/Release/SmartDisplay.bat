@@ -1,1 +1,1 @@
-dotnet ./bin/IoTDevices.SmartDisplay.dll
+./visual/IoTDevices.VirtualSmartDisplay.exe
