@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LightsControl", "LightsCont
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hygrometer", "Hygrometer\Hygrometer.csproj", "{FC03B1AA-00EF-4578-9246-0957AB54022B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualSmartDisplay", "VirtualSmartDisplay\VirtualSmartDisplay.csproj", "{86B96EAC-E12C-4543-8469-0CA0DB240F94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{FC03B1AA-00EF-4578-9246-0957AB54022B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC03B1AA-00EF-4578-9246-0957AB54022B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC03B1AA-00EF-4578-9246-0957AB54022B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86B96EAC-E12C-4543-8469-0CA0DB240F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86B96EAC-E12C-4543-8469-0CA0DB240F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86B96EAC-E12C-4543-8469-0CA0DB240F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86B96EAC-E12C-4543-8469-0CA0DB240F94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

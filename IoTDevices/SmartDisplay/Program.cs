@@ -10,18 +10,18 @@ namespace IoTDevices.SmartDisplay
 {
     /// <summary>
     /// IoT Device - Virtual SmartDisplay
-    /// - Method: GetState() - Result: {currentObject: "Object 1"}
+    /// - Method: GetState() - Result: {currentObject: "Tablet1"}
     /// </summary>
     class Program
     {
         private static Device _currentDevice;
         private static DeviceClient _sDeviceClient;
         private static string _currentObject = string.Empty;
-        private static readonly List<string> Objects = new List<string>()
+        private static readonly List<string> Objects = new List<string>
         {
-            "Object 1", "Object 2", "Object 3",
-            "Object 4", "Object 5", "Object 6",
-            "Object 7", "Object 8", "Object 9"
+            "Tablet1", "Tablet2", 
+            "Mobile1", "Mobile2", "Mobile3", 
+            "Headphones1", "Headphones2", "Headphones3"
         };
 
         static void Main(string[] args)
