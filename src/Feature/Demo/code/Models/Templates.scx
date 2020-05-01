@@ -1,0 +1,12 @@
+﻿<CodeGeneration Generator="Template Class">
+  <shape designerX="19" designerY="24">
+    <template templatename="_Product Entry" templateid="{F481CD06-BC8E-4DF7-A6C1-9CE08F65C5CA}" templateuri="/http://sc93sc.dev.local//master/{F481CD06-BC8E-4DF7-A6C1-9CE08F65C5CA}" classname="__ProductEntry">
+      <section id="{167319A8-CE4C-4BA6-AEF1-328EBEAF2DFA}" name="Product Content">
+        <field id="{1DB00D6B-E441-4147-B903-1D25ED9818E8}" name="Product Name" shared="0" source="" type="Single-Line Text" unversioned="0" propertyname="ProductName" />
+        <field id="{4EE7F2CB-C112-46FA-8419-63F77706BC16}" name="Image" shared="0" source="" type="Image" unversioned="0" propertyname="Image" />
+        <field id="{46FEA775-9D89-49BB-B1B1-16A61C7E9791}" name="Description" shared="0" source="" type="Rich Text" unversioned="0" propertyname="Description" />
+        <field id="{469736EF-1582-4427-9865-70AB1074F046}" name="Features" shared="0" source="" type="Multi-Line Text" unversioned="0" propertyname="Features" />
+      </section>
+    </template>
+  </shape>
+</CodeGeneration>

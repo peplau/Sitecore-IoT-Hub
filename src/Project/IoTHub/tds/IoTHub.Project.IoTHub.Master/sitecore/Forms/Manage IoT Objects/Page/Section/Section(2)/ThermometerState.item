@@ -55,9 +55,9 @@ content-length: 38
 field: {F6696439-2DAC-4183-8F3D-1979188D8336}
 name: Value Provider Parameters
 key: value provider parameters
-content-length: 47
+content-length: 59
 
-SitecoreIoTHub.Thermometer.GetState,temperature
+SitecoreIoTHub.SmartDisplay.GetSelectedObject,currentObject
 ----field----
 field: {BA3F86A2-4A1C-4D78-B63D-91C2779C1B5E}
 name: __Sortorder
@@ -68,7 +68,7 @@ content-length: 1
 ----version----
 language: en
 version: 1
-revision: 831b010d-3744-44dd-9753-d49ef740e082
+revision: 24b9d75d-eb94-4912-bcf9-d61edc0afd64
 
 ----field----
 field: {71FFD7B2-8B09-4F7B-8A66-1E4CEF653E8D}
@@ -104,14 +104,14 @@ name: __Revision
 key: __revision
 content-length: 36
 
-831b010d-3744-44dd-9753-d49ef740e082
+24b9d75d-eb94-4912-bcf9-d61edc0afd64
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200416T231200Z
+20200421T003308Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by

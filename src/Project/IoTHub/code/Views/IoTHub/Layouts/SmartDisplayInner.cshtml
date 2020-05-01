@@ -1,0 +1,64 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Analytics.Extensions
+@using Sitecore.ExperienceForms.Mvc.Html
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>
+        Smart Display - IoT Hub
+    </title>
+    @Html.Sitecore().VisitorIdentification()
+
+    <!-- Favicons -->
+    <link href="/assets/smartdisplay/img/favicon.png" rel="icon">
+    <link href="/assets/smartdisplay/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/smartdisplay/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/smartdisplay/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="/assets/smartdisplay/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/smartdisplay/vendor/modal-video/css/modal-video.min.css" rel="stylesheet">
+    <link href="/assets/smartdisplay/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/assets/smartdisplay/css/style.css" rel="stylesheet">
+
+    @Html.RenderFormStyles()
+</head>
+<body>
+    <header>
+        @Html.Sitecore().Placeholder("header")
+    </header>
+    <main id="main">
+        @RenderBody()
+    </main>
+    <footer>
+        @Html.Sitecore().Placeholder("footer")
+    </footer>
+
+    <!-- Vendor JS Files -->
+    <script src="/assets/smartdisplay/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/smartdisplay/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/smartdisplay/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="/assets/smartdisplay/vendor/php-email-form/validate.js"></script>
+    <script src="/assets/smartdisplay/vendor/wow/wow.min.js"></script>
+    <script src="/assets/smartdisplay/vendor/modal-video/js/modal-video.min.js"></script>
+    <script src="/assets/smartdisplay/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="/assets/smartdisplay/vendor/superfish/superfish.min.js"></script>
+    <script src="/assets/smartdisplay/vendor/hoverIntent/hoverIntent.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/assets/smartdisplay/js/main.js"></script>
+    <script src="/assets/smartdisplay/js/smartdisplay.js"></script>
+
+    @Html.RenderFormScripts()
+</body>
+</html>

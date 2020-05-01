@@ -137,7 +137,7 @@ namespace IoTDevices.VirtualSmartDisplay
             var message = new Message(Encoding.ASCII.GetBytes(messageString));
 
             // Add references to what method this is
-            message.Properties.Add("Method", $"{_currentDevice.Hub.Name}.{_currentDevice.Name}.GetState");
+            message.Properties.Add("Method", $"{_currentDevice.Hub.Name}.{_currentDevice.Name}.GetSelectedObject");
 
             // Send the telemetry message
             await _sDeviceClient.SendEventAsync(message);
