@@ -1,6 +1,11 @@
 ﻿$(function() {
     var currentState;
+
+    var semaphoreClosed = false;
     var smartDisplayHasChanges = function() {
+        if (semaphoreClosed)
+            return;
+        semaphoreClosed = true;
         $.ajax({
             url:  "/api/Sitecore/SmartDisplay/HasChanges?currentState="+ currentState,
             type: "POST",
@@ -10,6 +15,7 @@
                 if (hasChanges) {
                     location.reload();
                 }
+                semaphoreClosed = false;
             },
             async: true
         });
