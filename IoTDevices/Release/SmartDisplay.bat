@@ -1,1 +1,1 @@
-./visual/IoTDevices.VirtualSmartDisplay.exe
+visual\IoTDevices.VirtualSmartDisplay.exe
