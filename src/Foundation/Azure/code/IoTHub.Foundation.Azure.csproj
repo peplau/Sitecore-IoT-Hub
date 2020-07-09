@@ -165,6 +165,7 @@
     </Compile>
     <Compile Include="Models\Templates\IoTDevice.cs" />
     <Compile Include="Models\Templates\IoTDeviceMethod.cs" />
+    <Compile Include="Models\Templates\IoTDeviceType.cs" />
     <Compile Include="Models\Templates\IoTHub.cs" />
     <Compile Include="Models\Templates\IoTMessageProperty.cs" />
     <Compile Include="Models\Templates\IoTMessageType.cs" />
@@ -175,12 +176,14 @@
     <Compile Include="Pipelines\MessageReceivedProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IIoTDeviceRepository.cs" />
+    <Compile Include="Repositories\IIoTDeviceTypeRepository.cs" />
     <Compile Include="Repositories\IIoTHubRepository.cs" />
     <Compile Include="Repositories\IIoTMessageDeserializerRepository.cs" />
     <Compile Include="Repositories\IIoTMessagePropertyRepository.cs" />
     <Compile Include="Repositories\IIoTMessageTypeRepository.cs" />
     <Compile Include="Repositories\IIoTMethodRepository.cs" />
     <Compile Include="Repositories\IoTDeviceRepository.cs" />
+    <Compile Include="Repositories\IoTDeviceTypeRepository.cs" />
     <Compile Include="Repositories\IoTHubRepository.cs" />
     <Compile Include="Repositories\IoTMessageDeserializerRepository.cs" />
     <Compile Include="Repositories\IoTMessagePropertyRepository.cs" />

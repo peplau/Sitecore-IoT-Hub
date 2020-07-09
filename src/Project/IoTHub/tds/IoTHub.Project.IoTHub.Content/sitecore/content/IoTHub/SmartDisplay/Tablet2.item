@@ -19,15 +19,15 @@ content-length: 3
 ----version----
 language: en
 version: 1
-revision: dc5f76db-9a62-46d4-b143-b28a703e910e
+revision: 326382ad-fd7f-4f07-9685-3218db50a9e6
 
 ----field----
 field: {1DB00D6B-E441-4147-B903-1D25ED9818E8}
 name: Product Name
 key: product name
-content-length: 7
+content-length: 23
 
-Tablet2
+Microsoft Surface Pro 4
 ----field----
 field: {4EE7F2CB-C112-46FA-8419-63F77706BC16}
 name: Image
@@ -35,6 +35,22 @@ key: image
 content-length: 58
 
 <image mediaid="{9BFAE320-9ED0-4FF8-AA00-06637D42E99F}" />
+----field----
+field: {46FEA775-9D89-49BB-B1B1-16A61C7E9791}
+name: Description
+key: description
+content-length: 34
+
+Core m3 0.9GHz, 4GB RAM, 128GB SSD
+----field----
+field: {469736EF-1582-4427-9865-70AB1074F046}
+name: Features
+key: features
+content-length: 103
+
+Powered by Windows 10
+12.3 inch PixelSense display 
+Fully functioning laptop running desktop software
 ----field----
 field: {25BED78C-4957-4165-998A-CA1B52F67497}
 name: __Created
@@ -48,14 +64,14 @@ name: __Revision
 key: __revision
 content-length: 36
 
-dc5f76db-9a62-46d4-b143-b28a703e910e
+326382ad-fd7f-4f07-9685-3218db50a9e6
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200505T171600Z
+20200505T173028Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by

@@ -23,10 +23,17 @@ key: connection string
 content-length: 125
 
 HostName=SitecoreIoTHub.azure-devices.net;DeviceId=GrassWatering;SharedAccessKey=gLueCGTSsXT0KTBj5WCVsOhEBxNcOgf9BNIPDiojCEk=
+----field----
+field: {E30839DF-463E-490B-989E-51C86094360B}
+name: Device Type
+key: device type
+content-length: 38
+
+{9617A31C-102D-489A-9CDE-BC3019246AF4}
 ----version----
 language: en
 version: 1
-revision: 96053512-8821-4abf-83a4-50644e641cc8
+revision: 79a93b90-feff-43e2-8773-97416a6bb7e7
 
 ----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
@@ -55,18 +62,18 @@ name: __Revision
 key: __revision
 content-length: 36
 
-96053512-8821-4abf-83a4-50644e641cc8
+79a93b90-feff-43e2-8773-97416a6bb7e7
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200312T215431Z
+20200708T234821Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
 content-length: 14
 
-sitecore\admin
+sitecore\Admin

@@ -23,10 +23,17 @@ key: connection string
 content-length: 122
 
 HostName=SitecoreIoTHub.azure-devices.net;DeviceId=Hygrometer;SharedAccessKey=rUtos/XOdsqlYAq63YiqyMZWe17ETrtRHcNGWtkndhQ=
+----field----
+field: {E30839DF-463E-490B-989E-51C86094360B}
+name: Device Type
+key: device type
+content-length: 38
+
+{201A5BEF-52DE-48CC-88EE-C78AEF28C870}
 ----version----
 language: en
 version: 1
-revision: 9b45667d-da09-427f-b7c7-bcd37985bcb9
+revision: fd4265a1-ba6b-4fcd-86ee-4c308d9b3abc
 
 ----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
@@ -55,18 +62,18 @@ name: __Revision
 key: __revision
 content-length: 36
 
-9b45667d-da09-427f-b7c7-bcd37985bcb9
+fd4265a1-ba6b-4fcd-86ee-4c308d9b3abc
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200312T220523Z
+20200708T234906Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
 content-length: 14
 
-sitecore\admin
+sitecore\Admin

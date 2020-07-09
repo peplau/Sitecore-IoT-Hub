@@ -19,15 +19,15 @@ content-length: 3
 ----version----
 language: en
 version: 1
-revision: 8df6b806-7852-40cd-973b-01e5f3b159ad
+revision: db2d5a30-b4b8-49fd-b122-04e929b2a77e
 
 ----field----
 field: {1DB00D6B-E441-4147-B903-1D25ED9818E8}
 name: Product Name
 key: product name
-content-length: 11
+content-length: 13
 
-Headphones1
+Beats Solo HD
 ----field----
 field: {4EE7F2CB-C112-46FA-8419-63F77706BC16}
 name: Image
@@ -35,6 +35,23 @@ key: image
 content-length: 58
 
 <image mediaid="{D212256B-A297-4471-8048-B857F6FCBBDE}" />
+----field----
+field: {46FEA775-9D89-49BB-B1B1-16A61C7E9791}
+name: Description
+key: description
+content-length: 48
+
+Beats Solo HD Wired On-Ear Headphone - Matte Red
+----field----
+field: {469736EF-1582-4427-9865-70AB1074F046}
+name: Features
+key: features
+content-length: 83
+
+Solo HD High-performance 
+Deeper bass
+Bolder midrange
+Cleaner, undistorted highs
 ----field----
 field: {25BED78C-4957-4165-998A-CA1B52F67497}
 name: __Created
@@ -48,14 +65,14 @@ name: __Revision
 key: __revision
 content-length: 36
 
-8df6b806-7852-40cd-973b-01e5f3b159ad
+db2d5a30-b4b8-49fd-b122-04e929b2a77e
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200505T171547Z
+20200505T174435Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by

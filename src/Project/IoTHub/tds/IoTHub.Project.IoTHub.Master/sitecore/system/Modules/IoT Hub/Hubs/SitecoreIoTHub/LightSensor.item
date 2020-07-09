@@ -23,10 +23,17 @@ key: connection string
 content-length: 123
 
 HostName=SitecoreIoTHub.azure-devices.net;DeviceId=LightSensor;SharedAccessKey=gp+cZcbeQA+AY3avcBSvMzBK6SlZowpr0nvikFj+tpo=
+----field----
+field: {E30839DF-463E-490B-989E-51C86094360B}
+name: Device Type
+key: device type
+content-length: 38
+
+{787DCDDB-1BDE-41BC-9706-36355AD28C3B}
 ----version----
 language: en
 version: 1
-revision: fc64d56b-a054-4514-9e7d-f43090097d47
+revision: 33f811b7-3807-451d-a66b-f77b244ec811
 
 ----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
@@ -55,18 +62,18 @@ name: __Revision
 key: __revision
 content-length: 36
 
-fc64d56b-a054-4514-9e7d-f43090097d47
+33f811b7-3807-451d-a66b-f77b244ec811
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200312T213529Z
+20200708T235007Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
 content-length: 14
 
-sitecore\admin
+sitecore\Admin

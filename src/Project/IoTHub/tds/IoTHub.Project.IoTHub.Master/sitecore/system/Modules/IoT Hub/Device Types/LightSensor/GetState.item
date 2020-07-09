@@ -1,10 +1,10 @@
 ----item----
 version: 1
-id: {CEDD34E3-A766-4B18-8859-230BCEFDBBCB}
+id: {2A043424-24FF-436B-A38B-C3FABC7A43BD}
 database: master
-path: /sitecore/system/Modules/IoT Hub/Hubs/SitecoreIoTHub/SmartDisplay/GetSelectedObject
-parent: {5EBBE05B-3AA5-4782-9DB8-CFF91B1D030D}
-name: GetSelectedObject
+path: /sitecore/system/Modules/IoT Hub/Device Types/LightSensor/GetState
+parent: {787DCDDB-1BDE-41BC-9706-36355AD28C3B}
+name: GetState
 master: {00000000-0000-0000-0000-000000000000}
 template: {B96DDC3F-541D-428A-A68B-B0A0B34B1192}
 templatekey: IoT Device Method
@@ -13,20 +13,20 @@ templatekey: IoT Device Method
 field: {7723587B-94E9-4BE1-A1E0-EAE1BB3D0C91}
 name: Method Name
 key: method name
-content-length: 17
+content-length: 8
 
-GetSelectedObject
+GetState
 ----field----
 field: {FB24A772-F749-4FA0-B133-107F9FBD354A}
 name: Return Type
 key: return type
 content-length: 38
 
-{A7BBC161-8ED0-4668-8EBF-9F71003F4DF9}
+{F08FBF7E-12A8-45AC-A932-E59E2CEF115B}
 ----version----
 language: en
 version: 1
-revision: edcfef0c-9a05-4297-8c89-1a883398e0ab
+revision: 802a1f3b-c5f8-4c32-86e1-7d7606a4e031
 
 ----field----
 field: {E04BFB8F-1ED9-4156-964D-2D2F990C1E55}
@@ -48,7 +48,7 @@ name: __Created
 key: __created
 content-length: 16
 
-20200312T223027Z
+20200312T213627Z
 ----field----
 field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
 name: __Created by
@@ -62,18 +62,18 @@ name: __Revision
 key: __revision
 content-length: 36
 
-edcfef0c-9a05-4297-8c89-1a883398e0ab
+802a1f3b-c5f8-4c32-86e1-7d7606a4e031
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200413T190512Z
+20200708T235002Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
 content-length: 14
 
-sitecore\admin
+sitecore\Admin

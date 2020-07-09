@@ -23,10 +23,17 @@ key: connection string
 content-length: 123
 
 HostName=SitecoreIoTHub.azure-devices.net;DeviceId=Thermometer;SharedAccessKey=NNz/uMj5QjHcbJQidfh+xL6KVGpDGeJ2AtN2XUWPLkA=
+----field----
+field: {E30839DF-463E-490B-989E-51C86094360B}
+name: Device Type
+key: device type
+content-length: 38
+
+{FC99E1DC-1937-4586-95D1-226816CFE628}
 ----version----
 language: en
 version: 1
-revision: 6d74977f-a672-4c7b-984d-7b55ed785d67
+revision: 365fdd6d-b60b-4f88-abee-f1fc9eae1a52
 
 ----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
@@ -55,18 +62,18 @@ name: __Revision
 key: __revision
 content-length: 36
 
-6d74977f-a672-4c7b-984d-7b55ed785d67
+365fdd6d-b60b-4f88-abee-f1fc9eae1a52
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200312T182156Z
+20200708T235056Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
 content-length: 14
 
-sitecore\admin
+sitecore\Admin

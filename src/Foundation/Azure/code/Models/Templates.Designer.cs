@@ -22,176 +22,6 @@ namespace IoTHub.Foundation.Azure.Models.Templates
   using Sitecore.Data;
   
       
-  /// <summary>Represents the "IoT Message Deserializer" template.</summary>
-  public partial class IoTMessageDeserializer : CustomItem
-  {
-    public static readonly ID TemplateID = ID.Parse("{FD0BC7FA-A8EA-40F8-BF51-B76EE1F501E1}");
-
-    public IoTMessageDeserializer(Item item) : base(item) {
-    }
-
-    public static class FieldIds {
-      
-      public static readonly ID DeserializerType = ID.Parse("{11546A34-6105-49C9-B08B-C1561063AE52}");
-
-    }
-    
-    /// <summary>Gets or sets the "Deserializer Type" field.</summary>
-    public string DeserializerType 
-    {
-      get 
-      {
-        return this.InnerItem[FieldIds.DeserializerType];
-      }
-      set
-      {
-        this.InnerItem[FieldIds.DeserializerType] = value;
-      }
-    }
-  
-    public static IoTMessageDeserializer Create(Item item) 
-    {
-      return new IoTMessageDeserializer(item);
-    }
-
-    public static implicit operator Item (IoTMessageDeserializer item)
-    {
-      if (item == null)
-      {
-        return null;
-      }
-
-      return item.InnerItem;
-    }
-
-    public static explicit operator IoTMessageDeserializer(Item item)
-    {
-      if (item == null)
-      {
-        return null;
-      }
-
-      if (item.TemplateID != TemplateID)
-      {
-        return null;
-      }
-
-      return Create(item);
-    }
-  }
-      
-  /// <summary>Represents the "IoT Message Property" template.</summary>
-  public partial class IoTMessageProperty : CustomItem
-  {
-    public static readonly ID TemplateID = ID.Parse("{C8D77D21-B51E-4644-BD68-6B217193D779}");
-
-    public IoTMessageProperty(Item item) : base(item) {
-    }
-
-    public static class FieldIds {
-      
-      public static readonly ID PropertyName = ID.Parse("{76052C27-6A04-40DF-B50E-64E2D5F865C0}");
-
-    }
-    
-    /// <summary>Gets or sets the "Property Name" field.</summary>
-    public string PropertyName 
-    {
-      get 
-      {
-        return this.InnerItem[FieldIds.PropertyName];
-      }
-      set
-      {
-        this.InnerItem[FieldIds.PropertyName] = value;
-      }
-    }
-  
-    public static IoTMessageProperty Create(Item item) 
-    {
-      return new IoTMessageProperty(item);
-    }
-
-    public static implicit operator Item (IoTMessageProperty item)
-    {
-      if (item == null)
-      {
-        return null;
-      }
-
-      return item.InnerItem;
-    }
-
-    public static explicit operator IoTMessageProperty(Item item)
-    {
-      if (item == null)
-      {
-        return null;
-      }
-
-      if (item.TemplateID != TemplateID)
-      {
-        return null;
-      }
-
-      return Create(item);
-    }
-  }
-      
-  /// <summary>Represents the "IoT Message Type" template.</summary>
-  public partial class IoTMessageType : CustomItem
-  {
-    public static readonly ID TemplateID = ID.Parse("{B8521A51-A0CF-40AC-BD76-4C4D1E900B1C}");
-
-    public IoTMessageType(Item item) : base(item) {
-    }
-
-    public static class FieldIds {
-      
-      public static readonly ID Deserializer = ID.Parse("{2B8207A4-E141-4586-99D5-6311E98350C2}");
-
-    }
-    
-    /// <summary>Gets the "Deserializer" field.</summary>
-    public LookupField Deserializer 
-    {
-      get 
-      {
-        return this.InnerItem.Fields[FieldIds.Deserializer];
-      }
-    }
-  
-    public static IoTMessageType Create(Item item) 
-    {
-      return new IoTMessageType(item);
-    }
-
-    public static implicit operator Item (IoTMessageType item)
-    {
-      if (item == null)
-      {
-        return null;
-      }
-
-      return item.InnerItem;
-    }
-
-    public static explicit operator IoTMessageType(Item item)
-    {
-      if (item == null)
-      {
-        return null;
-      }
-
-      if (item.TemplateID != TemplateID)
-      {
-        return null;
-      }
-
-      return Create(item);
-    }
-  }
-      
   /// <summary>Represents the "IoT Device" template.</summary>
   public partial class IoTDevice : CustomItem
   {
@@ -205,6 +35,8 @@ namespace IoTHub.Foundation.Azure.Models.Templates
       public static readonly ID DeviceName = ID.Parse("{D18236D4-C125-4ADB-AC45-21DF6E2D3B6E}");
 
       public static readonly ID ConnectionString = ID.Parse("{D38E750A-C6DF-4F60-B755-F5880D07B1E0}");
+
+      public static readonly ID DeviceType = ID.Parse("{E30839DF-463E-490B-989E-51C86094360B}");
 
     }
     
@@ -234,6 +66,15 @@ namespace IoTHub.Foundation.Azure.Models.Templates
       }
     }
   
+    /// <summary>Gets the "Device Type" field.</summary>
+    public ReferenceField DeviceType 
+    {
+      get 
+      {
+        return this.InnerItem.Fields[FieldIds.DeviceType];
+      }
+    }
+  
     public static IoTDevice Create(Item item) 
     {
       return new IoTDevice(item);
@@ -250,6 +91,49 @@ namespace IoTHub.Foundation.Azure.Models.Templates
     }
 
     public static explicit operator IoTDevice(Item item)
+    {
+      if (item == null)
+      {
+        return null;
+      }
+
+      if (item.TemplateID != TemplateID)
+      {
+        return null;
+      }
+
+      return Create(item);
+    }
+  }
+      
+  /// <summary>Represents the "IoT Device Type" template.</summary>
+  public partial class IoTDeviceType : CustomItem
+  {
+    public static readonly ID TemplateID = ID.Parse("{71D58260-B026-4EC8-B5D7-5221FDF008D2}");
+
+    public IoTDeviceType(Item item) : base(item) {
+    }
+
+    public static class FieldIds {
+      
+    }
+    
+    public static IoTDeviceType Create(Item item) 
+    {
+      return new IoTDeviceType(item);
+    }
+
+    public static implicit operator Item (IoTDeviceType item)
+    {
+      if (item == null)
+      {
+        return null;
+      }
+
+      return item.InnerItem;
+    }
+
+    public static explicit operator IoTDeviceType(Item item)
     {
       if (item == null)
       {
@@ -452,6 +336,176 @@ namespace IoTHub.Foundation.Azure.Models.Templates
     }
 
     public static explicit operator IoTDeviceMethod(Item item)
+    {
+      if (item == null)
+      {
+        return null;
+      }
+
+      if (item.TemplateID != TemplateID)
+      {
+        return null;
+      }
+
+      return Create(item);
+    }
+  }
+      
+  /// <summary>Represents the "IoT Message Type" template.</summary>
+  public partial class IoTMessageType : CustomItem
+  {
+    public static readonly ID TemplateID = ID.Parse("{B8521A51-A0CF-40AC-BD76-4C4D1E900B1C}");
+
+    public IoTMessageType(Item item) : base(item) {
+    }
+
+    public static class FieldIds {
+      
+      public static readonly ID Deserializer = ID.Parse("{2B8207A4-E141-4586-99D5-6311E98350C2}");
+
+    }
+    
+    /// <summary>Gets the "Deserializer" field.</summary>
+    public LookupField Deserializer 
+    {
+      get 
+      {
+        return this.InnerItem.Fields[FieldIds.Deserializer];
+      }
+    }
+  
+    public static IoTMessageType Create(Item item) 
+    {
+      return new IoTMessageType(item);
+    }
+
+    public static implicit operator Item (IoTMessageType item)
+    {
+      if (item == null)
+      {
+        return null;
+      }
+
+      return item.InnerItem;
+    }
+
+    public static explicit operator IoTMessageType(Item item)
+    {
+      if (item == null)
+      {
+        return null;
+      }
+
+      if (item.TemplateID != TemplateID)
+      {
+        return null;
+      }
+
+      return Create(item);
+    }
+  }
+      
+  /// <summary>Represents the "IoT Message Property" template.</summary>
+  public partial class IoTMessageProperty : CustomItem
+  {
+    public static readonly ID TemplateID = ID.Parse("{C8D77D21-B51E-4644-BD68-6B217193D779}");
+
+    public IoTMessageProperty(Item item) : base(item) {
+    }
+
+    public static class FieldIds {
+      
+      public static readonly ID PropertyName = ID.Parse("{76052C27-6A04-40DF-B50E-64E2D5F865C0}");
+
+    }
+    
+    /// <summary>Gets or sets the "Property Name" field.</summary>
+    public string PropertyName 
+    {
+      get 
+      {
+        return this.InnerItem[FieldIds.PropertyName];
+      }
+      set
+      {
+        this.InnerItem[FieldIds.PropertyName] = value;
+      }
+    }
+  
+    public static IoTMessageProperty Create(Item item) 
+    {
+      return new IoTMessageProperty(item);
+    }
+
+    public static implicit operator Item (IoTMessageProperty item)
+    {
+      if (item == null)
+      {
+        return null;
+      }
+
+      return item.InnerItem;
+    }
+
+    public static explicit operator IoTMessageProperty(Item item)
+    {
+      if (item == null)
+      {
+        return null;
+      }
+
+      if (item.TemplateID != TemplateID)
+      {
+        return null;
+      }
+
+      return Create(item);
+    }
+  }
+      
+  /// <summary>Represents the "IoT Message Deserializer" template.</summary>
+  public partial class IoTMessageDeserializer : CustomItem
+  {
+    public static readonly ID TemplateID = ID.Parse("{FD0BC7FA-A8EA-40F8-BF51-B76EE1F501E1}");
+
+    public IoTMessageDeserializer(Item item) : base(item) {
+    }
+
+    public static class FieldIds {
+      
+      public static readonly ID DeserializerType = ID.Parse("{11546A34-6105-49C9-B08B-C1561063AE52}");
+
+    }
+    
+    /// <summary>Gets or sets the "Deserializer Type" field.</summary>
+    public string DeserializerType 
+    {
+      get 
+      {
+        return this.InnerItem[FieldIds.DeserializerType];
+      }
+      set
+      {
+        this.InnerItem[FieldIds.DeserializerType] = value;
+      }
+    }
+  
+    public static IoTMessageDeserializer Create(Item item) 
+    {
+      return new IoTMessageDeserializer(item);
+    }
+
+    public static implicit operator Item (IoTMessageDeserializer item)
+    {
+      if (item == null)
+      {
+        return null;
+      }
+
+      return item.InnerItem;
+    }
+
+    public static explicit operator IoTMessageDeserializer(Item item)
     {
       if (item == null)
       {

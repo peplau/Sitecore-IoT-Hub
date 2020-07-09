@@ -23,10 +23,17 @@ key: connection string
 content-length: 124
 
 HostName=SitecoreIoTHub.azure-devices.net;DeviceId=SmartDisplay;SharedAccessKey=dJbH7rva/W1/du8E261uzJrEyAag5VPsFcl/j6vcdXU=
+----field----
+field: {E30839DF-463E-490B-989E-51C86094360B}
+name: Device Type
+key: device type
+content-length: 38
+
+{8BC05CDA-F320-4B33-9B32-D35622FFB66B}
 ----version----
 language: en
 version: 1
-revision: cd15c6b9-d55a-4fa3-8e0a-1c6bf669312a
+revision: 25399dbd-23b0-472e-a935-8fadd995355c
 
 ----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
@@ -55,18 +62,18 @@ name: __Revision
 key: __revision
 content-length: 36
 
-cd15c6b9-d55a-4fa3-8e0a-1c6bf669312a
+25399dbd-23b0-472e-a935-8fadd995355c
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200312T222726Z
+20200708T235032Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
 content-length: 14
 
-sitecore\admin
+sitecore\Admin

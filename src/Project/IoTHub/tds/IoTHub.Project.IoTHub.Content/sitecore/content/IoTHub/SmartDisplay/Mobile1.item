@@ -19,15 +19,15 @@ content-length: 3
 ----version----
 language: en
 version: 1
-revision: dc30e37c-069f-4481-8852-633015c71aee
+revision: 66219c92-9f9b-4a2a-b516-3cf200b4efdb
 
 ----field----
 field: {1DB00D6B-E441-4147-B903-1D25ED9818E8}
 name: Product Name
 key: product name
-content-length: 7
+content-length: 13
 
-Mobile1
+iPhone 8 64Gb
 ----field----
 field: {4EE7F2CB-C112-46FA-8419-63F77706BC16}
 name: Image
@@ -35,6 +35,23 @@ key: image
 content-length: 58
 
 <image mediaid="{A482FD36-EDC2-4AAE-8F62-C62B9DDA00EE}" />
+----field----
+field: {46FEA775-9D89-49BB-B1B1-16A61C7E9791}
+name: Description
+key: description
+content-length: 41
+
+Excellent condition, all in the original.
+----field----
+field: {469736EF-1582-4427-9865-70AB1074F046}
+name: Features
+key: features
+content-length: 76
+
+Fingerprint Sensor
+Single SIM
+Factory Unlocked
+Camera Resolution: 12.0 MP
 ----field----
 field: {25BED78C-4957-4165-998A-CA1B52F67497}
 name: __Created
@@ -48,14 +65,14 @@ name: __Revision
 key: __revision
 content-length: 36
 
-dc30e37c-069f-4481-8852-633015c71aee
+66219c92-9f9b-4a2a-b516-3cf200b4efdb
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200505T171609Z
+20200505T173602Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by

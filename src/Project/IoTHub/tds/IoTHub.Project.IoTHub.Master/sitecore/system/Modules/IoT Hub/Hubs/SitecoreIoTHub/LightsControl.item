@@ -23,10 +23,17 @@ key: connection string
 content-length: 125
 
 HostName=SitecoreIoTHub.azure-devices.net;DeviceId=LightsControl;SharedAccessKey=WmUcY+WhFGxaBQeI8uUMLk+RIEdXoCZlzrdo2+wje9s=
+----field----
+field: {E30839DF-463E-490B-989E-51C86094360B}
+name: Device Type
+key: device type
+content-length: 38
+
+{D108B96F-A753-4383-B294-52096C911F04}
 ----version----
 language: en
 version: 1
-revision: 1a521100-4fcf-4bf3-a91b-5a7dcaea4daf
+revision: fff851a7-db1b-42d9-8b4a-6f7590750f71
 
 ----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
@@ -55,18 +62,18 @@ name: __Revision
 key: __revision
 content-length: 36
 
-1a521100-4fcf-4bf3-a91b-5a7dcaea4daf
+fff851a7-db1b-42d9-8b4a-6f7590750f71
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200312T220649Z
+20200708T234917Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
 content-length: 14
 
-sitecore\admin
+sitecore\Admin

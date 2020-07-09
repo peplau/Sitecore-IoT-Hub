@@ -19,15 +19,15 @@ content-length: 3
 ----version----
 language: en
 version: 1
-revision: 13458d70-78f2-4979-a9cc-ce140af2e585
+revision: f7ce2238-bda0-42a7-84c2-4b139c3daf3a
 
 ----field----
 field: {1DB00D6B-E441-4147-B903-1D25ED9818E8}
 name: Product Name
 key: product name
-content-length: 11
+content-length: 12
 
-Headphones3
+JBL Tune 500
 ----field----
 field: {4EE7F2CB-C112-46FA-8419-63F77706BC16}
 name: Image
@@ -35,6 +35,23 @@ key: image
 content-length: 58
 
 <image mediaid="{1E72E2E7-7E5C-4099-839B-06C475FD270E}" />
+----field----
+field: {46FEA775-9D89-49BB-B1B1-16A61C7E9791}
+name: Description
+key: description
+content-length: 36
+
+JBL TUNE 500 Wired On-Ear Headphones
+----field----
+field: {469736EF-1582-4427-9865-70AB1074F046}
+name: Features
+key: features
+content-length: 103
+
+JBL Pure Bass for Hefty Sound
+20 Hz to 20 kHz Frequency Response
+Foldable Design
+Built-In Microphone
 ----field----
 field: {25BED78C-4957-4165-998A-CA1B52F67497}
 name: __Created
@@ -48,14 +65,14 @@ name: __Revision
 key: __revision
 content-length: 36
 
-13458d70-78f2-4979-a9cc-ce140af2e585
+f7ce2238-bda0-42a7-84c2-4b139c3daf3a
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200505T171547Z
+20200505T175137Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by

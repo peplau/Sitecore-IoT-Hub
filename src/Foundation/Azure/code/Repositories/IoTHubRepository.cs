@@ -13,18 +13,20 @@ namespace IoTHub.Foundation.Azure.Repositories
         private readonly IIoTMessagePropertyRepository _messagePropertyRepository;
         private readonly IIoTMessageTypeRepository _messageTypeRepository;
         private readonly IIoTMethodRepository _methodRepository;
+        private readonly IIoTDeviceTypeRepository _deviceTypeRepository;
 
         public IoTHubRepository(IIoTDeviceRepository deviceRepository,
             IIoTMessageDeserializerRepository deserializerRepository,
             IIoTMessagePropertyRepository messagePropertyRepository,
             IIoTMessageTypeRepository messageTypeRepository,
-            IIoTMethodRepository methodRepository)
+            IIoTMethodRepository methodRepository, IIoTDeviceTypeRepository deviceTypeRepository)
         {
             _deviceRepository = deviceRepository;
             _deserializerRepository = deserializerRepository;
             _messagePropertyRepository = messagePropertyRepository;
             _messageTypeRepository = messageTypeRepository;
             _methodRepository = methodRepository;
+            _deviceTypeRepository = deviceTypeRepository;
         }
 
         #region IIoTHubRepository
@@ -189,6 +191,23 @@ namespace IoTHub.Foundation.Azure.Repositories
             return _messageTypeRepository.CastToMessageType(messageTypeItem);
         }
 
+        #endregion
+
+        #region IIoTDeviceTypeRepository
+        public IoTDeviceType CastToDeviceType(Item deviceTypeItem)
+        {
+            return _deviceTypeRepository.CastToDeviceType(deviceTypeItem);
+        }
+
+        public IoTDeviceType GetDeviceType(ID deviceTypeId, Database database = null)
+        {
+            return _deviceTypeRepository.GetDeviceType(deviceTypeId, database);
+        }
+
+        public IoTDeviceType GetDeviceType(string deviceTypePath, Database database = null)
+        {
+            return _deviceTypeRepository.GetDeviceType(deviceTypePath, database);
+        }
         #endregion
     }
 }

@@ -19,15 +19,15 @@ content-length: 3
 ----version----
 language: en
 version: 1
-revision: 0268dec4-8936-4dcf-a234-2300ac69d0a7
+revision: 4e841d91-6168-4a15-b279-bbd01d241508
 
 ----field----
 field: {1DB00D6B-E441-4147-B903-1D25ED9818E8}
 name: Product Name
 key: product name
-content-length: 11
+content-length: 17
 
-Headphones2
+Skullcandy Hesh 2
 ----field----
 field: {4EE7F2CB-C112-46FA-8419-63F77706BC16}
 name: Image
@@ -35,6 +35,24 @@ key: image
 content-length: 58
 
 <image mediaid="{13778E4C-F0F5-4145-9BF6-7430470ED514}" />
+----field----
+field: {46FEA775-9D89-49BB-B1B1-16A61C7E9791}
+name: Description
+key: description
+content-length: 64
+
+FULL-FEATURED WIRELESS. Hesh&reg; 2 Wireless. Over-Ear Headphone
+----field----
+field: {469736EF-1582-4427-9865-70AB1074F046}
+name: Features
+key: features
+content-length: 124
+
+Bluetooth® Wireless Technology
+15 Hours of Battery Life
+Ultra-Durable Headband
+Microphone
+Call, Track and Volume Control
 ----field----
 field: {25BED78C-4957-4165-998A-CA1B52F67497}
 name: __Created
@@ -48,14 +66,14 @@ name: __Revision
 key: __revision
 content-length: 36
 
-0268dec4-8936-4dcf-a234-2300ac69d0a7
+4e841d91-6168-4a15-b279-bbd01d241508
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200505T171547Z
+20200505T174800Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by

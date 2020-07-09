@@ -6,7 +6,7 @@ using Sitecore.Data.Items;
 namespace IoTHub.Foundation.Azure.Repositories
 {
     public interface IIoTHubRepository : IIoTDeviceRepository, IIoTMessageDeserializerRepository,
-        IIoTMessagePropertyRepository, IIoTMessageTypeRepository, IIoTMethodRepository
+        IIoTMessagePropertyRepository, IIoTMessageTypeRepository, IIoTMethodRepository, IIoTDeviceTypeRepository
     {
         /// <summary>
         /// Cast Item to IoTHub

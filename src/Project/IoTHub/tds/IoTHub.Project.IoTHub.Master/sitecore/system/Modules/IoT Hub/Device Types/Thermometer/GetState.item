@@ -1,9 +1,9 @@
 ----item----
 version: 1
-id: {D6CC89D5-C9B6-4FBE-98DB-79F5318B1524}
+id: {D29F0271-9FC7-41AE-8E8F-B06E1B93196B}
 database: master
-path: /sitecore/system/Modules/IoT Hub/Hubs/SitecoreIoTHub/GrassWatering/GetState
-parent: {43D2943D-FFA7-4B79-B629-2A8E3F7AE4A9}
+path: /sitecore/system/Modules/IoT Hub/Device Types/Thermometer/GetState
+parent: {FC99E1DC-1937-4586-95D1-226816CFE628}
 name: GetState
 master: {00000000-0000-0000-0000-000000000000}
 template: {B96DDC3F-541D-428A-A68B-B0A0B34B1192}
@@ -22,11 +22,11 @@ name: Return Type
 key: return type
 content-length: 38
 
-{E587AD1B-C5EE-4F03-B4E2-EFDE8DB8C2B5}
+{31C38C2D-E626-4728-AABC-6B44DD1465E8}
 ----version----
 language: en
 version: 1
-revision: dc8a9a13-c98a-419f-bfcf-f18802169b5e
+revision: 7437def8-4a2b-437c-8733-f06575853079
 
 ----field----
 field: {E04BFB8F-1ED9-4156-964D-2D2F990C1E55}
@@ -48,7 +48,7 @@ name: __Created
 key: __created
 content-length: 16
 
-20200312T215621Z
+20200312T183627Z
 ----field----
 field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
 name: __Created by
@@ -62,18 +62,18 @@ name: __Revision
 key: __revision
 content-length: 36
 
-dc8a9a13-c98a-419f-bfcf-f18802169b5e
+7437def8-4a2b-437c-8733-f06575853079
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200413T190453Z
+20200708T235050Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
 content-length: 14
 
-sitecore\admin
+sitecore\Admin

@@ -19,15 +19,15 @@ content-length: 3
 ----version----
 language: en
 version: 1
-revision: c8420d8a-956c-4154-ad17-1419ddf550d6
+revision: 16bb8413-4562-4fcc-b73e-1e60e965b153
 
 ----field----
 field: {1DB00D6B-E441-4147-B903-1D25ED9818E8}
 name: Product Name
 key: product name
-content-length: 7
+content-length: 20
 
-Tablet1
+Samsung Galaxy Tab A
 ----field----
 field: {4EE7F2CB-C112-46FA-8419-63F77706BC16}
 name: Image
@@ -35,6 +35,23 @@ key: image
 content-length: 58
 
 <image mediaid="{F8AF17BC-067E-4ACC-B386-3F46249E3FF4}" />
+----field----
+field: {46FEA775-9D89-49BB-B1B1-16A61C7E9791}
+name: Description
+key: description
+content-length: 48
+
+Samsung Galaxy Tab A 9,7 AMOLED Android Computer
+----field----
+field: {469736EF-1582-4427-9865-70AB1074F046}
+name: Features
+key: features
+content-length: 33
+
+pen
+gadget
+electronics
+netbook
 ----field----
 field: {25BED78C-4957-4165-998A-CA1B52F67497}
 name: __Created
@@ -48,14 +65,14 @@ name: __Revision
 key: __revision
 content-length: 36
 
-c8420d8a-956c-4154-ad17-1419ddf550d6
+16bb8413-4562-4fcc-b73e-1e60e965b153
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200505T171552Z
+20200505T172614Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by

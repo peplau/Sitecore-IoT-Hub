@@ -28,8 +28,11 @@ namespace IoTHub.Foundation.Azure.Models.Templates
         /// <returns></returns>
         public List<IoTDeviceMethod> GetMethods()
         {
-            return InnerItem.Children.Where(p => p.TemplateID == IoTDeviceMethod.TemplateID)
-                .Select(p => _ioTHubRepository.CastToMethod(p)).ToList();
+            if (DeviceType?.TargetItem == null)
+                return new List<IoTDeviceMethod>();
+
+            var deviceType = _ioTHubRepository.CastToDeviceType(DeviceType.TargetItem);
+            return deviceType==null ? new List<IoTDeviceMethod>() : deviceType.GetMethods();
         }
     }
 }

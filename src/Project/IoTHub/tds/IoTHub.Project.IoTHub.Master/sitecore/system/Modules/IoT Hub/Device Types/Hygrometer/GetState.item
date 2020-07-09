@@ -1,9 +1,9 @@
 ----item----
 version: 1
-id: {5CD7DEA6-F900-42A4-B447-9EAA808EAA98}
+id: {998AED25-9BD3-406A-BFF3-D1C984A05C70}
 database: master
-path: /sitecore/system/Modules/IoT Hub/Hubs/SitecoreIoTHub/AirConditioned/GetState
-parent: {4E87501C-CD40-4F1B-9384-0F405C0B4AA2}
+path: /sitecore/system/Modules/IoT Hub/Device Types/Hygrometer/GetState
+parent: {201A5BEF-52DE-48CC-88EE-C78AEF28C870}
 name: GetState
 master: {00000000-0000-0000-0000-000000000000}
 template: {B96DDC3F-541D-428A-A68B-B0A0B34B1192}
@@ -22,11 +22,11 @@ name: Return Type
 key: return type
 content-length: 38
 
-{6B3AB479-AD20-4CF4-B8E8-ECF9D713308B}
+{90C4B6F7-7935-461C-92B1-B09C1653D244}
 ----version----
 language: en
 version: 1
-revision: d97ab67b-2452-4a65-8a83-e5de3b3a2808
+revision: 669fd2c3-1203-4a9b-965f-bba6398e891e
 
 ----field----
 field: {E04BFB8F-1ED9-4156-964D-2D2F990C1E55}
@@ -48,7 +48,7 @@ name: __Created
 key: __created
 content-length: 16
 
-20200312T214811Z
+20200312T200110Z
 ----field----
 field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
 name: __Created by
@@ -62,18 +62,18 @@ name: __Revision
 key: __revision
 content-length: 36
 
-d97ab67b-2452-4a65-8a83-e5de3b3a2808
+669fd2c3-1203-4a9b-965f-bba6398e891e
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200413T190449Z
+20200708T234843Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
 content-length: 14
 
-sitecore\admin
+sitecore\Admin

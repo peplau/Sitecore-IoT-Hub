@@ -1,10 +1,10 @@
 ----item----
 version: 1
-id: {07B32C51-DB2E-48FF-A83D-12692C4BD375}
+id: {F6790364-C6C3-4D49-9A73-75541181677E}
 database: master
-path: /sitecore/system/Modules/IoT Hub/Hubs/SitecoreIoTHub/LightsControl/GetState
-parent: {708A333F-02B3-4C7B-8D27-C50E5F8D5360}
-name: GetState
+path: /sitecore/system/Modules/IoT Hub/Device Types/AirConditioned/SetTemperature
+parent: {EEB0238E-5CB5-4F04-9295-1E09027ED49D}
+name: SetTemperature
 master: {00000000-0000-0000-0000-000000000000}
 template: {B96DDC3F-541D-428A-A68B-B0A0B34B1192}
 templatekey: IoT Device Method
@@ -13,28 +13,21 @@ templatekey: IoT Device Method
 field: {7723587B-94E9-4BE1-A1E0-EAE1BB3D0C91}
 name: Method Name
 key: method name
-content-length: 8
+content-length: 14
 
-GetState
+SetTemperature
 ----field----
 field: {FB24A772-F749-4FA0-B133-107F9FBD354A}
 name: Return Type
 key: return type
 content-length: 38
 
-{03A38C00-385C-4502-A0D4-58989ED08158}
+{6B3AB479-AD20-4CF4-B8E8-ECF9D713308B}
 ----version----
 language: en
 version: 1
-revision: bac44b2c-eb31-4dd9-a0fb-d3d49f958651
+revision: c68ee06d-2a5f-46e1-be5a-7bfe14c0dfde
 
-----field----
-field: {E04BFB8F-1ED9-4156-964D-2D2F990C1E55}
-name: Two Way
-key: two way
-content-length: 1
-
-1
 ----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
 name: __Owner
@@ -48,7 +41,7 @@ name: __Created
 key: __created
 content-length: 16
 
-20200312T220958Z
+20200312T215052Z
 ----field----
 field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
 name: __Created by
@@ -62,18 +55,18 @@ name: __Revision
 key: __revision
 content-length: 36
 
-bac44b2c-eb31-4dd9-a0fb-d3d49f958651
+c68ee06d-2a5f-46e1-be5a-7bfe14c0dfde
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200413T190502Z
+20200708T234621Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
 content-length: 14
 
-sitecore\admin
+sitecore\Admin
