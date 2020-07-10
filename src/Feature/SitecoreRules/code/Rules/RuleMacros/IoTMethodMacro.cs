@@ -4,9 +4,7 @@ using System.Xml.Linq;
 using IoTHub.Foundation.Azure.Models.Templates;
 using IoTHub.Foundation.Azure.Repositories;
 using Sitecore;
-using Sitecore.Data;
 using Sitecore.Data.Items;
-using Sitecore.Data.Managers;
 using Sitecore.Framework.Conditions;
 using Sitecore.Rules.RuleMacros;
 using Sitecore.Shell.Applications.Dialogs.ItemLister;
@@ -15,7 +13,7 @@ using Sitecore.Web.UI.Sheer;
 
 namespace IoTHub.Feature.SitecoreRules.Rules.RuleMacros
 {
-    public class IoTPropertyMacro : IRuleMacro
+    public class IoTMethodMacro : IRuleMacro
     {
         private readonly IIoTHubRepository _ioTHubRepository =
             DependencyResolver.Current.GetService<IIoTHubRepository>();
@@ -42,39 +40,39 @@ namespace IoTHub.Feature.SitecoreRules.Rules.RuleMacros
             // Filter templates
             selectItemOptions.ShowRoot = false;
             selectItemOptions.IncludeTemplatesForSelection =
-                SelectItemOptions.GetTemplateList(IoTMessageProperty.TemplateID.ToString());
+                SelectItemOptions.GetTemplateList(IoTDeviceMethod.TemplateID.ToString());
 
-            // Get Method Item
-            var methodId = element.Attribute("MethodId")?.Value;
-            if (string.IsNullOrEmpty(methodId)) {
-                SheerResponse.Alert("Please select a valid IoT Method");
+            // Get Device Item
+            var deviceId = element.Attribute("DeviceId")?.Value;
+            if (string.IsNullOrEmpty(deviceId)) {
+                SheerResponse.Alert("Please select a valid IoT Device");
                 return;
             }
-            var methodItem = Context.ContentDatabase.GetItem(methodId);
-            if (methodItem == null) {
-                SheerResponse.Alert("Please select a valid IoT Method");
-                return;
-            }           
-            var method = _ioTHubRepository.CastToMethod(methodItem);
-
-            // Get Return Type item            
-            var returnTypeField = method.ReturnType;
-            if (returnTypeField?.TargetItem == null) {
-                SheerResponse.Alert($"The IoT Method item {methodItem.ID} has an invalid value in the 'Return Type' field");
+            var deviceItem = Context.ContentDatabase.GetItem(deviceId);
+            if (deviceItem == null) {
+                SheerResponse.Alert("Please select a valid IoT Device");
                 return;
             }
-            var returnType = _ioTHubRepository.CastToMessageType(returnTypeField.TargetItem);
+            var device = _ioTHubRepository.CastToDevice(deviceItem);
+
+            // Get Device Type item
+            var deviceTypeField = device.DeviceType;
+            if (deviceTypeField?.TargetItem == null) {
+                SheerResponse.Alert($"The IoT Device item {deviceItem.ID} has an invalid value in the 'Device Type' field");
+                return;
+            }
+            var deviceType = _ioTHubRepository.CastToDeviceType(deviceTypeField.TargetItem);
 
             // Selected Item
-            Item propertyItem = null;
+            Item methodItem = null;
             if (!string.IsNullOrEmpty(value))
-                propertyItem = Context.ContentDatabase.GetItem(value);
+                methodItem = Context.ContentDatabase.GetItem(value);
 
             // Setup component state
-            selectItemOptions.Root = returnType.InnerItem;
-            selectItemOptions.SelectedItem = propertyItem;
-            selectItemOptions.Title = "Select Property";
-            selectItemOptions.Text = "Select the property to use in this rule.";
+            selectItemOptions.Root = deviceType.InnerItem;
+            selectItemOptions.SelectedItem = methodItem;
+            selectItemOptions.Title = "Select IoT Method";
+            selectItemOptions.Text = "Select the IoT Method to use in this rule.";
             selectItemOptions.Icon = "/~/icon/office/32x32/password_field.png";
 
             var parameter = parameters["resulttype"];

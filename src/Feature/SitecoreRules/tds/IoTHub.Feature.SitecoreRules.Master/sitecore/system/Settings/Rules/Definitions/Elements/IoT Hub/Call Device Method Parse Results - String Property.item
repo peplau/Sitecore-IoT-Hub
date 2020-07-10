@@ -19,15 +19,15 @@ IoTHub.Feature.SitecoreRules.Rules.Conditions.CallDeviceMethodConditionString, I
 ----version----
 language: en
 version: 1
-revision: dc61d157-747e-4ebb-b2df-f1e3a55049e4
+revision: 2f69b88e-bd0b-4174-a32b-c7d7f509f897
 
 ----field----
 field: {AF321234-4EB9-4EF5-9197-65903351939C}
 name: Text
 key: text
-content-length: 330
+content-length: 287
 
-where calling the IoT Method [MethodId,Tree,root={62BA65C8-7E6C-4BD5-AA1F-E6EC9E85A26A}&selection={B96DDC3F-541D-428A-A68B-B0A0B34B1192}&resulttype=Id,specific method] with payload [Payload,,,empty] returns a string property [PropertyId,IoTProperty,resulttype=Id,unset] that [operatorid,StringOperator,,compares to] [Value,,,text]
+where calling in the IoT Device [DeviceId,IoTDevice,resulttype=Id,unset] the Method [MethodId,IoTMethod,resulttype=Id,unset] with payload [Payload,,,empty] returns a string property [PropertyId,IoTProperty,resulttype=Id,unset] that [operatorid,StringOperator,,compares to] [Value,,,text]
 ----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
 name: __Owner
@@ -55,18 +55,18 @@ name: __Revision
 key: __revision
 content-length: 36
 
-dc61d157-747e-4ebb-b2df-f1e3a55049e4
+2f69b88e-bd0b-4174-a32b-c7d7f509f897
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200312T193220Z
+20200710T001324Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
 content-length: 14
 
-sitecore\admin
+sitecore\Admin

@@ -123,6 +123,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rules\Conditions\CallDeviceMethodConditionDouble.cs" />
     <Compile Include="Rules\Conditions\CallDeviceMethodConditionString.cs" />
+    <Compile Include="Rules\RuleMacros\IoTDeviceMacro.cs" />
+    <Compile Include="Rules\RuleMacros\IoTMethodMacro.cs" />
     <Compile Include="Rules\RuleMacros\IoTPropertyMacro.cs" />
   </ItemGroup>
   <ItemGroup>
