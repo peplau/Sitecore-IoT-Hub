@@ -20,17 +20,18 @@ namespace IoTHub.Foundation.Azure.Pipelines
         public void Process(InvokeMethodArgs args)
         {
             Assert.ArgumentNotNull(args, nameof(args));
+            Assert.ArgumentNotNull(args.Device, nameof(args.Device));
             Assert.ArgumentNotNull(args.Method, nameof(args.Method));
 
             // No two way - call the method directly
             if (!args.Method.TwoWay)
             {
-                args.Response = InvokeMethod(args.Method, args.Payload);
+                args.Response = InvokeMethod(args.Device, args.Method, args.Payload);
                 return;
             }
 
             // Two way - gets from cache 
-            var resultFromCache = _methodCacheManager.GetResponseFromCache(args.Method, args.Payload);
+            var resultFromCache = _methodCacheManager.GetResponseFromCache(args.Device, args.Method, args.Payload);
             if (!string.IsNullOrEmpty(resultFromCache))
             {
                 args.Response = DeserializeAndParse(args.Method, resultFromCache);
@@ -38,34 +39,38 @@ namespace IoTHub.Foundation.Azure.Pipelines
             }
 
             // Or the method itself
-            args.Response = InvokeMethod(args.Method, args.Payload);
+            args.Response = InvokeMethod(args.Device, args.Method, args.Payload);
+
             // If taken from Itself then needs to save back to cache if TwoWay
-            _methodCacheManager.SaveResponseToCache(args.Method, args.Payload, args.Response.RawMessage);
+            if (args.Response!=null && !string.IsNullOrEmpty(args.Response.RawMessage))
+                _methodCacheManager.SaveResponseToCache(args.Device, args.Method, args.Payload, args.Response.RawMessage);
         }
 
         /// <summary>
         /// Invoke a given Method passing optional payload
         /// </summary>
+        /// <param name="device"></param>
         /// <param name="method"></param>
         /// <param name="payload"></param>
         /// <returns></returns>
-        public static DynamicMessage InvokeMethod(IoTDeviceMethod method, string payload = "")
+        public static DynamicMessage InvokeMethod(IoTDevice device, IoTDeviceMethod method, string payload = "")
         {
-            var hub = method.GetHub();
+            var hub = device.GetHub();
             var connectionStringsServer = hub.ConnectionString;
             var parsedDictionary =
-                InvokeMethodInternal(method, connectionStringsServer, payload).GetAwaiter().GetResult();
+                InvokeMethodInternal(device, method, connectionStringsServer, payload).GetAwaiter().GetResult();
             return parsedDictionary;
         }
 
         /// <summary>
         /// Internal Invoke method call
         /// </summary>
+        /// <param name="device"></param>
         /// <param name="method"></param>
         /// <param name="connectionStringsServer"></param>
         /// <param name="payload"></param>
         /// <returns></returns>
-        private static async Task<DynamicMessage> InvokeMethodInternal(IoTDeviceMethod method,
+        private static async Task<DynamicMessage> InvokeMethodInternal(IoTDevice device, IoTDeviceMethod method,
             string connectionStringsServer, string payload = "")
         {
             var methodInvocation = new CloudToDeviceMethod(method.MethodName) { ResponseTimeout = TimeSpan.FromSeconds(30) };
@@ -75,9 +80,19 @@ namespace IoTHub.Foundation.Azure.Pipelines
                 methodInvocation.SetPayloadJson(JsonConvert.SerializeObject(payload));
 
             // Invoke the direct method asynchronously and get the response from the device.
-            var device = method.GetDevice();
             var serviceClient = ServiceClient.CreateFromConnectionString(connectionStringsServer);
-            var response = serviceClient.InvokeDeviceMethodAsync(device.DeviceName, methodInvocation).GetAwaiter().GetResult();
+
+            CloudToDeviceMethodResult response;
+            try
+            {
+                response = serviceClient.InvokeDeviceMethodAsync(device.DeviceName, methodInvocation).GetAwaiter().GetResult();
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Error calling method '{method.ID}' on device '{device.ID}' - Error: {e.Message}",
+                    typeof(IoTDeviceMethod));
+                return new DynamicMessage();
+            }
 
             // Resulting Payload
             var receivedPayload = response.GetPayloadAsJson();

@@ -6,6 +6,7 @@ namespace IoTHub.Foundation.Azure.Pipelines
 {
     public class InvokeMethodArgs : PipelineArgs
     {
+        public IoTDevice Device { get; set; }
         public IoTDeviceMethod Method { get; set; }
         public string Payload { get; set; }
         public DynamicMessage Response { get; set; }

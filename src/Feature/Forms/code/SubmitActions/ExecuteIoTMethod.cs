@@ -41,19 +41,27 @@ namespace IoTHub.Feature.Forms.SubmitActions
             // Call IoTMethod
             try
             {
+                var device = _hubRepository.GetDevice(new ID(data.DeviceId));
+                if (device == null) {
+                    Log.Error($"[ExecuteIoTMethod] Form Submit Action failed - IoTDevice '{data.DeviceId}' does not exists", this);
+                    return false;
+                }
                 var method = _hubRepository.GetMethod(new ID(data.MethodId));
                 if (method == null) {
                     Log.Error($"[ExecuteIoTMethod] Form Submit Action failed - IoTMethod '{data.MethodId}' does not exists", this);
                     return false;
                 }
-                var response = method.Invoke(payload);
+
+                var response = method.Invoke(device, payload);
                 Log.Info(
-                    $"[ExecuteIoTMethod] Called IoTMethod '{data.MethodId}' with payload '{payload}' - Return: '{response.RawMessage}'",
+                    $"[ExecuteIoTMethod] Called IoTMethod '{data.MethodId}' at the IoTDevice '{data.DeviceId}' with payload '{payload}' - Return: '{response.RawMessage}'",
                     this);
             }
             catch (Exception e)
             {
-                Log.Error($"[ExecuteIoTMethod] Form Submit Action failed - Error calling IoTMethod '{data.MethodId}'", e,
+                Log.Error(
+                    $"[ExecuteIoTMethod] Form Submit Action failed - Error calling IoTMethod '{data.MethodId}' at the IoTDevice '{data.DeviceId}'",
+                    e,
                     this);
                 return false;
             }

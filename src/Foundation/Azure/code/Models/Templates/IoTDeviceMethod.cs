@@ -15,24 +15,6 @@ namespace IoTHub.Foundation.Azure.Models.Templates
             DependencyResolver.Current.GetService<IIoTHubRepository>();
 
         /// <summary>
-        /// Get Hub for this method (Parent.Parent)
-        /// </summary>
-        /// <returns></returns>
-        public IoTHub GetHub()
-        {
-            return _ioTHubRepository.CastToHub(InnerItem.Parent.Parent);
-        }
-
-        /// <summary>
-        /// Get Device for this method (Parent)
-        /// </summary>
-        /// <returns></returns>
-        public IoTDevice GetDevice()
-        {
-            return _ioTHubRepository.CastToDevice(InnerItem.Parent);
-        }
-
-        /// <summary>
         /// Get MessageType/ReturnType for this method
         /// </summary>
         /// <returns></returns>
@@ -43,13 +25,14 @@ namespace IoTHub.Foundation.Azure.Models.Templates
         }
 
         /// <summary>
-        /// Invoke this Method passing optional payload
+        /// Invoke this Method in a given Device passing optional payload
         /// </summary>
+        /// <param name="device"></param>
         /// <param name="payload"></param>
         /// <returns></returns>
-        public DynamicMessage Invoke(string payload = "")
+        public DynamicMessage Invoke(IoTDevice device, string payload = "")
         {
-            var args = new InvokeMethodArgs {Method = this, Payload = payload};
+            var args = new InvokeMethodArgs {Device = device, Method = this, Payload = payload};
             CorePipeline.Run("iotHub.InvokeMethod", args);
             return args.Response;
         }

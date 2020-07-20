@@ -34,13 +34,14 @@ namespace IoTHub.Feature.Forms.ValueProviders
             if (string.IsNullOrEmpty(methodPart) || string.IsNullOrEmpty(propertyPart))
                 return string.Empty;
 
-            // Get method
-            var method = _hubRepository.GetMethodByName(methodPart);            
-            if (method==null)
+            // Get method and device
+            var device = _hubRepository.GetDeviceByName(methodPart);
+            var method = _hubRepository.GetMethodByName(methodPart);
+            if (method==null || device==null)
                 return string.Empty;
 
             // Invoke method and get result
-            var result = method.Invoke(payloadPart);
+            var result = method.Invoke(device, payloadPart);
             var propertyValue = result.GetValue(propertyPart);
             return propertyValue==null ? string.Empty : propertyValue.ToString();
         }

@@ -5,7 +5,8 @@ namespace IoTHub.Foundation.Azure.Cache
 {
     public interface IMethodCacheManager
     {
-        string GetResponseFromCache(IoTDeviceMethod method, string payload, Database db=null);
-        void SaveResponseToCache(IoTDeviceMethod method, string payload, string response, Database db=null);
+        string GetResponseFromCache(IoTDevice device, IoTDeviceMethod method, string payload, Database db = null);
+        void SaveResponseToCache(IoTDevice device, IoTDeviceMethod method, string payload, string response,
+            Database db = null);
     }
 }

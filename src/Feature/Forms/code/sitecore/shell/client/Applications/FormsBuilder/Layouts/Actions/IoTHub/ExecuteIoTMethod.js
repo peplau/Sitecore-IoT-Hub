@@ -1,9 +1,17 @@
 ﻿(function (speak) {
-    var parentApp = window.parent.Sitecore.Speak.app.findApplication('EditActionSubAppRenderer');
-    var FormDesignBorder = window.parent.Sitecore.Speak.app.findComponent('FormDesignBoard');
 
-    var iotDeviceMethodTemplateId = "{B96DDC3F-541D-428A-A68B-B0A0B34B1192}";
+    var parentApp;
+    var formDesignBorder;
+    if (window.parent.Sitecore.Speak.app) {
+        parentApp = window.parent.Sitecore.Speak.app.findApplication('EditActionSubAppRenderer');
+        formDesignBorder = window.parent.Sitecore.Speak.app.findComponent('FormDesignBoard');
+    }
+
+    var iotDeviceTemplateId = "{534E5B10-8659-4576-9C69-AA47FEAA533C}";
+    var methodAutoLoad = "";
+
     var parameterNames = {
+        deviceId: "deviceId",
         methodId: "methodId",
         payloadField: "payloadFieldId",
         payload: "payloadString"
@@ -17,9 +25,12 @@
                         "loaded": this.loadDone
                     }, this);
 
-                    this.ItemTreeView.on("change:SelectedItem", this.changedSelectedItemId, this);
+                    this.ItemTreeView.on("change:SelectedItem", this.changedSelectedDeviceId, this);
+                    this.MethodList.on("change:SelectedItem", this.changedSelectedMethodId, this);
 
-                    this.Fields = formFieldsUtils.getInputFields(FormDesignBorder);
+                    if (formDesignBorder) {
+                        this.Fields = formFieldsUtils.getInputFields(formDesignBorder);
+                    }
                     this.PayloadField = this.getFormComponentByBindingName(parameterNames.payloadField);
                     this.PayloadString = this.getFormComponentByBindingName(parameterNames.payload);
 
@@ -33,14 +44,41 @@
                     return this.Form[componentName];
                 },			
 
-                changedSelectedItemId: function () {
-                    var isSelectable = this.ItemTreeView.SelectedItem.$templateId === iotDeviceMethodTemplateId;
-                    parentApp.setSelectability(this, isSelectable, this.ItemTreeView.SelectedItemId);
+                setSelectable: function() {
+                    var isSelectable = this.ItemTreeView.SelectedItem.$templateId === iotDeviceTemplateId;
+                    isSelectable = isSelectable && this.MethodList.SelectedValue !== undefined && this.MethodList.SelectedValue !== "";
+                    if (parentApp) {
+                        parentApp.setSelectability(this, isSelectable, this.ItemTreeView.SelectedItemId);
+                    }
+                },
+
+                changedSelectedDeviceId: function () {
+                    this.setSelectable();
+                    var selectedDevice = this.ItemTreeView.SelectedItem;
+                    var self = this;
+                    self.MethodsDataSource.Items = [];
+                    if (this.ItemTreeView.SelectedItem.$templateId === iotDeviceTemplateId)
+                        $.get("/api/sitecore/FormsIoT/GetMethods?deviceId=" + selectedDevice.$itemId, function (result) {						
+						    // Load dropdown items
+                            result.unshift({Key:'',Value:''});
+                            self.MethodsDataSource.Items = result;
+                            // Auto-select
+                            if (methodAutoLoad !== "") {
+                                self.MethodList.SelectedValue = methodAutoLoad;
+                                methodAutoLoad = "";
+                            }
+
+                        }, "json");
+                },
+
+                changedSelectedMethodId: function () {
+                    this.setSelectable();
                 },
 
                 loadDone: function (parameters) {
                     this.Parameters = parameters || {};
-                    this.ItemTreeView.SelectedItemId = this.Parameters[parameterNames.methodId];					
+                    this.ItemTreeView.SelectedItemId = this.Parameters[parameterNames.deviceId];
+                    methodAutoLoad = this.Parameters[parameterNames.methodId];
                     this.Form.setFormData(this.Parameters);
                     this.setDynamicData(parameterNames.payloadField, this.Fields);
                 },
@@ -66,12 +104,13 @@
                         component.reset(items);
                         component.SelectedValue = selectedItemId;
                     }
-                },				
+                },
 
                 getData: function () {
-                    this.Parameters[parameterNames.methodId] = this.ItemTreeView.SelectedItemId;					
+                    this.Parameters[parameterNames.deviceId] = this.ItemTreeView.SelectedItemId;
+                    this.Parameters[parameterNames.methodId] = this.MethodList.SelectedValue;
                     this.Parameters[parameterNames.payloadField] = this.PayloadField.SelectedValue;
-                    this.Parameters[parameterNames.payload] = this.PayloadString.Value;					
+                    this.Parameters[parameterNames.payload] = this.PayloadString.Value;
                     return this.Parameters;
                 },
 				

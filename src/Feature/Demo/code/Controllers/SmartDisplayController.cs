@@ -11,11 +11,13 @@ namespace IoTHub.Feature.Demo.Controllers
     public class SmartDisplayController : SitecoreController
     {
         private readonly IoTDeviceMethod _method;
+        private readonly IoTDevice _device;
         private const string MethodPath = "SitecoreIoTHub.SmartDisplay.GetSelectedObject";
 
         public SmartDisplayController(IIoTHubRepository ioTHubRepository)
         {
             _method = ioTHubRepository.GetMethodByName(MethodPath);
+            _device = ioTHubRepository.GetDeviceByName(MethodPath);
         }
 
         public override ActionResult Index()
@@ -30,10 +32,10 @@ namespace IoTHub.Feature.Demo.Controllers
         [HttpPost]
         public JsonResult HasChanges(string currentState)
         {
-            if (_method == null)
+            if (_method == null || _device == null)
                 return Json(false);
 
-            dynamic response = _method.Invoke();
+            dynamic response = _method.Invoke(_device);
             string selectedObject = response.currentObject;
             if (string.IsNullOrEmpty(selectedObject))
                 selectedObject = "Empty";

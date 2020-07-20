@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
+using IoTHub.Foundation.Azure.Deserializers;
 using IoTHub.Foundation.Azure.Repositories;
 
 namespace IoTHub.Foundation.Azure.Models.Templates
@@ -33,6 +33,17 @@ namespace IoTHub.Foundation.Azure.Models.Templates
 
             var deviceType = _ioTHubRepository.CastToDeviceType(DeviceType.TargetItem);
             return deviceType==null ? new List<IoTDeviceMethod>() : deviceType.GetMethods();
+        }
+
+        /// <summary>
+        /// Invoke a Method at this Device passing optional payload
+        /// </summary>
+        /// <param name="method"></param>
+        /// <param name="payload"></param>
+        /// <returns></returns>
+        public DynamicMessage Invoke(IoTDeviceMethod method, string payload = "")
+        {
+            return method.Invoke(this, payload);
         }
     }
 }

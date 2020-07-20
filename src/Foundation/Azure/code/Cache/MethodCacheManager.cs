@@ -15,11 +15,12 @@ namespace IoTHub.Foundation.Azure.Cache
         /// <summary>
         /// Get the last Response saved on DB cache for a given method and payload
         /// </summary>
+        /// <param name="device"></param>
         /// <param name="method"></param>
         /// <param name="payload"></param>
         /// <param name="db"></param>
         /// <returns></returns>
-        public string GetResponseFromCache(IoTDeviceMethod method, string payload, Database db = null)
+        public string GetResponseFromCache(IoTDevice device, IoTDeviceMethod method, string payload, Database db = null)
         {
             if (method == null)
                 return string.Empty;
@@ -28,7 +29,7 @@ namespace IoTHub.Foundation.Azure.Cache
             if (db == null)
                 return string.Empty;
 
-            var key = GetMethodKey(method, payload);
+            var key = GetMethodKey(device, method, payload);
             if (string.IsNullOrEmpty(key))
                 return string.Empty;
 
@@ -40,11 +41,12 @@ namespace IoTHub.Foundation.Azure.Cache
         /// <summary>
         /// Save response to DB cache for a given method and payload
         /// </summary>
+        /// <param name="device"></param>
         /// <param name="method"></param>
         /// <param name="payload"></param>
         /// <param name="response"></param>
         /// <param name="db"></param>
-        public void SaveResponseToCache(IoTDeviceMethod method, string payload, string response, Database db = null)
+        public void SaveResponseToCache(IoTDevice device, IoTDeviceMethod method, string payload, string response, Database db = null)
         {
             if (method == null)
                 return;
@@ -53,7 +55,7 @@ namespace IoTHub.Foundation.Azure.Cache
             if (db == null)
                 return;
 
-            var key = GetMethodKey(method, payload);
+            var key = GetMethodKey(device, method, payload);
             if (string.IsNullOrEmpty(key))
                 return;
 
@@ -61,9 +63,11 @@ namespace IoTHub.Foundation.Azure.Cache
             db.PropertyStore.SetStringValue(key,response);
         }
 
-        private static string GetMethodKey(IoTDeviceMethod method, string payload)
+        private static string GetMethodKey(IoTDevice device, IoTDeviceMethod method, string payload)
         {
             var sb = new StringBuilder();
+            sb.Append(device.ID);
+            sb.Append("_");
             sb.Append(method.ID);
             sb.Append("_");
             sb.Append(GetMd5(payload));

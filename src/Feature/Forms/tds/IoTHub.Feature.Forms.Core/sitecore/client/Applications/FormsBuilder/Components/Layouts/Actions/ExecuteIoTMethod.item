@@ -20,7 +20,7 @@ content-length: 3
 field: {F1A1FE9E-A60C-4DDB-A3A0-BB5B29FE732E}
 name: __Renderings
 key: __renderings
-content-length: 2666
+content-length: 3281
 
 <r>
   <d id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}" l="{5A7CF08C-3647-4F56-B189-9E8C0531FBAF}">
@@ -28,8 +28,11 @@ content-length: 2666
     <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Text=Execute+IoT+Method&amp;IsVisible=0&amp;Id=HeaderTitle" ph="Page.Body" uid="{411976DA-F438-4CDE-882B-DD226564C7B3}" />
     <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Text=Select+the+IoT+Method+to+be+executed+and+configure+the+payload+for+the+call&amp;IsVisible=0&amp;Id=HeaderSubtitle" ph="Page.Body" uid="{5753541C-455A-4CE5-8F57-D20D3D49A6B2}" />
     <r id="{08994B8F-7BF1-4963-815D-0FA8D75B3D86}" par="Id=MainBorder" ph="Page.Body" uid="{CA2BB730-30FF-4E3F-91D6-E126B6DB6403}" />
-    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Text=IoT+Method&amp;TextSize=Large&amp;TextWeight=700+Bold&amp;Id=LabelTree" ph="MainBorder.Content" uid="{A4454D63-4FE1-43C7-BAC9-DC14265CBBC2}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Text=IoT+Device&amp;TextSize=Large&amp;TextWeight=700+Bold&amp;Id=LabelTree" ph="MainBorder.Content" uid="{A4454D63-4FE1-43C7-BAC9-DC14265CBBC2}" />
     <r id="{4D096960-FC73-4E0B-8D93-28736AD98E98}" par="Id=ItemTreeView" ph="MainBorder.Content" uid="{8EC4D98D-508C-46C8-9AA1-CC34E21792D5}" />
+    <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Text=IoT+Method&amp;TextSize=Large&amp;TextWeight=700+Bold&amp;Id=LabelMethods" ph="MainBorder.Content" uid="{06CF866A-213B-4AC3-8CD3-4B9947CEB367}" />
+    <r id="{C02DE599-FC31-4059-9B9F-89C0018E0576}" par="IsEnabled=1&amp;Id=MethodList&amp;DynamicData=%7bBinding+MethodsDataSource.Items%7d&amp;ValueFieldName=Key&amp;DisplayFieldName=Value" ph="MainBorder.Content" uid="{6A8B3C17-6747-4500-967B-3A804F48F6AF}" />
+    <r id="{E6FBC365-732C-4DCD-8C56-10E8C3B963F5}" par="Id=MethodsDataSource" ph="Page.Body" uid="{D9ADFE7B-7C37-4BBD-B74F-C457BD71E875}" />
     <r id="{E250DEA9-B3A6-4BFA-AF96-E8278150DA31}" par="IsVisible=1&amp;Id=Separator1" ph="MainBorder.Content" uid="{F635F861-9612-48B3-A043-11C692955C18}" />
     <r id="{EFCD0AB0-5B9D-4F1D-AB81-BE0336CD273C}" par="Text=Payload&amp;TextSize=Large&amp;TextWeight=700+Bold&amp;Id=LabelPayload" ph="MainBorder.Content" uid="{7D9398E2-B66B-4742-B148-74AED0033FE2}" />
     <r id="{59E2A66D-11D2-488D-A3BC-6C1C81326645}" par="VisualStyle=ContextPane&amp;FieldDefinitionType=%7b167CCD4C-34CE-4557-985B-0915D86B3D99%7d&amp;ConfigurationItem=%7bAAB31E01-25F9-4147-9527-27E192D7E8F4%7d&amp;Id=Form" ph="MainBorder.Content" uid="{C88DC8FB-9FD1-4DE4-B031-8C2CF4A52DDF}" />
@@ -41,7 +44,7 @@ content-length: 2666
 ----version----
 language: en
 version: 1
-revision: c03bf6e7-aa00-4103-9805-1f06e31beac8
+revision: aa209964-cd6b-425b-be32-e75e47bc9217
 
 ----field----
 field: {7205A57F-93B4-413A-AA9A-6B16BBC59565}
@@ -84,14 +87,14 @@ name: __Revision
 key: __revision
 content-length: 36
 
-c03bf6e7-aa00-4103-9805-1f06e31beac8
+aa209964-cd6b-425b-be32-e75e47bc9217
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200410T191426Z
+20200719T191140Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by

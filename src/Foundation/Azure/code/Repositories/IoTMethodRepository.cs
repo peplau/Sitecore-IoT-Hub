@@ -30,10 +30,8 @@ namespace IoTHub.Foundation.Azure.Repositories
 
         public IoTDeviceMethod GetMethodByName(IoTDevice device, string methodName)
         {
-            var method = device.InnerItem.Children.Where(p => p.TemplateID == IoTDeviceMethod.TemplateID)
-                .Select(CastToMethod).FirstOrDefault(p => p.MethodName == methodName);
+            var method = device.GetMethods().FirstOrDefault(p => p.MethodName == methodName);
             return method;
         }
-
     }
 }

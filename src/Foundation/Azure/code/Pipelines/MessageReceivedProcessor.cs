@@ -39,7 +39,8 @@ namespace IoTHub.Foundation.Azure.Pipelines
                 return;
             var methodNameOrPath = eventData.Properties[methodKey].ToString();
             var method = _hubRepository.GetMethodByName(methodNameOrPath, args.Database);
-            if (method == null)
+            var device = _hubRepository.GetDeviceByName(methodNameOrPath, args.Database);
+            if (method == null || device==null)
                 return;
 
             // Get payload from device (if any)
@@ -47,7 +48,7 @@ namespace IoTHub.Foundation.Azure.Pipelines
             var payload = string.IsNullOrEmpty(payloadKey) ? string.Empty : eventData.Properties[payloadKey].ToString();
 
             // Store results on cache
-            _methodCacheManager.SaveResponseToCache(method, payload, data);
+            _methodCacheManager.SaveResponseToCache(device, method, payload, data);
         }
     }
 }

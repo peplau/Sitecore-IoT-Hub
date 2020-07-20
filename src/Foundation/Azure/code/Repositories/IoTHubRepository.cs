@@ -99,6 +99,24 @@ namespace IoTHub.Foundation.Azure.Repositories
             return device == null ? null : GetMethodByName(device, methodName);
         }
 
+        public IoTDevice GetDeviceByName(string deviceNameOrPath, Database database = null)
+        {
+            if (database == null)
+                database = Sitecore.Context.Database;
+            IoTDevice device;
+            if (deviceNameOrPath.Contains("."))
+            {
+                var names = deviceNameOrPath.Split('.').Select(p => p.Trim()).Where(p => !string.IsNullOrEmpty(p))
+                    .ToArray();
+                if (names.Length < 2)
+                    return null;
+                device = GetDeviceByName(names[0], names[1], database);
+            }
+            else
+                device = GetDevice(deviceNameOrPath, database);
+            return device;
+        }
+
         public IoTDeviceMethod GetMethodByName(string methodNameOrPath, Database database = null)
         {
             if (database == null)

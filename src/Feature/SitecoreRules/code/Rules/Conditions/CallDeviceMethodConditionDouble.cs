@@ -17,15 +17,18 @@ namespace IoTHub.Feature.SitecoreRules.Rules.Conditions
             Assert.ArgumentNotNull(ruleContext, nameof (ruleContext));
 
             // Get passed method and property
+            var deviceItem = Sitecore.Context.Database.GetItem(DeviceId);
             var methodItem = Sitecore.Context.Database.GetItem(MethodId);
             var propertyItem = Sitecore.Context.Database.GetItem(PropertyId);
+            Assert.ArgumentNotNull(deviceItem, $"deviceItem.ID='{DeviceId}'");
             Assert.ArgumentNotNull(methodItem, $"methodItem.ID='{MethodId}'");
             Assert.ArgumentNotNull(propertyItem, $"propertyItem.ID='{PropertyId}'");
+            var device = _hubRepository.CastToDevice(methodItem);
             var method = _hubRepository.CastToMethod(methodItem);
             var property = _hubRepository.CastToMessageProperty(propertyItem);
             
             // Call method and receive results
-            var parsedResults = method.Invoke(Payload);
+            var parsedResults = method.Invoke(device, Payload);
             var parsedValue = (double)property.GetValue(parsedResults);
 
             // Compare values
@@ -63,6 +66,7 @@ namespace IoTHub.Feature.SitecoreRules.Rules.Conditions
             return true;
         }
 
+        public ID DeviceId { get; set; }
         public ID MethodId { get; set; }
         public string PropertyId { get; set; }
         public int Value { get; set; }
