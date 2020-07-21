@@ -93,6 +93,8 @@ namespace IoTDevices.LightsControl
             GetStateMessage(out var messageString);
             Console.WriteLine(" ");
             Console.WriteLine($"[Cloud-to-Device] method SetRoomState called - Payload: {data} - Result: {messageString}");
+            // Device-To-Cloud call is executed when the state changes
+            SendDeviceToCloud();
             return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(messageString), 200));
         }
 

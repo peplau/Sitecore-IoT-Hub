@@ -2,7 +2,7 @@
 version: 1
 id: {7362797F-FDC9-49A3-B509-9860E29D735C}
 database: master
-path: /sitecore/Forms/Manage IoT Objects/Page/Section/Section(3)/Submit Button(2)/SubmitActions
+path: /sitecore/Forms/Manage IoT Objects/Page/Section/Section2/Send To Air/SubmitActions
 parent: {67719FD2-4247-4359-A1A7-1CD992FDB09A}
 name: SubmitActions
 master: {00000000-0000-0000-0000-000000000000}

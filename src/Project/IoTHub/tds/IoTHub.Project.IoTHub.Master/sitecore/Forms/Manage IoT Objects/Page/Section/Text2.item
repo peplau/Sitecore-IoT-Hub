@@ -1,28 +1,28 @@
 ----item----
 version: 1
-id: {751F6229-CCA3-4457-BC93-1E281FF63B80}
+id: {0051DE9F-1042-419D-B23F-E691FB17EE61}
 database: master
-path: /sitecore/Forms/Manage IoT Objects/Page/Section/Section(3)
+path: /sitecore/Forms/Manage IoT Objects/Page/Section/Text2
 parent: {44C2DAFD-B48D-4CAD-A841-60067A82E434}
-name: Section(3)
+name: Text2
 master: {00000000-0000-0000-0000-000000000000}
-template: {8CDDB194-F456-4A75-89B7-346F8F39F95C}
-templatekey: Section
+template: {FC18F915-EAC6-460A-8777-6E1376A9EA09}
+templatekey: Text
 
 ----field----
-field: {7ABAA3F6-6EC0-4B65-A463-7919BFAE55AA}
-name: Css Class
-key: css class
-content-length: 10
+field: {C6CAA979-C3AC-4FFC-861E-2961F5FC3C48}
+name: Html Tag
+key: html tag
+content-length: 2
 
-form-group
+h2
 ----field----
 field: {84ECE662-5034-40CB-9C60-744DB64BB294}
 name: Field Key
 key: field key
 content-length: 32
 
-DE0871327FF843B98710A27B830C9886
+A7B65155A6354973AB15FE3204DCB3C3
 ----field----
 field: {71C6DE8E-4718-4977-B83E-B49552EE14B0}
 name: Conditions
@@ -36,12 +36,19 @@ name: __Sortorder
 key: __sortorder
 content-length: 3
 
-500
+200
 ----version----
 language: en
 version: 1
-revision: 70329403-1461-44fd-9eeb-215f78cd6b53
+revision: e70b5f1a-3c9d-4fc5-808b-f456836234a0
 
+----field----
+field: {9666782B-21BB-40CE-B38F-8F6C53FA5070}
+name: Text
+key: text
+content-length: 15
+
+Air Conditioned
 ----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
 name: __Owner
@@ -69,7 +76,7 @@ name: __Revision
 key: __revision
 content-length: 36
 
-70329403-1461-44fd-9eeb-215f78cd6b53
+e70b5f1a-3c9d-4fc5-808b-f456836234a0
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated

@@ -67,13 +67,13 @@ namespace IoTDevices.AirConditioned
         /// <returns></returns>
         private static Task<MethodResponse> SetTemperature(MethodRequest methodRequest, object userContext)
         {
-            var data = Encoding.UTF8.GetString(methodRequest.Data);            
-            if (!int.TryParse(data, out var newTemp))
-                newTemp = _currentTemperature;
-            _currentTemperature = newTemp;
+            var data = Encoding.UTF8.GetString(methodRequest.Data);
+            try { _currentTemperature = JsonConvert.DeserializeObject<int>(data); } catch(Exception){}
             GetStateMessage(out var messageString);
             Console.WriteLine(" ");
             Console.WriteLine($"[Cloud-to-Device] method SetTemperature called - Payload: {data} - Result: {messageString}");
+            // Device-To-Cloud call is executed when the state changes
+            SendDeviceToCloud();
             return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(messageString), 200));
         }
 
@@ -85,11 +85,13 @@ namespace IoTDevices.AirConditioned
         /// <returns></returns>
         private static Task<MethodResponse> TurnOn(MethodRequest methodRequest, object userContext)
         {
-            var data = Encoding.UTF8.GetString(methodRequest.Data);            
+            var data = Encoding.UTF8.GetString(methodRequest.Data);
             _currentOnState = true;
             GetStateMessage(out var messageString);
             Console.WriteLine(" ");
             Console.WriteLine($"[Cloud-to-Device] method TurnOn called - Payload: {data} - Result: {messageString}");
+            // Device-To-Cloud call is executed when the state changes
+            SendDeviceToCloud();
             return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(messageString), 200));
         }
 
@@ -106,6 +108,8 @@ namespace IoTDevices.AirConditioned
             GetStateMessage(out var messageString);
             Console.WriteLine(" ");
             Console.WriteLine($"[Cloud-to-Device] method TurnOff called - Payload: {data} - Result: {messageString}");
+            // Device-To-Cloud call is executed when the state changes
+            SendDeviceToCloud();
             return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(messageString), 200));
         }
 
@@ -130,7 +134,7 @@ namespace IoTDevices.AirConditioned
                         if (!bool.TryParse(Console.ReadLine(), out var boolVal))
                             boolVal = false;
                         _currentOnState = boolVal;
-                        // Device-To-Cloud call us executed when the state changes
+                        // Device-To-Cloud call is executed when the state changes
                         SendDeviceToCloud();
                         break;
                     case 2:
@@ -138,7 +142,7 @@ namespace IoTDevices.AirConditioned
                         if (!int.TryParse(Console.ReadLine(), out var intVal))
                             intVal = 0;
                         _currentTemperature = intVal;
-                        // Device-To-Cloud call us executed when the state changes
+                        // Device-To-Cloud call is executed when the state changes
                         SendDeviceToCloud();
                         break;
                 }

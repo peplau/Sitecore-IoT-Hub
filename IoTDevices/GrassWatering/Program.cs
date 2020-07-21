@@ -62,14 +62,14 @@ namespace IoTDevices.GrassWatering
         /// <returns></returns>
         private static Task<MethodResponse> SetEnabled(MethodRequest methodRequest, object userContext)
         {
-            var data = Encoding.UTF8.GetString(methodRequest.Data);            
-            if (!bool.TryParse(data, out bool stateToSet))
-                stateToSet = false;
-            _currentEnabledState = stateToSet;
+            var data = Encoding.UTF8.GetString(methodRequest.Data);
+            try { _currentEnabledState = JsonConvert.DeserializeObject<bool>(data); } catch(Exception){}
             GetStateMessage(out var messageString);
 
             Console.WriteLine(" ");
             Console.WriteLine($"[Cloud-to-Device] method SetEnabled called - Payload: {data} - Result: {messageString}");
+            // Device-To-Cloud call is executed when the state changes
+            SendDeviceToCloud();
             return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(messageString), 200));
         }
 

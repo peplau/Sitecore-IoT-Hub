@@ -1,10 +1,10 @@
 ----item----
 version: 1
-id: {751F6229-CCA3-4457-BC93-1E281FF63B80}
+id: {5D0E38C4-A385-4C65-BF1D-8C8AEEEC6EE1}
 database: master
-path: /sitecore/Forms/Manage IoT Objects/Page/Section/Section(3)
+path: /sitecore/Forms/Manage IoT Objects/Page/Section/Section3
 parent: {44C2DAFD-B48D-4CAD-A841-60067A82E434}
-name: Section(3)
+name: Section3
 master: {00000000-0000-0000-0000-000000000000}
 template: {8CDDB194-F456-4A75-89B7-346F8F39F95C}
 templatekey: Section
@@ -22,7 +22,7 @@ name: Field Key
 key: field key
 content-length: 32
 
-DE0871327FF843B98710A27B830C9886
+BA36DC1E12844EF09C7B96F4A352FEA3
 ----field----
 field: {71C6DE8E-4718-4977-B83E-B49552EE14B0}
 name: Conditions
@@ -36,11 +36,11 @@ name: __Sortorder
 key: __sortorder
 content-length: 3
 
-500
+400
 ----version----
 language: en
 version: 1
-revision: 70329403-1461-44fd-9eeb-215f78cd6b53
+revision: 66f001fc-f916-4f9d-9d2e-2ffec76c5e20
 
 ----field----
 field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
@@ -69,7 +69,7 @@ name: __Revision
 key: __revision
 content-length: 36
 
-70329403-1461-44fd-9eeb-215f78cd6b53
+66f001fc-f916-4f9d-9d2e-2ffec76c5e20
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated

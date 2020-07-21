@@ -43,7 +43,8 @@ namespace IoTHub.Feature.Forms.ValueProviders
             // Invoke method and get result
             var result = method.Invoke(device, payloadPart);
             var propertyValue = result.GetValue(propertyPart);
-            return propertyValue==null ? string.Empty : propertyValue.ToString();
+            return propertyValue;
+            //return propertyValue==null ? string.Empty : propertyValue.ToString();
         }
 
         public FieldValueProviderContext ValueProviderContext { get; set; }

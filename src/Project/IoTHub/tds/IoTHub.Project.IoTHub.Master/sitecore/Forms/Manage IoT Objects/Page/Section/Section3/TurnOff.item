@@ -1,28 +1,28 @@
 ----item----
 version: 1
-id: {751F6229-CCA3-4457-BC93-1E281FF63B80}
+id: {255AF4CA-3B5B-45B9-81CC-D528140F74EB}
 database: master
-path: /sitecore/Forms/Manage IoT Objects/Page/Section/Section(3)
-parent: {44C2DAFD-B48D-4CAD-A841-60067A82E434}
-name: Section(3)
+path: /sitecore/Forms/Manage IoT Objects/Page/Section/Section3/TurnOff
+parent: {5D0E38C4-A385-4C65-BF1D-8C8AEEEC6EE1}
+name: TurnOff
 master: {00000000-0000-0000-0000-000000000000}
-template: {8CDDB194-F456-4A75-89B7-346F8F39F95C}
-templatekey: Section
+template: {94A46D66-B1B8-405D-AAE4-7B5A9CD61C5E}
+templatekey: Button
 
 ----field----
 field: {7ABAA3F6-6EC0-4B65-A463-7919BFAE55AA}
 name: Css Class
 key: css class
-content-length: 10
+content-length: 15
 
-form-group
+btn btn-primary
 ----field----
 field: {84ECE662-5034-40CB-9C60-744DB64BB294}
 name: Field Key
 key: field key
 content-length: 32
 
-DE0871327FF843B98710A27B830C9886
+50EB3F53C42347AF958B3838ED69F9C0
 ----field----
 field: {71C6DE8E-4718-4977-B83E-B49552EE14B0}
 name: Conditions
@@ -30,46 +30,32 @@ key: conditions
 content-length: 22
 
 {"fieldConditions":[]}
-----field----
-field: {BA3F86A2-4A1C-4D78-B63D-91C2779C1B5E}
-name: __Sortorder
-key: __sortorder
-content-length: 3
-
-500
 ----version----
 language: en
 version: 1
-revision: 70329403-1461-44fd-9eeb-215f78cd6b53
+revision: 2af21119-67f9-448f-b5ad-8dd2ed3b4604
 
 ----field----
-field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
-name: __Owner
-key: __owner
-content-length: 14
+field: {71FFD7B2-8B09-4F7B-8A66-1E4CEF653E8D}
+name: Title
+key: title
+content-length: 8
 
-sitecore\admin
+Turn Off
 ----field----
 field: {25BED78C-4957-4165-998A-CA1B52F67497}
 name: __Created
 key: __created
 content-length: 16
 
-20200416T225607Z
-----field----
-field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
-name: __Created by
-key: __created by
-content-length: 14
-
-sitecore\admin
+20200721T194202Z
 ----field----
 field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
 name: __Revision
 key: __revision
 content-length: 36
 
-70329403-1461-44fd-9eeb-215f78cd6b53
+2af21119-67f9-448f-b5ad-8dd2ed3b4604
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated

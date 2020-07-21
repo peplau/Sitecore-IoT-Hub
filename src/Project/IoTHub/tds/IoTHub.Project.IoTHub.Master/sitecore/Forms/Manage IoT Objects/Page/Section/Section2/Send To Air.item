@@ -2,9 +2,9 @@
 version: 1
 id: {67719FD2-4247-4359-A1A7-1CD992FDB09A}
 database: master
-path: /sitecore/Forms/Manage IoT Objects/Page/Section/Section(3)/Submit Button(2)
-parent: {751F6229-CCA3-4457-BC93-1E281FF63B80}
-name: Submit Button(2)
+path: /sitecore/Forms/Manage IoT Objects/Page/Section/Section2/Send To Air
+parent: {84B9A58E-40AA-4095-A1B1-CABA6DD4D375}
+name: Send To Air
 master: {00000000-0000-0000-0000-000000000000}
 template: {94A46D66-B1B8-405D-AAE4-7B5A9CD61C5E}
 templatekey: Button
@@ -13,9 +13,9 @@ templatekey: Button
 field: {7ABAA3F6-6EC0-4B65-A463-7919BFAE55AA}
 name: Css Class
 key: css class
-content-length: 27
+content-length: 15
 
-btn btn-primary btn-refresh
+btn btn-primary
 ----field----
 field: {84ECE662-5034-40CB-9C60-744DB64BB294}
 name: Field Key
@@ -33,7 +33,7 @@ content-length: 22
 ----version----
 language: en
 version: 1
-revision: 01e9091a-3056-49b8-878f-a813170caa02
+revision: feba4461-93e3-4d44-ae8f-17baa202233e
 
 ----field----
 field: {71FFD7B2-8B09-4F7B-8A66-1E4CEF653E8D}
@@ -69,18 +69,18 @@ name: __Revision
 key: __revision
 content-length: 36
 
-01e9091a-3056-49b8-878f-a813170caa02
+feba4461-93e3-4d44-ae8f-17baa202233e
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20200719T215034Z
+20200721T221126Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
 key: __updated by
 content-length: 14
 
-sitecore\Admin
+sitecore\admin
