@@ -22,6 +22,8 @@ namespace IoTHub.Feature.Forms.SubmitActions
         protected override bool Execute(ExecuteIoTMethodData data, FormSubmitContext formSubmitContext)
         {
             Assert.ArgumentNotNull(data, nameof (data));
+            Assert.ArgumentNotNull(data.DeviceId, nameof (data.DeviceId));
+            Assert.ArgumentNotNull(data.MethodId, nameof (data.MethodId));
             Assert.ArgumentNotNull(formSubmitContext, nameof(formSubmitContext));
 
             // Method not selected
