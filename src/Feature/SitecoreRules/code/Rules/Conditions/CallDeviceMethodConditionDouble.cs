@@ -23,13 +23,14 @@ namespace IoTHub.Feature.SitecoreRules.Rules.Conditions
             Assert.ArgumentNotNull(deviceItem, $"deviceItem.ID='{DeviceId}'");
             Assert.ArgumentNotNull(methodItem, $"methodItem.ID='{MethodId}'");
             Assert.ArgumentNotNull(propertyItem, $"propertyItem.ID='{PropertyId}'");
-            var device = _hubRepository.CastToDevice(methodItem);
+            var device = _hubRepository.CastToDevice(deviceItem);
             var method = _hubRepository.CastToMethod(methodItem);
             var property = _hubRepository.CastToMessageProperty(propertyItem);
             
             // Call method and receive results
             var parsedResults = method.Invoke(device, Payload);
-            var parsedValue = (double)property.GetValue(parsedResults);
+            var dynamicValue = property.GetValue(parsedResults);
+            var parsedValue = dynamicValue==null ? 0 : (double)dynamicValue;
 
             // Compare values
             var comparisonResult = false;
