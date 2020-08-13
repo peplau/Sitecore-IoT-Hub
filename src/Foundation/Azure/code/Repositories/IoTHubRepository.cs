@@ -136,6 +136,18 @@ namespace IoTHub.Foundation.Azure.Repositories
             return method;
         }
 
+        public IoTDevice GetDeviceAndMethodByName(string deviceMethodName, out IoTDeviceMethod method, Database database = null)
+        {
+            var device = GetDeviceByName(deviceMethodName, database);
+            if (device == null) {
+                method = null;
+                return null;
+            }
+
+            method = GetMethodByName(deviceMethodName, database);
+            return device;
+        }
+
         #endregion
 
         #region IIoTDeviceRepository

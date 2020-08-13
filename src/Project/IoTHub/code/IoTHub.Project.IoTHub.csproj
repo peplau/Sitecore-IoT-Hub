@@ -113,6 +113,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="api.aspx" />
     <Content Include="App_Config\Include\Project\IoTHub.Project.IoTHub.config" />
     <Content Include="assets\smartdisplay\vendor\bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="assets\smartdisplay\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
